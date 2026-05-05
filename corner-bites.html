@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Corner Bites — Snacks & Daily Needs</title>
+  <meta name="description" content="Corner Bites is your friendly neighbourhood store. Snacks, drinks, daily essentials — all in one corner."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    img{display:block;max-width:100%}
+    a{text-decoration:none}
+    ul{list-style:none}
+
+    :root{
+      --bg:      #fffbf0;
+      --yellow:  #f5c842;
+      --orange:  #f07030;
+      --orange2: #e85a20;
+      --red:     #e83030;
+      --green:   #3ab85c;
+      --green2:  #2ea04e;
+      --teal:    #1aafa8;
+      --dark:    #1a1208;
+      --text:    #2a1e08;
+      --muted:   #7a6848;
+      --white:   #ffffff;
+      --cream:   #fff8e8;
+      --card:    #ffffff;
+    }
+
+    html{scroll-behavior:smooth;}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Nunito',sans-serif;
+      overflow-x:hidden;
+    }
+
+    /* ── NAV ── */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:0.9rem 2.5rem;
+      background:var(--yellow);
+      border-bottom:3px solid var(--orange);
+      box-shadow:0 2px 12px rgba(240,112,48,0.2);
+    }
+    .nav-brand{
+      font-family:'Fredoka',sans-serif;
+      font-size:1.6rem;font-weight:700;
+      color:var(--dark);
+      letter-spacing:-0.01em;
+    }
+    .nav-brand span{color:var(--orange2);}
+    .nav-links{display:flex;gap:1.5rem;align-items:center;}
+    .nav-links a{
+      font-size:0.82rem;font-weight:700;
+      letter-spacing:0.05em;
+      color:var(--dark);
+      padding:0.3rem 0.8rem;
+      border-radius:999px;
+      transition:all 0.2s;
+    }
+    .nav-links a:hover{background:var(--orange);color:var(--white);}
+    .nav-order{
+      background:var(--green);color:var(--white);
+      padding:0.5rem 1.2rem;
+      font-size:0.78rem;font-weight:700;
+      letter-spacing:0.05em;
+      border-radius:999px;
+      transition:background 0.2s,transform 0.2s;
+      box-shadow:0 3px 10px rgba(58,184,92,0.35);
+    }
+    .nav-order:hover{background:var(--green2);transform:translateY(-1px);}
+
+    /* ── HERO ── */
+    .hero{
+      min-height:100vh;
+      padding:6rem 2.5rem 4rem;
+      display:grid;grid-template-columns:1fr 1fr;
+      align-items:center;gap:3rem;
+      position:relative;overflow:hidden;
+    }
+
+    /* polka dot bg pattern */
+    .hero::before{
+      content:'';
+      position:absolute;inset:0;
+      background-image:radial-gradient(circle, rgba(245,200,66,0.18) 2px, transparent 2px);
+      background-size:32px 32px;
+      pointer-events:none;
+    }
+
+    .hero-tag{
+      display:inline-flex;align-items:center;gap:0.5rem;
+      background:var(--orange);color:var(--white);
+      padding:0.35rem 0.9rem;border-radius:999px;
+      font-size:0.72rem;font-weight:700;letter-spacing:0.08em;
+      margin-bottom:1.2rem;
+      animation:bounceIn 0.6s ease;
+    }
+
+    .hero-title{
+      font-family:'Fredoka',sans-serif;
+      font-size:clamp(2.8rem,5.5vw,5.5rem);
+      font-weight:700;
+      line-height:1.05;
+      color:var(--dark);
+      margin-bottom:1rem;
+      opacity:0;animation:fadeUp 0.7s 0.2s ease forwards;
+    }
+    .hero-title .highlight{
+      color:var(--orange2);
+      position:relative;
+      display:inline-block;
+    }
+    .hero-title .highlight::after{
+      content:'';
+      position:absolute;
+      bottom:-4px;left:0;right:0;
+      height:6px;
+      background:var(--yellow);
+      border-radius:3px;
+      z-index:-1;
+    }
+
+    .hero-desc{
+      font-size:1rem;font-weight:400;
+      line-height:1.8;color:var(--muted);
+      max-width:440px;
+      margin-bottom:2rem;
+      opacity:0;animation:fadeUp 0.7s 0.4s ease forwards;
+    }
+
+    .hero-cta{
+      display:flex;gap:1rem;flex-wrap:wrap;
+      opacity:0;animation:fadeUp 0.7s 0.6s ease forwards;
+    }
+
+    .btn-orange{
+      background:var(--orange);color:var(--white);
+      padding:0.85rem 2rem;
+      font-size:0.82rem;font-weight:700;
+      letter-spacing:0.06em;
+      border-radius:12px;
+      transition:background 0.2s,transform 0.2s,box-shadow 0.2s;
+      box-shadow:0 4px 16px rgba(240,112,48,0.4);
+    }
+    .btn-orange:hover{background:var(--orange2);transform:translateY(-3px);box-shadow:0 8px 24px rgba(240,112,48,0.45);}
+
+    .btn-green{
+      background:var(--green);color:var(--white);
+      padding:0.85rem 2rem;
+      font-size:0.82rem;font-weight:700;
+      letter-spacing:0.06em;
+      border-radius:12px;
+      transition:background 0.2s,transform 0.2s;
+    }
+    .btn-green:hover{background:var(--green2);transform:translateY(-3px);}
+
+    /* hero visual — store illustration */
+    .hero-visual{
+      position:relative;
+      display:flex;justify-content:center;align-items:center;
+      opacity:0;animation:fadeIn 0.8s 0.3s ease forwards;
+    }
+
+    .store-art{width:100%;max-width:460px;}
+
+    /* floating emoji badges */
+    .float-badge{
+      position:absolute;
+      background:var(--white);
+      border:2.5px solid var(--yellow);
+      border-radius:16px;
+      padding:0.5rem 0.9rem;
+      font-size:0.72rem;font-weight:700;
+      color:var(--dark);
+      display:flex;align-items:center;gap:0.35rem;
+      box-shadow:0 4px 14px rgba(0,0,0,0.1);
+      animation:float 3s ease-in-out infinite;
+      white-space:nowrap;
+    }
+    .float-badge-1{top:5%;left:-2%;animation-delay:0s;}
+    .float-badge-2{bottom:15%;right:-4%;animation-delay:1s;border-color:var(--green);}
+    .float-badge-3{top:45%;left:-8%;animation-delay:0.6s;border-color:var(--orange);}
+
+    /* hero notice */
+    .hero-notice{
+      display:inline-flex;align-items:center;gap:0.6rem;
+      background:rgba(58,184,92,0.12);
+      border:1.5px solid rgba(58,184,92,0.3);
+      border-radius:999px;
+      padding:0.45rem 1rem;
+      font-size:0.75rem;font-weight:700;
+      color:var(--green2);
+      margin-top:1.5rem;
+      opacity:0;animation:fadeUp 0.7s 0.8s ease forwards;
+    }
+    .notice-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s ease infinite;}
+
+    /* ── CATEGORY STRIP ── */
+    .category-strip{
+      background:var(--orange);
+      padding:1rem 2.5rem;
+      display:flex;gap:0;overflow-x:auto;
+      scrollbar-width:none;
+    }
+    .category-strip::-webkit-scrollbar{display:none;}
+    .cat-item{
+      flex-shrink:0;
+      padding:0.6rem 1.5rem;
+      border-right:1px solid rgba(255,255,255,0.2);
+      text-align:center;
+      cursor:default;
+      transition:background 0.2s;
+    }
+    .cat-item:hover{background:var(--orange2);}
+    .cat-emoji{font-size:1.3rem;display:block;margin-bottom:0.2rem;}
+    .cat-name{
+      font-size:0.65rem;font-weight:700;
+      letter-spacing:0.1em;text-transform:uppercase;
+      color:rgba(255,255,255,0.85);
+      white-space:nowrap;
+    }
+
+    /* ── SECTION ── */
+    .section-wrap{padding:5rem 2.5rem;max-width:1200px;margin:0 auto;}
+    .section-tag{
+      display:inline-flex;align-items:center;gap:0.4rem;
+      background:var(--yellow);
+      padding:0.3rem 0.9rem;border-radius:999px;
+      font-size:0.68rem;font-weight:700;
+      letter-spacing:0.08em;text-transform:uppercase;
+      color:var(--dark);margin-bottom:0.8rem;
+    }
+    .section-title{
+      font-family:'Fredoka',sans-serif;
+      font-size:clamp(2rem,4vw,3rem);
+      font-weight:700;color:var(--dark);
+      margin-bottom:0.8rem;line-height:1.1;
+    }
+    .section-sub{
+      font-size:0.92rem;font-weight:400;
+      color:var(--muted);line-height:1.7;
+      max-width:500px;margin-bottom:3rem;
+    }
+
+    /* ── PRODUCTS ── */
+    .products-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+      gap:1.2rem;
+    }
+    .product-card{
+      background:var(--card);
+      border-radius:20px;
+      padding:1.5rem;
+      border:2px solid transparent;
+      transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s;
+      cursor:default;
+      position:relative;
+      overflow:hidden;
+    }
+    .product-card::before{
+      content:'';
+      position:absolute;top:0;left:0;right:0;height:4px;
+      background:var(--yellow);
+    }
+    .product-card:hover{border-color:var(--yellow);transform:translateY(-6px);box-shadow:0 12px 30px rgba(245,200,66,0.25);}
+    .product-emoji{font-size:2.5rem;margin-bottom:0.8rem;}
+    .product-name{
+      font-family:'Fredoka',sans-serif;
+      font-size:1.1rem;font-weight:600;
+      color:var(--dark);margin-bottom:0.3rem;
+    }
+    .product-desc{
+      font-size:0.78rem;font-weight:400;
+      color:var(--muted);line-height:1.5;margin-bottom:0.8rem;
+    }
+    .product-price{
+      font-size:0.9rem;font-weight:700;
+      color:var(--orange2);
+    }
+    .product-badge{
+      position:absolute;top:1rem;right:1rem;
+      background:var(--red);color:var(--white);
+      padding:0.2rem 0.55rem;
+      border-radius:999px;
+      font-size:0.58rem;font-weight:700;
+      letter-spacing:0.08em;text-transform:uppercase;
+    }
+
+    /* ── WHY US ── */
+    .why-section{
+      background:var(--yellow);
+      padding:5rem 2.5rem;
+      position:relative;overflow:hidden;
+    }
+    .why-section::before{
+      content:'🏪';
+      position:absolute;right:-40px;top:50%;
+      transform:translateY(-50%);
+      font-size:20rem;
+      opacity:0.06;
+      pointer-events:none;
+    }
+    .why-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:1.5rem;
+      max-width:1200px;margin:0 auto;
+      margin-top:2.5rem;
+    }
+    .why-card{
+      background:var(--white);
+      border-radius:20px;
+      padding:2rem;
+      text-align:center;
+      transition:transform 0.3s;
+    }
+    .why-card:hover{transform:translateY(-4px);}
+    .why-icon{font-size:2.5rem;margin-bottom:0.8rem;}
+    .why-title{
+      font-family:'Fredoka',sans-serif;
+      font-size:1.1rem;font-weight:600;
+      color:var(--dark);margin-bottom:0.4rem;
+    }
+    .why-desc{font-size:0.82rem;color:var(--muted);line-height:1.6;}
+
+    /* ── DAILY NEEDS ── */
+    .needs-section{background:var(--cream);}
+    .needs-list{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+      gap:1rem;
+    }
+    .need-item{
+      background:var(--white);
+      border-radius:16px;
+      padding:1.2rem 1rem;
+      text-align:center;
+      border:2px solid transparent;
+      transition:border-color 0.2s,transform 0.2s;
+      cursor:default;
+    }
+    .need-item:hover{border-color:var(--orange);transform:scale(1.04);}
+    .need-emoji{font-size:1.8rem;margin-bottom:0.4rem;}
+    .need-name{font-size:0.78rem;font-weight:700;color:var(--dark);}
+
+    /* ── PROMO BANNER ── */
+    .promo{
+      background:var(--orange);
+      padding:3.5rem 2.5rem;
+      text-align:center;
+      position:relative;overflow:hidden;
+    }
+    .promo::before,.promo::after{
+      content:'🎉';font-size:8rem;
+      position:absolute;top:50%;transform:translateY(-50%);
+      opacity:0.12;pointer-events:none;
+    }
+    .promo::before{left:-2rem;}
+    .promo::after{right:-2rem;}
+    .promo-title{
+      font-family:'Fredoka',sans-serif;
+      font-size:clamp(1.8rem,4vw,3.5rem);
+      font-weight:700;color:var(--white);
+      margin-bottom:0.5rem;
+      position:relative;z-index:1;
+    }
+    .promo-sub{
+      font-size:1rem;color:rgba(255,255,255,0.8);
+      margin-bottom:1.8rem;
+      position:relative;z-index:1;
+    }
+    .promo-code{
+      display:inline-flex;align-items:center;gap:0.5rem;
+      background:var(--white);
+      padding:0.6rem 1.5rem;border-radius:12px;
+      font-size:1rem;font-weight:700;color:var(--orange2);
+      letter-spacing:0.08em;
+      position:relative;z-index:1;
+    }
+
+    /* ── CONTACT ── */
+    .contact-wrap{
+      max-width:1200px;margin:0 auto;
+      padding:5rem 2.5rem;
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:4rem;align-items:start;
+    }
+    .info-card{
+      background:var(--card);
+      border-radius:20px;
+      padding:2rem;
+      border:2px solid var(--yellow);
+      margin-bottom:1.2rem;
+      display:flex;gap:1rem;align-items:flex-start;
+    }
+    .info-card-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px;}
+    .info-card-label{
+      font-size:0.65rem;font-weight:700;
+      letter-spacing:0.14em;text-transform:uppercase;
+      color:var(--orange);margin-bottom:0.2rem;
+    }
+    .info-card-value{font-size:0.9rem;font-weight:500;color:var(--dark);line-height:1.6;}
+
+    .hours-table{width:100%;}
+    .hours-table tr{border-bottom:1px solid rgba(245,200,66,0.25);}
+    .hours-table td{padding:0.7rem 0;font-size:0.88rem;font-weight:500;color:var(--dark);}
+    .hours-table td:last-child{color:var(--orange2);font-weight:700;text-align:right;}
+
+    /* ── MAP ── */
+    .map-box{
+      width:100%;aspect-ratio:4/3;
+      background:linear-gradient(135deg,#fff8e8,#fff0d0);
+      border-radius:20px;
+      border:3px solid var(--yellow);
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      gap:0.5rem;
+      color:var(--muted);
+      font-size:0.8rem;font-weight:600;
+      letter-spacing:0.06em;
+    }
+    .map-box-icon{font-size:3rem;}
+
+    /* ── FOOTER ── */
+    footer{
+      background:var(--dark);
+      padding:2.5rem 2.5rem;
+      display:flex;justify-content:space-between;align-items:center;
+      flex-wrap:wrap;gap:1rem;
+    }
+    .footer-brand{
+      font-family:'Fredoka',sans-serif;
+      font-size:1.3rem;font-weight:700;
+      color:var(--yellow);
+    }
+    .footer-brand span{color:var(--orange);}
+    .footer-copy{font-size:0.68rem;color:rgba(255,255,255,0.3);}
+    .footer-credit{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,200,66,0.35);}
+    .footer-socials{display:flex;gap:0.6rem;}
+    .footer-social{
+      background:rgba(255,255,255,0.07);
+      color:rgba(255,255,255,0.5);
+      width:2rem;height:2rem;
+      border-radius:999px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:0.75rem;font-weight:700;
+      transition:background 0.2s,color 0.2s;
+    }
+    .footer-social:hover{background:var(--yellow);color:var(--dark);}
+
+    /* ── REVEAL ── */
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease,transform 0.55s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    @keyframes bounceIn{0%{transform:scale(0.6);opacity:0}80%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+    @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:0.6}}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:860px){
+      nav{padding:0.8rem 1.2rem;}
+      .nav-links a:not(.nav-order){display:none;}
+      .hero{grid-template-columns:1fr;padding:5.5rem 1.2rem 3rem;gap:2rem;text-align:center;}
+      .hero-desc,.hero-notice{margin-left:auto;margin-right:auto;}
+      .hero-cta{justify-content:center;}
+      .hero-visual{order:-1;}
+      .float-badge{display:none;}
+      .section-wrap{padding:4rem 1.2rem;}
+      .contact-wrap{grid-template-columns:1fr;padding:4rem 1.2rem;}
+      footer{flex-direction:column;text-align:center;padding:2rem 1.2rem;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">Corner <span>Bites</span></div>
+    <ul class="nav-links">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#needs">Daily Needs</a></li>
+      <li><a href="#contact">Find Us</a></li>
+      <li><a href="tel:+6349987654" class="nav-order">📞 Call Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="hero-tag">🏪 Your Neighbourhood Store</div>
+      <h1 class="hero-title">
+        Everything you<br>need, right at the<br><span class="highlight">corner.</span>
+      </h1>
+      <p class="hero-desc">
+        Snacks, drinks, condiments, frozen goods, and daily essentials — all fresh, all affordable, and always within reach. Corner Bites is your go-to store.
+      </p>
+      <div class="hero-cta">
+        <a href="#products" class="btn-orange">🛍️ Shop Our Picks</a>
+        <a href="#contact" class="btn-green">📍 Find Us</a>
+      </div>
+      <div class="hero-notice">
+        <div class="notice-dot"></div>
+        Open Now — Until 10:00 PM tonight
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="store-art">
+        <!-- SVG store illustration -->
+        <svg viewBox="0 0 460 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- background shape -->
+          <rect x="20" y="20" width="420" height="380" rx="24" fill="#fff8e8"/>
+
+          <!-- store awning -->
+          <rect x="40" y="60" width="380" height="50" rx="8" fill="#f5c842"/>
+          <!-- awning stripes -->
+          <rect x="40" y="60" width="48" height="50" fill="#f07030" opacity="0.6"/>
+          <rect x="136" y="60" width="48" height="50" fill="#f07030" opacity="0.6"/>
+          <rect x="232" y="60" width="48" height="50" fill="#f07030" opacity="0.6"/>
+          <rect x="328" y="60" width="48" height="50" fill="#f07030" opacity="0.6"/>
+          <!-- awning fringe -->
+          <path d="M40 110 L60 125 L80 110 L100 125 L120 110 L140 125 L160 110 L180 125 L200 110 L220 125 L240 110 L260 125 L280 110 L300 125 L320 110 L340 125 L360 110 L380 125 L400 110 L420 125 L420 110 Z" fill="#f5c842"/>
+
+          <!-- store sign -->
+          <rect x="130" y="30" width="200" height="36" rx="6" fill="#e85a20"/>
+          <text x="230" y="53" font-family="Fredoka, sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">CORNER BITES</text>
+
+          <!-- store front -->
+          <rect x="40" y="110" width="380" height="270" rx="0 0 16 16" fill="#ffffff" opacity="0.7"/>
+
+          <!-- door -->
+          <rect x="190" y="260" width="80" height="120" rx="6" fill="#3ab85c"/>
+          <rect x="195" y="265" width="70" height="110" rx="4" fill="#5dce7e" opacity="0.5"/>
+          <circle cx="260" cy="320" r="5" fill="#fff"/>
+
+          <!-- left window -->
+          <rect x="55" y="130" width="120" height="110" rx="6" fill="#e8f4fe"/>
+          <!-- shelf in window -->
+          <rect x="60" y="190" width="110" height="4" fill="#f5c842"/>
+          <rect x="60" y="165" width="110" height="4" fill="#f5c842"/>
+          <!-- products in window -->
+          <rect x="65" y="170" width="20" height="19" rx="3" fill="#f07030"/>
+          <rect x="90" y="168" width="18" height="21" rx="3" fill="#e83030"/>
+          <rect x="113" y="172" width="16" height="17" rx="3" fill="#3ab85c"/>
+          <rect x="134" y="169" width="20" height="20" rx="3" fill="#1aafa8"/>
+          <rect x="65" y="195" width="18" height="18" rx="3" fill="#f5c842"/>
+          <rect x="88" y="193" width="22" height="20" rx="3" fill="#c070f0"/>
+          <rect x="115" y="195" width="15" height="18" rx="3" fill="#f07030"/>
+          <rect x="135" y="194" width="20" height="19" rx="3" fill="#e83030"/>
+
+          <!-- right window -->
+          <rect x="285" y="130" width="120" height="110" rx="6" fill="#e8f4fe"/>
+          <rect x="290" y="190" width="110" height="4" fill="#f5c842"/>
+          <rect x="290" y="165" width="110" height="4" fill="#f5c842"/>
+          <rect x="295" y="170" width="20" height="19" rx="3" fill="#3ab85c"/>
+          <rect x="320" y="168" width="18" height="21" rx="3" fill="#f5c842"/>
+          <rect x="343" y="172" width="16" height="17" rx="3" fill="#f07030"/>
+          <rect x="364" y="169" width="20" height="20" rx="3" fill="#e83030"/>
+          <rect x="295" y="195" width="18" height="18" rx="3" fill="#1aafa8"/>
+          <rect x="318" y="193" width="22" height="20" rx="3" fill="#f07030"/>
+          <rect x="345" y="195" width="15" height="18" rx="3" fill="#f5c842"/>
+          <rect x="365" y="194" width="20" height="19" rx="3" fill="#3ab85c"/>
+
+          <!-- basket of goodies outside -->
+          <rect x="55" y="330" width="70" height="50" rx="4" fill="#c07830" opacity="0.6"/>
+          <rect x="60" y="315" width="60" height="20" rx="3" fill="#8a5820" opacity="0.5"/>
+          <!-- items in basket -->
+          <circle cx="78" cy="325" r="8" fill="#f07030"/>
+          <circle cx="95" cy="322" r="9" fill="#e83030"/>
+          <circle cx="112" cy="325" r="7" fill="#f5c842"/>
+
+          <!-- signboard on side -->
+          <rect x="340" y="250" width="100" height="80" rx="8" fill="#f5c842"/>
+          <text x="390" y="280" font-family="Nunito, sans-serif" font-size="10" font-weight="700" fill="#1a1208" text-anchor="middle">OPEN</text>
+          <text x="390" y="298" font-family="Nunito, sans-serif" font-size="8" font-weight="600" fill="#f07030" text-anchor="middle">7AM - 10PM</text>
+          <text x="390" y="315" font-family="Nunito, sans-serif" font-size="8" font-weight="600" fill="#1a1208" text-anchor="middle">Daily</text>
+
+          <!-- path/ground -->
+          <rect x="20" y="370" width="420" height="30" rx="0 0 16 16" fill="#e8ddb0" opacity="0.4"/>
+
+          <!-- decorative stars -->
+          <circle cx="430" cy="50" r="6" fill="#f5c842" opacity="0.5"/>
+          <circle cx="30" cy="40" r="4" fill="#f07030" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="float-badge float-badge-1">🛒 New Arrivals!</div>
+      <div class="float-badge float-badge-2">✅ Affordable Prices</div>
+      <div class="float-badge float-badge-3">⚡ Malapit ka lang!</div>
+    </div>
+  </div>
+
+  <!-- CATEGORY STRIP -->
+  <div class="category-strip">
+    <div class="cat-item"><span class="cat-emoji">🍫</span><span class="cat-name">Snacks</span></div>
+    <div class="cat-item"><span class="cat-emoji">🧃</span><span class="cat-name">Drinks</span></div>
+    <div class="cat-item"><span class="cat-emoji">🍜</span><span class="cat-name">Instant Food</span></div>
+    <div class="cat-item"><span class="cat-emoji">🧊</span><span class="cat-name">Frozen</span></div>
+    <div class="cat-item"><span class="cat-emoji">🧴</span><span class="cat-name">Personal Care</span></div>
+    <div class="cat-item"><span class="cat-emoji">🧹</span><span class="cat-name">Cleaning</span></div>
+    <div class="cat-item"><span class="cat-emoji">🍳</span><span class="cat-name">Condiments</span></div>
+    <div class="cat-item"><span class="cat-emoji">🎁</span><span class="cat-name">Pasalubong</span></div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="section-wrap">
+      <div class="section-tag">🔥 Bestsellers</div>
+      <h2 class="section-title reveal">Our Most Loved Picks</h2>
+      <p class="section-sub reveal">Fresh stock every week. These are what our regulars always grab.</p>
+      <div class="products-grid">
+        <div class="product-card reveal">
+          <div class="product-badge">HOT</div>
+          <div class="product-emoji">🍜</div>
+          <div class="product-name">Lucky Me Instant Noodles</div>
+          <div class="product-desc">All flavors available. Sold per pack or per dozen.</div>
+          <div class="product-price">₱15 / pack</div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-emoji">🧃</div>
+          <div class="product-name">C2 Ready-to-Drink</div>
+          <div class="product-desc">Green tea and fruit flavors. Cold and ready to go.</div>
+          <div class="product-price">₱25 / bottle</div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-badge">NEW</div>
+          <div class="product-emoji">🍪</div>
+          <div class="product-name">Cloud 9 & Assorted Choc</div>
+          <div class="product-desc">Your favourite local chocolates and biscuits. Perfect merienda.</div>
+          <div class="product-price">₱10–₱35</div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-emoji">🥤</div>
+          <div class="product-name">Soft Drinks</div>
+          <div class="product-desc">Coke, Royal, Sprite, RC — all sizes. Iced or warm.</div>
+          <div class="product-price">₱15–₱45</div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-emoji">🍳</div>
+          <div class="product-name">Cooking Essentials</div>
+          <div class="product-desc">Soy sauce, vinegar, oil, sugar, salt. Tingi-tingi available.</div>
+          <div class="product-price">₱5 tingi up</div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-emoji">🧂</div>
+          <div class="product-name">Spices & Seasonings</div>
+          <div class="product-desc">Magic Sarap, Knorr cubes, MSG, and more — all tingi-size.</div>
+          <div class="product-price">₱2–₱15</div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-emoji">🧴</div>
+          <div class="product-name">Shampoo & Soap (Sachet)</div>
+          <div class="product-desc">Pantene, Head & Shoulders, Safeguard — per sachet or bar.</div>
+          <div class="product-price">₱6–₱45</div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-badge">SALE</div>
+          <div class="product-emoji">☕</div>
+          <div class="product-name">3-in-1 Coffee</div>
+          <div class="product-desc">Nescafe, Kopiko, Great Taste. Per sachet or per box.</div>
+          <div class="product-price">₱8 / sachet</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <div class="why-section">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="section-tag">💛 Why Corner Bites?</div>
+      <h2 class="section-title reveal">Always here for you.</h2>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon">💰</div>
+          <div class="why-title">Mura & Sulit</div>
+          <div class="why-desc">Fair prices, tingi-size options, and no extra markup. What you see is what you pay.</div>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">🌅</div>
+          <div class="why-title">Open Early, Close Late</div>
+          <div class="why-desc">Open from 7 AM to 10 PM daily. We're here when you need us most — even on holidays.</div>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">📦</div>
+          <div class="why-title">Fresh Stock Weekly</div>
+          <div class="why-desc">We restock every week so your favourite items are almost always available.</div>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">😊</div>
+          <div class="why-title">Friendly Service</div>
+          <div class="why-desc">Kami ay tao rin. We treat every customer like a neighbour — because you are one.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAILY NEEDS -->
+  <section id="needs" style="background:var(--cream);">
+    <div class="section-wrap">
+      <div class="section-tag">🛒 Complete Your List</div>
+      <h2 class="section-title reveal">Daily Needs We Carry</h2>
+      <p class="section-sub reveal">From pantry basics to personal care — we've got your everyday needs covered.</p>
+      <div class="needs-list">
+        <div class="need-item reveal"><div class="need-emoji">🍚</div><div class="need-name">Rice (per kilo)</div></div>
+        <div class="need-item reveal"><div class="need-emoji">🥚</div><div class="need-name">Eggs</div></div>
+        <div class="need-item reveal"><div class="need-emoji">🫙</div><div class="need-name">Canned Goods</div></div>
+        <div class="need-item reveal"><div class="need-emoji">🧈</div><div class="need-name">Margarine</div></div>
+        <div class="need-item reveal"><div class="need-emoji">🥛</div><div class="need-name">Evap & Condensada</div></div>
+        <div class="need-item reveal"><div class="need-emoji">🫧</div><div class="need-name">Detergent</div></div>
+        <div class="need-item reveal"><div class="need-emoji">🧻</div><div class="need-name">Tissue & Towels</div></div>
+        <div class="need-item reveal"><div class="need-emoji">🪥</div><div class="need-name">Toothpaste</div></div>
+        <div class="need-item reveal"><div class="need-emoji">💊</div><div class="need-name">Basic Medicines</div></div>
+        <div class="need-item reveal"><div class="need-emoji">🪔</div><div class="need-name">Candles</div></div>
+        <div class="need-item reveal"><div class="need-emoji">🔋</div><div class="need-name">Batteries</div></div>
+        <div class="need-item reveal"><div class="need-emoji">📎</div><div class="need-name">School Supplies</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMO BANNER -->
+  <div class="promo">
+    <div class="promo-title">Bumili ng ₱200, libre 1 biscuit! 🎉</div>
+    <p class="promo-sub">Valid on walk-in purchases only. While supplies last. New promo every month!</p>
+    <div class="promo-code"><span>🏷️</span> Ask us about this month's bundle deals</div>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-wrap">
+      <div>
+        <div class="section-tag">📍 Come Visit Us</div>
+        <h2 class="section-title reveal">Find Corner Bites</h2>
+        <br>
+        <div class="info-card reveal">
+          <div class="info-card-icon">📍</div>
+          <div>
+            <div class="info-card-label">Address</div>
+            <div class="info-card-value">Blk 5 Lot 3 Sampaguita St.<br>Brgy. Canlubang, Calamba City, Laguna</div>
+          </div>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card-icon">📞</div>
+          <div>
+            <div class="info-card-label">Phone / Viber</div>
+            <div class="info-card-value">0917 000 9876<br>Available 7AM – 9PM</div>
+          </div>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-card-icon">📘</div>
+          <div>
+            <div class="info-card-label">Facebook Page</div>
+            <div class="info-card-value">fb.com/CornerbitesPH<br>DM us to check stock or reserve</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="section-tag">🕐 Store Hours</div>
+        <h2 class="section-title" style="font-size:2rem;margin-top:0.5rem;margin-bottom:1.5rem;">We're Open!</h2>
+        <table class="hours-table">
+          <tr><td>Monday – Friday</td><td>7:00 AM – 10:00 PM</td></tr>
+          <tr><td>Saturday</td><td>7:00 AM – 10:00 PM</td></tr>
+          <tr><td>Sunday</td><td>8:00 AM – 9:00 PM</td></tr>
+          <tr><td>Holidays</td><td>8:00 AM – 8:00 PM</td></tr>
+        </table>
+        <br><br>
+        <div class="map-box">
+          <div class="map-box-icon">🗺️</div>
+          <div style="font-weight:700;color:var(--dark);">Blk 5 Lot 3 Sampaguita St., Canlubang</div>
+          <div style="color:var(--orange);margin-top:0.3rem;font-weight:700;">Open in Google Maps →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">Corner <span>Bites</span></div>
+    <div class="footer-copy">© 2026 Corner Bites. Your friendly neighbourhood store.</div>
+    <div class="footer-socials">
+      <a href="#" class="footer-social">f</a>
+      <a href="#" class="footer-social">📷</a>
+    </div>
+    <div class="footer-credit">Website by Misa Digital</div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach((el,i) => {
+      el.style.transitionDelay = (i % 5 * 0.06) + 's';
+      obs.observe(el);
+    });
+  </script>
+</body>
+</html>

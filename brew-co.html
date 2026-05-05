@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brew & Co. — Specialty Coffee</title>
+  <meta name="description" content="Brew & Co. serves handcrafted specialty coffee in the heart of Calamba. Come for the coffee, stay for the vibe."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    /* ── RESET ── */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    img{display:block;max-width:100%}
+    a{text-decoration:none}
+    ul{list-style:none}
+
+    /* ── TOKENS ── */
+    :root{
+      --cream:   #f5efe4;
+      --cream2:  #ede4d3;
+      --brown:   #3b1f0e;
+      --brown2:  #5c3317;
+      --caramel: #c07830;
+      --gold:    #e8a83e;
+      --text:    #2a1508;
+      --muted:   #8a6848;
+      --white:   #fdfaf5;
+    }
+
+    html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--caramel) var(--cream)}
+    body{
+      background:var(--cream);
+      color:var(--text);
+      font-family:'Jost',sans-serif;
+      overflow-x:hidden;
+    }
+
+    /* ── GRAIN OVERLAY ── */
+    body::before{
+      content:'';
+      position:fixed;inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events:none;z-index:9999;
+    }
+
+    /* ── NAV ── */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:1.2rem 3rem;
+      background:rgba(245,239,228,0.85);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(192,120,48,0.15);
+      transition:background 0.3s;
+    }
+    .nav-brand{
+      font-family:'Playfair Display',serif;
+      font-size:1.4rem;font-weight:900;
+      color:var(--brown);
+      letter-spacing:-0.02em;
+    }
+    .nav-brand span{color:var(--caramel);}
+    .nav-links{display:flex;gap:2rem;align-items:center;}
+    .nav-links a{
+      font-size:0.78rem;font-weight:500;
+      letter-spacing:0.12em;text-transform:uppercase;
+      color:var(--muted);
+      transition:color 0.2s;
+      position:relative;
+    }
+    .nav-links a::after{
+      content:'';position:absolute;bottom:-3px;left:0;
+      width:0;height:1.5px;background:var(--caramel);
+      transition:width 0.3s ease;
+    }
+    .nav-links a:hover{color:var(--brown);}
+    .nav-links a:hover::after{width:100%;}
+    .nav-cta{
+      background:var(--brown);color:var(--cream);
+      padding:0.5rem 1.2rem;
+      font-size:0.75rem;font-weight:600;
+      letter-spacing:0.1em;text-transform:uppercase;
+      transition:background 0.2s,transform 0.2s;
+    }
+    .nav-cta:hover{background:var(--brown2);transform:translateY(-1px);}
+
+    /* ── HERO ── */
+    .hero{
+      min-height:100vh;
+      display:grid;grid-template-columns:1fr 1fr;
+      align-items:center;
+      padding:0 3rem;
+      gap:4rem;
+      padding-top:80px;
+      position:relative;
+      overflow:hidden;
+    }
+    /* coffee ring decorations */
+    .hero::before{
+      content:'';
+      position:absolute;right:-80px;top:10%;
+      width:380px;height:380px;
+      border-radius:50%;
+      border:40px solid rgba(192,120,48,0.08);
+      pointer-events:none;
+    }
+    .hero::after{
+      content:'';
+      position:absolute;right:-40px;top:5%;
+      width:300px;height:300px;
+      border-radius:50%;
+      border:20px solid rgba(192,120,48,0.05);
+      pointer-events:none;
+    }
+
+    .hero-eyebrow{
+      display:inline-flex;align-items:center;gap:0.6rem;
+      font-size:0.72rem;font-weight:600;
+      letter-spacing:0.22em;text-transform:uppercase;
+      color:var(--caramel);
+      margin-bottom:1.2rem;
+    }
+    .hero-eyebrow-line{width:28px;height:1px;background:var(--caramel);}
+
+    .hero-title{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(3rem,5.5vw,5.2rem);
+      font-weight:900;
+      line-height:1;
+      letter-spacing:-0.02em;
+      margin-bottom:1.2rem;
+      opacity:0;
+      animation:fadeUp 0.8s 0.2s ease forwards;
+    }
+    .hero-title em{
+      font-style:italic;
+      color:var(--caramel);
+    }
+
+    .hero-desc{
+      font-size:1rem;font-weight:300;
+      line-height:1.8;color:var(--muted);
+      max-width:440px;
+      margin-bottom:2.5rem;
+      opacity:0;
+      animation:fadeUp 0.8s 0.4s ease forwards;
+    }
+
+    .hero-actions{
+      display:flex;gap:1rem;flex-wrap:wrap;
+      opacity:0;
+      animation:fadeUp 0.8s 0.6s ease forwards;
+    }
+
+    .btn-primary{
+      background:var(--brown);color:var(--cream);
+      padding:0.85rem 2rem;
+      font-size:0.78rem;font-weight:600;
+      letter-spacing:0.1em;text-transform:uppercase;
+      transition:background 0.2s,transform 0.2s,box-shadow 0.2s;
+      border-radius:0;
+    }
+    .btn-primary:hover{background:var(--brown2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(59,31,14,0.25);}
+
+    .btn-secondary{
+      border:1.5px solid var(--caramel);
+      color:var(--caramel);
+      padding:0.85rem 2rem;
+      font-size:0.78rem;font-weight:600;
+      letter-spacing:0.1em;text-transform:uppercase;
+      transition:all 0.2s;
+    }
+    .btn-secondary:hover{background:var(--caramel);color:var(--white);}
+
+    /* hero visual */
+    .hero-visual{
+      display:flex;justify-content:center;align-items:center;
+      position:relative;
+      opacity:0;animation:fadeIn 1s 0.3s ease forwards;
+    }
+
+    .coffee-cup-art{
+      width:100%;max-width:480px;
+      aspect-ratio:1;
+      position:relative;
+    }
+
+    /* SVG coffee scene */
+    .cup-scene{width:100%;height:100%;}
+
+    /* floating labels */
+    .hero-badge{
+      position:absolute;
+      background:var(--brown);
+      color:var(--cream);
+      padding:0.5rem 1rem;
+      font-size:0.65rem;
+      font-weight:600;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      animation:float 3s ease-in-out infinite;
+    }
+    .hero-badge-1{top:8%;left:-4%;animation-delay:0s;}
+    .hero-badge-2{bottom:12%;right:-4%;animation-delay:1.5s;background:var(--caramel);}
+
+    /* hero stats */
+    .hero-stats{
+      display:flex;gap:2.5rem;
+      margin-top:2.5rem;
+      padding-top:2rem;
+      border-top:1px solid rgba(192,120,48,0.2);
+      opacity:0;
+      animation:fadeUp 0.8s 0.8s ease forwards;
+    }
+    .hero-stat-num{
+      font-family:'Playfair Display',serif;
+      font-size:1.9rem;font-weight:900;
+      color:var(--brown);line-height:1;
+    }
+    .hero-stat-label{
+      font-size:0.68rem;font-weight:500;
+      letter-spacing:0.14em;text-transform:uppercase;
+      color:var(--muted);margin-top:0.2rem;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap{
+      background:var(--brown);
+      padding:0.9rem 0;
+      overflow:hidden;
+      white-space:nowrap;
+    }
+    .marquee-track{
+      display:inline-flex;gap:0;
+      animation:marquee 22s linear infinite;
+    }
+    .marquee-item{
+      font-size:0.72rem;font-weight:600;
+      letter-spacing:0.2em;text-transform:uppercase;
+      color:var(--gold);
+      padding:0 2.5rem;
+    }
+    .marquee-dot{color:var(--caramel);padding:0 0.5rem;}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* ── SECTION SHARED ── */
+    section{padding:6rem 3rem;max-width:1200px;margin:0 auto;}
+    .section-label{
+      display:inline-flex;align-items:center;gap:0.6rem;
+      font-size:0.7rem;font-weight:600;
+      letter-spacing:0.22em;text-transform:uppercase;
+      color:var(--caramel);margin-bottom:0.8rem;
+    }
+    .section-title{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2rem,4vw,3.2rem);
+      font-weight:900;line-height:1.05;
+      letter-spacing:-0.02em;
+      margin-bottom:1rem;
+    }
+
+    /* ── ABOUT ── */
+    .about{background:var(--white);}
+    .about-inner{
+      max-width:1200px;margin:0 auto;
+      padding:6rem 3rem;
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:5rem;align-items:center;
+    }
+    .about-text p{
+      font-size:0.97rem;font-weight:300;
+      line-height:1.85;color:var(--muted);
+      margin-bottom:1.2rem;
+    }
+    .about-text p strong{color:var(--brown);font-weight:600;}
+    .about-visual{position:relative;}
+    .about-card{
+      background:var(--cream);
+      padding:2.5rem;
+      border-left:4px solid var(--caramel);
+      position:relative;
+    }
+    .about-card blockquote{
+      font-family:'Playfair Display',serif;
+      font-size:1.5rem;font-style:italic;
+      color:var(--brown);line-height:1.5;
+      margin-bottom:1rem;
+    }
+    .about-card cite{
+      font-size:0.72rem;font-weight:600;
+      letter-spacing:0.15em;text-transform:uppercase;
+      color:var(--caramel);
+    }
+
+    /* coffee icon row */
+    .about-icons{
+      display:flex;gap:1.5rem;margin-top:2rem;flex-wrap:wrap;
+    }
+    .about-icon-item{
+      display:flex;align-items:center;gap:0.6rem;
+      font-size:0.78rem;font-weight:500;
+      color:var(--muted);
+    }
+    .about-icon-item span{font-size:1.2rem;}
+
+    /* ── MENU ── */
+    .menu-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:1.5rem;
+      margin-top:3rem;
+    }
+    .menu-card{
+      background:var(--white);
+      padding:2rem;
+      position:relative;
+      overflow:hidden;
+      transition:transform 0.3s,box-shadow 0.3s;
+      cursor:default;
+    }
+    .menu-card::before{
+      content:'';
+      position:absolute;top:0;left:0;right:0;
+      height:3px;
+      background:var(--caramel);
+      transform:scaleX(0);transform-origin:left;
+      transition:transform 0.3s;
+    }
+    .menu-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(59,31,14,0.12);}
+    .menu-card:hover::before{transform:scaleX(1);}
+    .menu-icon{font-size:2rem;margin-bottom:0.8rem;}
+    .menu-name{
+      font-family:'Playfair Display',serif;
+      font-size:1.25rem;font-weight:700;
+      color:var(--brown);margin-bottom:0.4rem;
+    }
+    .menu-desc{
+      font-size:0.82rem;font-weight:300;
+      color:var(--muted);line-height:1.6;
+      margin-bottom:1rem;
+    }
+    .menu-price{
+      font-size:1rem;font-weight:600;
+      color:var(--caramel);
+    }
+
+    /* ── HOW IT FEELS ── */
+    .vibe{
+      background:var(--brown);
+      padding:6rem 3rem;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .vibe::before{
+      content:'';
+      position:absolute;
+      left:50%;top:50%;
+      transform:translate(-50%,-50%);
+      width:600px;height:600px;
+      border-radius:50%;
+      border:1px solid rgba(232,168,62,0.1);
+      pointer-events:none;
+    }
+    .vibe::after{
+      content:'';
+      position:absolute;
+      left:50%;top:50%;
+      transform:translate(-50%,-50%);
+      width:400px;height:400px;
+      border-radius:50%;
+      border:1px solid rgba(232,168,62,0.07);
+      pointer-events:none;
+    }
+    .vibe-title{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2rem,5vw,4rem);
+      font-style:italic;
+      color:var(--cream);
+      line-height:1.2;
+      max-width:700px;
+      margin:0 auto 1.5rem;
+      position:relative;z-index:1;
+    }
+    .vibe-title em{color:var(--gold);font-style:normal;}
+    .vibe-sub{
+      font-size:0.9rem;font-weight:300;
+      color:rgba(245,239,228,0.6);
+      max-width:480px;margin:0 auto 2.5rem;
+      position:relative;z-index:1;
+    }
+    .vibe-pills{
+      display:flex;flex-wrap:wrap;gap:0.75rem;
+      justify-content:center;
+      position:relative;z-index:1;
+    }
+    .vibe-pill{
+      background:rgba(232,168,62,0.12);
+      border:1px solid rgba(232,168,62,0.25);
+      color:var(--gold);
+      padding:0.45rem 1.1rem;
+      font-size:0.72rem;font-weight:500;
+      letter-spacing:0.1em;text-transform:uppercase;
+    }
+
+    /* ── HOURS ── */
+    .hours-grid{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:2rem;margin-top:3rem;
+    }
+    .hours-card{
+      background:var(--white);
+      padding:2rem;
+      border-bottom:3px solid var(--caramel);
+    }
+    .hours-day{
+      font-size:0.72rem;font-weight:600;
+      letter-spacing:0.18em;text-transform:uppercase;
+      color:var(--muted);margin-bottom:0.4rem;
+    }
+    .hours-time{
+      font-family:'Playfair Display',serif;
+      font-size:1.5rem;font-weight:700;
+      color:var(--brown);
+    }
+
+    /* ── CONTACT ── */
+    .contact-section{
+      background:var(--cream2);
+      padding:6rem 3rem;
+    }
+    .contact-inner{
+      max-width:1200px;margin:0 auto;
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:4rem;align-items:start;
+    }
+    .contact-info-item{
+      display:flex;align-items:flex-start;gap:1rem;
+      margin-bottom:1.5rem;
+    }
+    .contact-icon{
+      width:2.2rem;height:2.2rem;
+      background:var(--brown);
+      color:var(--cream);
+      display:flex;align-items:center;justify-content:center;
+      font-size:0.9rem;flex-shrink:0;
+      margin-top:2px;
+    }
+    .contact-label{
+      font-size:0.65rem;font-weight:600;
+      letter-spacing:0.18em;text-transform:uppercase;
+      color:var(--caramel);margin-bottom:0.2rem;
+    }
+    .contact-value{
+      font-size:0.9rem;font-weight:400;
+      color:var(--brown);line-height:1.5;
+    }
+    .map-placeholder{
+      width:100%;aspect-ratio:4/3;
+      background:linear-gradient(135deg,var(--cream2),var(--cream));
+      border:2px solid rgba(192,120,48,0.2);
+      display:flex;align-items:center;justify-content:center;
+      flex-direction:column;gap:0.5rem;
+      color:var(--muted);
+      font-size:0.78rem;font-weight:500;
+      letter-spacing:0.1em;text-transform:uppercase;
+    }
+    .map-placeholder-icon{font-size:2.5rem;}
+
+    /* ── FOOTER ── */
+    footer{
+      background:var(--brown);
+      padding:2.5rem 3rem;
+      display:flex;justify-content:space-between;align-items:center;
+      flex-wrap:wrap;gap:1rem;
+    }
+    .footer-brand{
+      font-family:'Playfair Display',serif;
+      font-size:1.2rem;font-weight:900;
+      color:var(--cream);
+    }
+    .footer-brand span{color:var(--gold);}
+    .footer-copy{
+      font-size:0.68rem;font-weight:400;
+      letter-spacing:0.08em;
+      color:rgba(245,239,228,0.45);
+    }
+    .footer-credit{
+      font-size:0.65rem;font-weight:500;
+      letter-spacing:0.1em;text-transform:uppercase;
+      color:rgba(232,168,62,0.5);
+    }
+
+    /* ── REVEAL ── */
+    .reveal{
+      opacity:0;transform:translateY(28px);
+      transition:opacity 0.65s ease,transform 0.65s ease;
+    }
+    .reveal.visible{opacity:1;transform:translateY(0);}
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    @keyframes steam{
+      0%{opacity:0.4;transform:translateY(0) scaleX(1);}
+      50%{opacity:0.8;transform:translateY(-12px) scaleX(1.2);}
+      100%{opacity:0;transform:translateY(-24px) scaleX(0.8);}
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:860px){
+      .hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;text-align:center;gap:2rem;}
+      .hero-desc{margin-left:auto;margin-right:auto;}
+      .hero-actions{justify-content:center;}
+      .hero-stats{justify-content:center;}
+      .hero-visual{order:-1;}
+      .about-inner{grid-template-columns:1fr;padding:4rem 1.5rem;gap:2rem;}
+      .hours-grid{grid-template-columns:1fr;}
+      .contact-inner{grid-template-columns:1fr;}
+      nav{padding:1rem 1.5rem;}
+      section{padding:4rem 1.5rem;}
+      .contact-section{padding:4rem 1.5rem;}
+      .vibe{padding:4rem 1.5rem;}
+      footer{flex-direction:column;text-align:center;padding:2rem 1.5rem;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">Brew <span>&</span> Co.</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#hours">Hours</a></li>
+      <li><a href="#contact" class="nav-cta">Find Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span> Specialty Coffee House</div>
+      <h1 class="hero-title">
+        Every cup<br>tells a<br><em>story.</em>
+      </h1>
+      <p class="hero-desc">
+        Handcrafted drinks made with single-origin beans, brewed slowly,
+        served with care. Your neighbourhood coffee refuge — morning, noon, and afternoon.
+      </p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn-primary">View Our Menu</a>
+        <a href="#contact" class="btn-secondary">Get Directions</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">12+</div>
+          <div class="hero-stat-label">Drinks on menu</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">7am</div>
+          <div class="hero-stat-label">We open daily</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Fresh brewed</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="coffee-cup-art">
+        <!-- SVG coffee cup illustration -->
+        <svg class="cup-scene" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- background circle -->
+          <circle cx="240" cy="240" r="220" fill="#ede4d3" opacity="0.5"/>
+          <circle cx="240" cy="240" r="180" fill="#e8dcc8" opacity="0.4"/>
+
+          <!-- saucer -->
+          <ellipse cx="240" cy="360" rx="150" ry="22" fill="#c07830" opacity="0.25"/>
+          <ellipse cx="240" cy="355" rx="140" ry="18" fill="#3b1f0e" opacity="0.12"/>
+          <rect x="100" y="340" width="280" height="20" rx="10" fill="#5c3317" opacity="0.6"/>
+          <rect x="90" y="355" width="300" height="10" rx="5" fill="#3b1f0e" opacity="0.4"/>
+
+          <!-- cup body -->
+          <path d="M130 220 L150 345 Q150 355 160 355 L320 355 Q330 355 330 345 L350 220 Z" fill="#3b1f0e"/>
+          <!-- cup highlight -->
+          <path d="M140 220 L155 330 Q155 340 162 340 L230 340 L250 220 Z" fill="#5c3317" opacity="0.4"/>
+          <!-- cup rim -->
+          <ellipse cx="240" cy="222" rx="112" ry="18" fill="#4a2510"/>
+          <!-- coffee surface -->
+          <ellipse cx="240" cy="220" rx="108" ry="16" fill="#2a1508"/>
+          <!-- latte art — leaf -->
+          <path d="M200 220 Q225 208 240 215 Q255 208 280 220 Q255 232 240 225 Q225 232 200 220Z" fill="#c07830" opacity="0.6"/>
+          <path d="M235 210 Q240 218 240 225" stroke="#c07830" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+          <!-- foam bubbles -->
+          <circle cx="210" cy="218" r="3" fill="rgba(245,239,228,0.3)"/>
+          <circle cx="270" cy="222" r="2" fill="rgba(245,239,228,0.2)"/>
+
+          <!-- handle -->
+          <path d="M350 240 Q400 240 400 280 Q400 320 350 320" stroke="#3b1f0e" stroke-width="22" fill="none" stroke-linecap="round"/>
+          <path d="M350 240 Q392 240 392 280 Q392 318 350 320" stroke="#5c3317" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.4"/>
+
+          <!-- steam lines -->
+          <path d="M200 200 Q195 185 202 170 Q208 155 203 140" stroke="#c07830" stroke-width="3" fill="none" stroke-linecap="round" opacity="0" style="animation:steam 2.5s ease-in-out infinite"/>
+          <path d="M240 196 Q234 178 241 162 Q247 146 242 130" stroke="#c07830" stroke-width="3" fill="none" stroke-linecap="round" opacity="0" style="animation:steam 2.5s 0.8s ease-in-out infinite"/>
+          <path d="M280 200 Q285 183 278 168 Q272 153 277 138" stroke="#c07830" stroke-width="3" fill="none" stroke-linecap="round" opacity="0" style="animation:steam 2.5s 1.6s ease-in-out infinite"/>
+
+          <!-- beans decoration -->
+          <ellipse cx="100" cy="150" rx="14" ry="9" fill="#3b1f0e" transform="rotate(-30 100 150)" opacity="0.5"/>
+          <path d="M100 143 Q100 157 100 150" stroke="#5c3317" stroke-width="1.5" fill="none" opacity="0.5" transform="rotate(-30 100 150)"/>
+          <ellipse cx="380" cy="130" rx="14" ry="9" fill="#3b1f0e" transform="rotate(20 380 130)" opacity="0.5"/>
+          <path d="M380 123 Q380 137 380 130" stroke="#5c3317" stroke-width="1.5" fill="none" opacity="0.5" transform="rotate(20 380 130)"/>
+          <ellipse cx="90" cy="320" rx="12" ry="7.5" fill="#3b1f0e" transform="rotate(15 90 320)" opacity="0.35"/>
+          <ellipse cx="390" cy="300" rx="12" ry="7.5" fill="#3b1f0e" transform="rotate(-10 390 300)" opacity="0.35"/>
+
+          <!-- decorative dots -->
+          <circle cx="130" cy="80" r="4" fill="#c07830" opacity="0.3"/>
+          <circle cx="355" cy="400" r="6" fill="#c07830" opacity="0.2"/>
+          <circle cx="400" cy="160" r="3" fill="#c07830" opacity="0.25"/>
+          <circle cx="70" cy="250" r="5" fill="#c07830" opacity="0.2"/>
+        </svg>
+      </div>
+      <div class="hero-badge hero-badge-1">Single Origin</div>
+      <div class="hero-badge hero-badge-2">Cold Brew Available</div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">Espresso<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Cold Brew<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Matcha Latte<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Caramel Macchiato<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Iced Americano<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Cappuccino<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Spanish Latte<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Dirty Chai<span class="marquee-dot">✦</span></span>
+      <!-- repeat for seamless scroll -->
+      <span class="marquee-item">Espresso<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Cold Brew<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Matcha Latte<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Caramel Macchiato<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Iced Americano<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Cappuccino<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Spanish Latte<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Dirty Chai<span class="marquee-dot">✦</span></span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="about" id="about">
+    <div class="about-inner">
+      <div class="about-text">
+        <p class="section-label"><span>☕</span> Our Story</p>
+        <h2 class="section-title reveal">More than a coffee shop.<br>A <em>third place.</em></h2>
+        <p class="reveal">Brew & Co. started as a small corner cart in 2021 with one espresso machine and a big dream.
+        Today, we're a full café where <strong>locals come to slow down</strong> — to work, to meet, to just exist for a while.</p>
+        <p class="reveal">We source our beans from small farms in Benguet and Sagada, roasted weekly so every cup you get is as fresh as possible.
+        Our baristas are trained to care — not just to make drinks, but to make your day a little better.</p>
+        <div class="about-icons reveal">
+          <div class="about-icon-item"><span>🌱</span> Locally sourced</div>
+          <div class="about-icon-item"><span>🔥</span> Fresh roasted</div>
+          <div class="about-icon-item"><span>💛</span> Made with heart</div>
+        </div>
+      </div>
+      <div class="about-visual reveal">
+        <div class="about-card">
+          <blockquote>"Good coffee doesn't need to be complicated — just honest, warm, and made for you."</blockquote>
+          <cite>— Mark, Founder of Brew & Co.</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENU -->
+  <section id="menu">
+    <p class="section-label reveal"><span>📋</span> What We Brew</p>
+    <h2 class="section-title reveal">Our Menu <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--caramel)">Favourites</em></h2>
+    <div class="menu-grid">
+      <div class="menu-card reveal">
+        <div class="menu-icon">☕</div>
+        <div class="menu-name">Signature Espresso</div>
+        <div class="menu-desc">Double shot of our house blend, pulled to a rich, velvety crema. Short. Intense. Perfect.</div>
+        <div class="menu-price">₱85</div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-icon">🥛</div>
+        <div class="menu-name">Spanish Latte</div>
+        <div class="menu-desc">Espresso with condensed milk and fresh steamed milk. Sweet, creamy, and dangerously addictive.</div>
+        <div class="menu-price">₱130</div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-icon">🧊</div>
+        <div class="menu-name">Classic Cold Brew</div>
+        <div class="menu-desc">Steeped for 18 hours, smooth and low-acid. Best enjoyed over ice on a warm day.</div>
+        <div class="menu-price">₱120</div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-icon">🍵</div>
+        <div class="menu-name">Matcha Oat Latte</div>
+        <div class="menu-desc">Ceremonial grade matcha whisked smooth, topped with creamy oat milk. For the non-coffee days.</div>
+        <div class="menu-price">₱140</div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-icon">🍮</div>
+        <div class="menu-name">Caramel Macchiato</div>
+        <div class="menu-desc">Vanilla syrup, steamed milk, espresso, and a golden caramel drizzle on top. A crowd-pleaser.</div>
+        <div class="menu-price">₱145</div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-icon">🧋</div>
+        <div class="menu-name">Dirty Chai</div>
+        <div class="menu-desc">Spiced chai tea with a double shot of espresso, steamed milk, and a touch of cinnamon.</div>
+        <div class="menu-price">₱135</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIBE -->
+  <div class="vibe">
+    <h2 class="vibe-title">"Your favourite <em>seat</em> is always waiting."</h2>
+    <p class="vibe-sub">Whether you need focus, company, or just a quiet corner — Brew & Co. is your place.</p>
+    <div class="vibe-pills">
+      <div class="vibe-pill">Free Wi-Fi</div>
+      <div class="vibe-pill">Air-conditioned</div>
+      <div class="vibe-pill">Power Outlets</div>
+      <div class="vibe-pill">Solo-friendly</div>
+      <div class="vibe-pill">Pet-friendly patio</div>
+      <div class="vibe-pill">Group bookings</div>
+    </div>
+  </div>
+
+  <!-- HOURS -->
+  <section id="hours">
+    <p class="section-label reveal"><span>🕐</span> When We're Open</p>
+    <h2 class="section-title reveal">Visit Us</h2>
+    <div class="hours-grid">
+      <div class="hours-card reveal">
+        <div class="hours-day">Monday – Friday</div>
+        <div class="hours-time">7:00 AM – 9:00 PM</div>
+      </div>
+      <div class="hours-card reveal">
+        <div class="hours-day">Saturday & Sunday</div>
+        <div class="hours-time">8:00 AM – 10:00 PM</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="contact-section" id="contact">
+    <div class="contact-inner">
+      <div>
+        <p class="section-label"><span>📍</span> Find Us</p>
+        <h2 class="section-title reveal">Come say hello.</h2>
+        <br>
+        <div class="contact-info-item reveal">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Address</div>
+            <div class="contact-value">12 Rizal Avenue, Brgy. Parian<br>Calamba City, Laguna</div>
+          </div>
+        </div>
+        <div class="contact-info-item reveal">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">(049) 123-4567<br>0917 000 1234</div>
+          </div>
+        </div>
+        <div class="contact-info-item reveal">
+          <div class="contact-icon">📘</div>
+          <div>
+            <div class="contact-label">Facebook</div>
+            <div class="contact-value">fb.com/brewandcocoffee</div>
+          </div>
+        </div>
+        <div class="contact-info-item reveal">
+          <div class="contact-icon">📷</div>
+          <div>
+            <div class="contact-label">Instagram</div>
+            <div class="contact-value">@brewandcocoffee</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="map-placeholder">
+          <div class="map-placeholder-icon">🗺️</div>
+          <div>12 Rizal Avenue, Calamba</div>
+          <div style="color:var(--caramel);font-weight:600;margin-top:0.3rem;">Get Directions →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">Brew <span>&</span> Co.</div>
+    <div class="footer-copy">© 2026 Brew & Co. Coffee House. All rights reserved.</div>
+    <div class="footer-credit">Website by Misa Digital</div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach((el,i) => {
+      el.style.transitionDelay = (i % 4 * 0.08) + 's';
+      obs.observe(el);
+    });
+    // Nav scroll
+    window.addEventListener('scroll', () => {
+      document.querySelector('nav').style.boxShadow = window.scrollY > 40 ? '0 2px 20px rgba(59,31,14,0.1)' : 'none';
+    });
+  </script>
+</body>
+</html>
