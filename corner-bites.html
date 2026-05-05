@@ -219,7 +219,7 @@
       transition:background 0.2s;
     }
     .cat-item:hover{background:var(--orange2);}
-    .cat-emoji{font-size:1.3rem;display:block;margin-bottom:0.2rem;}
+    .cat-emoji{font-size:0.55rem;font-weight:700;font-family:Fredoka,sans-serif;letter-spacing:0.08em;display:block;margin-bottom:0.25rem;color:rgba(255,255,255,0.9);}
     .cat-name{
       font-size:0.65rem;font-weight:700;
       letter-spacing:0.1em;text-transform:uppercase;
@@ -301,7 +301,7 @@
       position:relative;overflow:hidden;
     }
     .why-section::before{
-      content:'🏪';
+      content:'';
       position:absolute;right:-40px;top:50%;
       transform:translateY(-50%);
       font-size:20rem;
@@ -348,7 +348,7 @@
       cursor:default;
     }
     .need-item:hover{border-color:var(--orange);transform:scale(1.04);}
-    .need-emoji{font-size:1.8rem;margin-bottom:0.4rem;}
+    .need-emoji{font-size:0.65rem;font-weight:700;font-family:Fredoka,sans-serif;letter-spacing:0.05em;color:#f07030;margin-bottom:0.4rem;background:rgba(240,112,48,0.1);padding:0.25rem 0.3rem;border-radius:4px;}
     .need-name{font-size:0.78rem;font-weight:700;color:var(--dark);}
 
     /* ── PROMO BANNER ── */
@@ -359,7 +359,7 @@
       position:relative;overflow:hidden;
     }
     .promo::before,.promo::after{
-      content:'🎉';font-size:8rem;
+      content:'';font-size:8rem;
       position:absolute;top:50%;transform:translateY(-50%);
       opacity:0.12;pointer-events:none;
     }
@@ -483,6 +483,7 @@
   </style>
 </head>
 <body>
+<div style="background:#0b0b18;border-bottom:1px solid #1a1a32;padding:0.5rem 2rem;display:flex;justify-content:space-between;align-items:center;font-family:Space Mono,monospace;font-size:0.6rem;letter-spacing:0.12em;color:#6464a0;"><span>JCMD SAMPLE SITE — For demonstration purposes only</span><a href="index.html" style="color:#e8ff47;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">← Back to JCMD</a></div>
 
   <!-- NAV -->
   <nav>
@@ -491,14 +492,14 @@
       <li><a href="#products">Products</a></li>
       <li><a href="#needs">Daily Needs</a></li>
       <li><a href="#contact">Find Us</a></li>
-      <li><a href="tel:+6349987654" class="nav-order">📞 Call Us</a></li>
+      <li><a href="tel:+6349987654" class="nav-order">Call Us</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <div class="hero">
     <div>
-      <div class="hero-tag">🏪 Your Neighbourhood Store</div>
+      <div class="hero-tag">Your Neighbourhood Store</div>
       <h1 class="hero-title">
         Everything you<br>need, right at the<br><span class="highlight">corner.</span>
       </h1>
@@ -506,8 +507,8 @@
         Snacks, drinks, condiments, frozen goods, and daily essentials — all fresh, all affordable, and always within reach. Corner Bites is your go-to store.
       </p>
       <div class="hero-cta">
-        <a href="#products" class="btn-orange">🛍️ Shop Our Picks</a>
-        <a href="#contact" class="btn-green">📍 Find Us</a>
+        <a href="#products" class="btn-orange">Shop Our Picks</a>
+        <a href="#contact" class="btn-green">Find Us</a>
       </div>
       <div class="hero-notice">
         <div class="notice-dot"></div>
@@ -594,78 +595,78 @@
           <circle cx="30" cy="40" r="4" fill="#f07030" opacity="0.4"/>
         </svg>
       </div>
-      <div class="float-badge float-badge-1">🛒 New Arrivals!</div>
-      <div class="float-badge float-badge-2">✅ Affordable Prices</div>
-      <div class="float-badge float-badge-3">⚡ Malapit ka lang!</div>
+      <div class="float-badge float-badge-1">New Arrivals!</div>
+      <div class="float-badge float-badge-2">Affordable Prices</div>
+      <div class="float-badge float-badge-3">Malapit ka lang!</div>
     </div>
   </div>
 
   <!-- CATEGORY STRIP -->
   <div class="category-strip">
-    <div class="cat-item"><span class="cat-emoji">🍫</span><span class="cat-name">Snacks</span></div>
-    <div class="cat-item"><span class="cat-emoji">🧃</span><span class="cat-name">Drinks</span></div>
-    <div class="cat-item"><span class="cat-emoji">🍜</span><span class="cat-name">Instant Food</span></div>
-    <div class="cat-item"><span class="cat-emoji">🧊</span><span class="cat-name">Frozen</span></div>
-    <div class="cat-item"><span class="cat-emoji">🧴</span><span class="cat-name">Personal Care</span></div>
-    <div class="cat-item"><span class="cat-emoji">🧹</span><span class="cat-name">Cleaning</span></div>
-    <div class="cat-item"><span class="cat-emoji">🍳</span><span class="cat-name">Condiments</span></div>
-    <div class="cat-item"><span class="cat-emoji">🎁</span><span class="cat-name">Pasalubong</span></div>
+    <div class="cat-item"><span class="cat-emoji">SNK</span><span class="cat-name">Snacks</span></div>
+    <div class="cat-item"><span class="cat-emoji">DRK</span><span class="cat-name">Drinks</span></div>
+    <div class="cat-item"><span class="cat-emoji">INST</span><span class="cat-name">Instant Food</span></div>
+    <div class="cat-item"><span class="cat-emoji">FRZN</span><span class="cat-name">Frozen</span></div>
+    <div class="cat-item"><span class="cat-emoji">CARE</span><span class="cat-name">Personal Care</span></div>
+    <div class="cat-item"><span class="cat-emoji">CLN</span><span class="cat-name">Cleaning</span></div>
+    <div class="cat-item"><span class="cat-emoji">COND</span><span class="cat-name">Condiments</span></div>
+    <div class="cat-item"><span class="cat-emoji">GIFT</span><span class="cat-name">Pasalubong</span></div>
   </div>
 
   <!-- PRODUCTS -->
   <section id="products">
     <div class="section-wrap">
-      <div class="section-tag">🔥 Bestsellers</div>
+      <div class="section-tag">Bestsellers</div>
       <h2 class="section-title reveal">Our Most Loved Picks</h2>
       <p class="section-sub reveal">Fresh stock every week. These are what our regulars always grab.</p>
       <div class="products-grid">
         <div class="product-card reveal">
           <div class="product-badge">HOT</div>
-          <div class="product-emoji">🍜</div>
+          <div class="product-emoji" style="font-family:Fredoka,sans-serif;font-size:0.85rem;font-weight:700;color:#f07030;margin-bottom:0.6rem;">NOODLES</div>
           <div class="product-name">Lucky Me Instant Noodles</div>
           <div class="product-desc">All flavors available. Sold per pack or per dozen.</div>
           <div class="product-price">₱15 / pack</div>
         </div>
         <div class="product-card reveal">
-          <div class="product-emoji">🧃</div>
+          <div class="product-emoji" style="font-family:Fredoka,sans-serif;font-size:0.85rem;font-weight:700;color:#3ab85c;margin-bottom:0.6rem;">DRINKS</div>
           <div class="product-name">C2 Ready-to-Drink</div>
           <div class="product-desc">Green tea and fruit flavors. Cold and ready to go.</div>
           <div class="product-price">₱25 / bottle</div>
         </div>
         <div class="product-card reveal">
           <div class="product-badge">NEW</div>
-          <div class="product-emoji">🍪</div>
+          <div class="product-emoji" style="font-family:Fredoka,sans-serif;font-size:0.85rem;font-weight:700;color:#f07030;margin-bottom:0.6rem;">CHOCO</div>
           <div class="product-name">Cloud 9 & Assorted Choc</div>
           <div class="product-desc">Your favourite local chocolates and biscuits. Perfect merienda.</div>
           <div class="product-price">₱10–₱35</div>
         </div>
         <div class="product-card reveal">
-          <div class="product-emoji">🥤</div>
+          <div class="product-emoji" style="font-family:Fredoka,sans-serif;font-size:0.85rem;font-weight:700;color:#1aafa8;margin-bottom:0.6rem;">SOFTDRINKS</div>
           <div class="product-name">Soft Drinks</div>
           <div class="product-desc">Coke, Royal, Sprite, RC — all sizes. Iced or warm.</div>
           <div class="product-price">₱15–₱45</div>
         </div>
         <div class="product-card reveal">
-          <div class="product-emoji">🍳</div>
+          <div class="product-emoji" style="font-family:Fredoka,sans-serif;font-size:0.85rem;font-weight:700;color:#f07030;margin-bottom:0.6rem;">COOKING</div>
           <div class="product-name">Cooking Essentials</div>
           <div class="product-desc">Soy sauce, vinegar, oil, sugar, salt. Tingi-tingi available.</div>
           <div class="product-price">₱5 tingi up</div>
         </div>
         <div class="product-card reveal">
-          <div class="product-emoji">🧂</div>
+          <div class="product-emoji" style="font-family:Fredoka,sans-serif;font-size:0.85rem;font-weight:700;color:#f07030;margin-bottom:0.6rem;">SPICES</div>
           <div class="product-name">Spices & Seasonings</div>
           <div class="product-desc">Magic Sarap, Knorr cubes, MSG, and more — all tingi-size.</div>
           <div class="product-price">₱2–₱15</div>
         </div>
         <div class="product-card reveal">
-          <div class="product-emoji">🧴</div>
+          <div class="product-emoji" style="font-family:Fredoka,sans-serif;font-size:0.85rem;font-weight:700;color:#3ab85c;margin-bottom:0.6rem;">HYGIENE</div>
           <div class="product-name">Shampoo & Soap (Sachet)</div>
           <div class="product-desc">Pantene, Head & Shoulders, Safeguard — per sachet or bar.</div>
           <div class="product-price">₱6–₱45</div>
         </div>
         <div class="product-card reveal">
           <div class="product-badge">SALE</div>
-          <div class="product-emoji">☕</div>
+          <div class="product-emoji" style="font-family:Fredoka,sans-serif;font-size:0.85rem;font-weight:700;color:#c07830;margin-bottom:0.6rem;">COFFEE</div>
           <div class="product-name">3-in-1 Coffee</div>
           <div class="product-desc">Nescafe, Kopiko, Great Taste. Per sachet or per box.</div>
           <div class="product-price">₱8 / sachet</div>
@@ -677,26 +678,26 @@
   <!-- WHY US -->
   <div class="why-section">
     <div style="max-width:1200px;margin:0 auto;">
-      <div class="section-tag">💛 Why Corner Bites?</div>
+      <div class="section-tag">Why Corner Bites?</div>
       <h2 class="section-title reveal">Always here for you.</h2>
       <div class="why-grid">
         <div class="why-card reveal">
-          <div class="why-icon">💰</div>
+          <div class="why-icon" style="font-family:Fredoka,sans-serif;font-size:1.4rem;font-weight:700;color:#f07030;">₱</div>
           <div class="why-title">Mura & Sulit</div>
           <div class="why-desc">Fair prices, tingi-size options, and no extra markup. What you see is what you pay.</div>
         </div>
         <div class="why-card reveal">
-          <div class="why-icon">🌅</div>
+          <div class="why-icon" style="font-family:Fredoka,sans-serif;font-size:1.2rem;font-weight:700;color:#f07030;">7AM</div>
           <div class="why-title">Open Early, Close Late</div>
           <div class="why-desc">Open from 7 AM to 10 PM daily. We're here when you need us most — even on holidays.</div>
         </div>
         <div class="why-card reveal">
-          <div class="why-icon">📦</div>
+          <div class="why-icon" style="font-family:Fredoka,sans-serif;font-size:1.2rem;font-weight:700;color:#f07030;">NEW</div>
           <div class="why-title">Fresh Stock Weekly</div>
           <div class="why-desc">We restock every week so your favourite items are almost always available.</div>
         </div>
         <div class="why-card reveal">
-          <div class="why-icon">😊</div>
+          <div class="why-icon" style="font-family:Fredoka,sans-serif;font-size:1.2rem;font-weight:700;color:#f07030;">:)</div>
           <div class="why-title">Friendly Service</div>
           <div class="why-desc">Kami ay tao rin. We treat every customer like a neighbour — because you are one.</div>
         </div>
@@ -707,56 +708,56 @@
   <!-- DAILY NEEDS -->
   <section id="needs" style="background:var(--cream);">
     <div class="section-wrap">
-      <div class="section-tag">🛒 Complete Your List</div>
+      <div class="section-tag">Complete Your List</div>
       <h2 class="section-title reveal">Daily Needs We Carry</h2>
       <p class="section-sub reveal">From pantry basics to personal care — we've got your everyday needs covered.</p>
       <div class="needs-list">
-        <div class="need-item reveal"><div class="need-emoji">🍚</div><div class="need-name">Rice (per kilo)</div></div>
-        <div class="need-item reveal"><div class="need-emoji">🥚</div><div class="need-name">Eggs</div></div>
-        <div class="need-item reveal"><div class="need-emoji">🫙</div><div class="need-name">Canned Goods</div></div>
-        <div class="need-item reveal"><div class="need-emoji">🧈</div><div class="need-name">Margarine</div></div>
-        <div class="need-item reveal"><div class="need-emoji">🥛</div><div class="need-name">Evap & Condensada</div></div>
-        <div class="need-item reveal"><div class="need-emoji">🫧</div><div class="need-name">Detergent</div></div>
-        <div class="need-item reveal"><div class="need-emoji">🧻</div><div class="need-name">Tissue & Towels</div></div>
-        <div class="need-item reveal"><div class="need-emoji">🪥</div><div class="need-name">Toothpaste</div></div>
-        <div class="need-item reveal"><div class="need-emoji">💊</div><div class="need-name">Basic Medicines</div></div>
-        <div class="need-item reveal"><div class="need-emoji">🪔</div><div class="need-name">Candles</div></div>
-        <div class="need-item reveal"><div class="need-emoji">🔋</div><div class="need-name">Batteries</div></div>
-        <div class="need-item reveal"><div class="need-emoji">📎</div><div class="need-name">School Supplies</div></div>
+        <div class="need-item reveal"><div class="need-emoji">RCE</div><div class="need-name">Rice (per kilo)</div></div>
+        <div class="need-item reveal"><div class="need-emoji">EGG</div><div class="need-name">Eggs</div></div>
+        <div class="need-item reveal"><div class="need-emoji">CAN</div><div class="need-name">Canned Goods</div></div>
+        <div class="need-item reveal"><div class="need-emoji">BTR</div><div class="need-name">Margarine</div></div>
+        <div class="need-item reveal"><div class="need-emoji">MLK</div><div class="need-name">Evap & Condensada</div></div>
+        <div class="need-item reveal"><div class="need-emoji">DET</div><div class="need-name">Detergent</div></div>
+        <div class="need-item reveal"><div class="need-emoji">TSU</div><div class="need-name">Tissue & Towels</div></div>
+        <div class="need-item reveal"><div class="need-emoji">ORL</div><div class="need-name">Toothpaste</div></div>
+        <div class="need-item reveal"><div class="need-emoji">MED</div><div class="need-name">Basic Medicines</div></div>
+        <div class="need-item reveal"><div class="need-emoji">CND</div><div class="need-name">Candles</div></div>
+        <div class="need-item reveal"><div class="need-emoji">BAT</div><div class="need-name">Batteries</div></div>
+        <div class="need-item reveal"><div class="need-emoji">SCL</div><div class="need-name">School Supplies</div></div>
       </div>
     </div>
   </section>
 
   <!-- PROMO BANNER -->
   <div class="promo">
-    <div class="promo-title">Bumili ng ₱200, libre 1 biscuit! 🎉</div>
+    <div class="promo-title">Bumili ng ₱200, libre 1 biscuit!</div>
     <p class="promo-sub">Valid on walk-in purchases only. While supplies last. New promo every month!</p>
-    <div class="promo-code"><span>🏷️</span> Ask us about this month's bundle deals</div>
+    <div class="promo-code">Ask us about this month's bundle deals</div>
   </div>
 
   <!-- CONTACT -->
   <section id="contact">
     <div class="contact-wrap">
       <div>
-        <div class="section-tag">📍 Come Visit Us</div>
+        <div class="section-tag">Come Visit Us</div>
         <h2 class="section-title reveal">Find Corner Bites</h2>
         <br>
         <div class="info-card reveal">
-          <div class="info-card-icon">📍</div>
+          <div class="info-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div>
             <div class="info-card-label">Address</div>
             <div class="info-card-value">Purok 4, Asia 2, Brgy. Canlubang<br>Calamba City, Laguna</div>
           </div>
         </div>
         <div class="info-card reveal">
-          <div class="info-card-icon">📞</div>
+          <div class="info-card-icon"></div>
           <div>
             <div class="info-card-label">Phone / Viber</div>
             <div class="info-card-value">0961-497-5156</div>
           </div>
         </div>
         <div class="info-card reveal">
-          <div class="info-card-icon">📘</div>
+          <div class="info-card-icon"></div>
           <div>
             <div class="info-card-label">Facebook Page</div>
             <div class="info-card-value">fb.com/jeromemisa2020<br>DM us to check stock or reserve</div>
@@ -764,7 +765,7 @@
         </div>
       </div>
       <div class="reveal">
-        <div class="section-tag">🕐 Store Hours</div>
+        <div class="section-tag">Store Hours</div>
         <h2 class="section-title" style="font-size:2rem;margin-top:0.5rem;margin-bottom:1.5rem;">We're Open!</h2>
         <table class="hours-table">
           <tr><td>Monday – Friday</td><td>7:00 AM – 10:00 PM</td></tr>
@@ -774,7 +775,7 @@
         </table>
         <br><br>
         <div class="map-box">
-          <div class="map-box-icon">🗺️</div>
+          
           <div style="font-weight:700;color:var(--dark);">Purok 4, Asia 2, Brgy. Canlubang, Calamba</div>
           <div style="color:var(--orange);margin-top:0.3rem;font-weight:700;">Open in Google Maps →</div>
         </div>
@@ -785,12 +786,12 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-brand">Corner <span>Bites</span></div>
-    <div class="footer-copy">© 2026 Corner Bites · A Misa Digital Sample Site</div>
+    <div class="footer-copy">© 2026 Corner Bites · A JCMD Sample Site</div>
     <div class="footer-socials">
       <a href="#" class="footer-social">f</a>
-      <a href="#" class="footer-social">📷</a>
+      <a href="#" class="footer-social">IG</a>
     </div>
-    <div class="footer-credit">Website by <a href="index.html" style="color:inherit;text-decoration:underline;">Misa Digital</a></div>
+    <div class="footer-credit">Website by <a href="index.html" style="color:inherit;text-decoration:underline;">JCMD</a></div>
   </footer>
 
   <script>
