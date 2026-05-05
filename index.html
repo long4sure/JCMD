@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Misa Digital — Affordable Websites for Small Businesses</title>
+  <meta name="description" content="Misa Digital builds clean, professional static websites for small local businesses in Calamba and nearby areas. Affordable, fast, and made to impress."/>
+  <meta name="theme-color" content="#080810"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    /* ── RESET ── */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    img{display:block;max-width:100%}
+    a{text-decoration:none}
+    ul{list-style:none}
+
+    /* ── TOKENS ── */
+    :root{
+      --bg:      #07070f;
+      --bg2:     #0c0c18;
+      --card:    #10101e;
+      --border:  #1c1c34;
+      --border2: #282848;
+      --accent:  #e8ff47;
+      --accent-d:#b8cc1a;
+      --blue:    #47a0ff;
+      --pink:    #ff6b9d;
+      --text:    #eeeeff;
+      --muted:   #6868a0;
+      --muted2:  #404068;
+      --white:   #ffffff;
+      --ease:    cubic-bezier(0.22,1,0.36,1);
+      --ease-b:  cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg);}
+    html::-webkit-scrollbar{width:4px;}
+    html::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px;}
+
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:'DM Sans',sans-serif;
+      overflow-x:hidden;
+    }
+
+    /* noise */
+    body::before{
+      content:'';
+      position:fixed;inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E");
+      pointer-events:none;z-index:9999;
+    }
+
+    /* star grid bg */
+    body::after{
+      content:'';
+      position:fixed;inset:0;
+      background-image:
+        radial-gradient(circle,rgba(232,255,71,0.022) 1px,transparent 1px),
+        radial-gradient(circle,rgba(71,160,255,0.015) 1px,transparent 1px);
+      background-size:60px 60px,90px 90px;
+      pointer-events:none;z-index:0;
+    }
+
+    /* ── NAV ── */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:500;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:0 2.5rem;height:64px;
+      background:rgba(7,7,15,0.7);
+      backdrop-filter:blur(20px);
+      border-bottom:1px solid transparent;
+      transition:border-color 0.3s,background 0.3s;
+    }
+    nav.scrolled{border-color:var(--border);background:rgba(7,7,15,0.92);}
+
+    .nav-brand{
+      display:flex;align-items:center;gap:0.65rem;
+      font-family:'Space Mono',monospace;
+      font-size:1rem;font-weight:700;
+      color:var(--text);letter-spacing:-0.01em;
+    }
+    .nav-brand-dot{
+      width:8px;height:8px;
+      background:var(--accent);border-radius:50%;
+      box-shadow:0 0 10px rgba(232,255,71,0.6);
+      animation:pulse 2.5s ease infinite;
+    }
+    @keyframes pulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.5);opacity:0.5;}}
+
+    .nav-links{display:flex;align-items:center;gap:2rem;}
+    .nav-links a{
+      font-family:'Space Mono',monospace;
+      font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;
+      color:var(--muted);transition:color 0.2s;
+    }
+    .nav-links a:hover{color:var(--text);}
+
+    .nav-cta{
+      background:var(--accent);color:#07070f;
+      padding:0.42rem 1rem;
+      font-family:'Space Mono',monospace;
+      font-size:0.67rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+      transition:background 0.2s,transform 0.2s;
+    }
+    .nav-cta:hover{background:var(--accent-d);transform:translateY(-1px);}
+
+    /* ── HERO ── */
+    .hero{
+      min-height:100vh;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;
+      text-align:center;
+      padding:8rem 2rem 5rem;
+      position:relative;z-index:1;
+      overflow:hidden;
+    }
+
+    /* glow blobs */
+    .hero-glow-1{
+      position:absolute;top:15%;left:20%;
+      width:400px;height:400px;border-radius:50%;
+      background:radial-gradient(circle,rgba(232,255,71,0.07) 0%,transparent 70%);
+      pointer-events:none;
+      animation:blobFloat 8s ease-in-out infinite alternate;
+    }
+    .hero-glow-2{
+      position:absolute;bottom:20%;right:15%;
+      width:300px;height:300px;border-radius:50%;
+      background:radial-gradient(circle,rgba(71,160,255,0.07) 0%,transparent 70%);
+      pointer-events:none;
+      animation:blobFloat 10s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes blobFloat{from{transform:translate(0,0);}to{transform:translate(20px,-30px);}}
+
+    /* launch badge */
+    .hero-launch-badge{
+      display:inline-flex;align-items:center;gap:0.6rem;
+      background:rgba(232,255,71,0.08);
+      border:1px solid rgba(232,255,71,0.25);
+      padding:0.35rem 1rem;
+      font-family:'Space Mono',monospace;
+      font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;
+      color:var(--accent);
+      margin-bottom:2rem;
+      animation:fadeUp 0.7s 0.1s ease both;
+    }
+    .launch-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s ease infinite;}
+
+    .hero-title{
+      font-family:'Syne',sans-serif;
+      font-size:clamp(3rem,7vw,7rem);
+      font-weight:800;
+      line-height:0.95;
+      letter-spacing:-0.04em;
+      max-width:900px;
+      margin-bottom:1.8rem;
+      animation:fadeUp 0.8s 0.25s ease both;
+    }
+    .hero-title .accent{color:var(--accent);}
+    .hero-title .outline{
+      color:transparent;
+      -webkit-text-stroke:1.5px rgba(238,238,255,0.4);
+    }
+
+    .hero-desc{
+      font-size:1.05rem;font-weight:300;
+      line-height:1.8;color:var(--muted);
+      max-width:580px;
+      margin-bottom:2.8rem;
+      animation:fadeUp 0.8s 0.4s ease both;
+    }
+    .hero-desc strong{color:var(--text);font-weight:500;}
+
+    .hero-cta-row{
+      display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;
+      animation:fadeUp 0.8s 0.55s ease both;
+    }
+
+    .btn{
+      display:inline-flex;align-items:center;gap:0.5rem;
+      padding:0.85rem 1.8rem;
+      font-family:'Space Mono',monospace;
+      font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+      position:relative;overflow:hidden;
+      transition:transform 0.25s var(--ease-b),box-shadow 0.25s;
+    }
+    .btn:hover{transform:translateY(-3px);}
+    .btn-primary{background:var(--accent);color:#07070f;}
+    .btn-primary:hover{box-shadow:0 8px 28px rgba(232,255,71,0.35);}
+    .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border2);}
+    .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+    .btn-fb{background:transparent;color:#5b8def;border:1px solid rgba(91,141,239,0.4);}
+    .btn-fb:hover{background:#4267B2;color:#fff;border-color:#4267B2;}
+
+    /* hero stats */
+    .hero-stats{
+      display:flex;gap:3rem;flex-wrap:wrap;justify-content:center;
+      margin-top:4rem;
+      padding-top:2.5rem;
+      border-top:1px solid var(--border);
+      animation:fadeUp 0.8s 0.7s ease both;
+    }
+    .stat{text-align:center;}
+    .stat-num{
+      font-family:'Syne',sans-serif;
+      font-size:2.2rem;font-weight:800;
+      color:var(--accent);line-height:1;
+    }
+    .stat-label{
+      font-family:'Space Mono',monospace;
+      font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;
+      color:var(--muted);margin-top:0.25rem;
+    }
+
+    /* scroll cue */
+    .scroll-cue{
+      position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+      display:flex;flex-direction:column;align-items:center;gap:0.4rem;
+      opacity:0;animation:fadeIn 1s 1.4s ease forwards;
+      z-index:2;
+    }
+    .scroll-cue span{
+      font-family:'Space Mono',monospace;
+      font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted2);
+    }
+    .scroll-line{
+      width:1px;height:36px;
+      background:linear-gradient(to bottom,var(--muted2),transparent);
+      animation:scrollLine 2.2s ease-in-out infinite;
+    }
+    @keyframes scrollLine{
+      0%{transform:scaleY(0);transform-origin:top;}
+      50%{transform:scaleY(1);transform-origin:top;}
+      51%{transform:scaleY(1);transform-origin:bottom;}
+      100%{transform:scaleY(0);transform-origin:bottom;}
+    }
+
+    /* ── SECTION SHARED ── */
+    .section{padding:6rem 2.5rem;max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+    .section-full{padding:6rem 2.5rem;position:relative;z-index:1;}
+
+    .section-label{
+      display:inline-flex;align-items:center;gap:0.65rem;
+      font-family:'Space Mono',monospace;
+      font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;
+      color:var(--accent);margin-bottom:0.9rem;
+    }
+    .section-label::before{content:'';width:20px;height:1px;background:var(--accent);}
+
+    .section-title{
+      font-family:'Syne',sans-serif;
+      font-size:clamp(2rem,4vw,3.2rem);
+      font-weight:800;letter-spacing:-0.03em;line-height:1.05;
+      margin-bottom:1rem;
+    }
+    .section-sub{
+      font-size:0.95rem;font-weight:300;
+      color:var(--muted);line-height:1.75;
+      max-width:560px;margin-bottom:3.5rem;
+    }
+
+    .divider{
+      height:1px;
+      background:linear-gradient(90deg,transparent,var(--border2),transparent);
+      margin:0;
+    }
+
+    /* ── ABOUT / INTRO ── */
+    .about-grid{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:4rem;align-items:center;
+    }
+    .about-text p{
+      font-size:0.95rem;font-weight:300;
+      line-height:1.85;color:var(--muted);
+      margin-bottom:1.2rem;
+    }
+    .about-text p strong{color:var(--text);font-weight:500;}
+    .about-text p .accent{color:var(--accent);}
+
+    .about-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      padding:2rem;
+      position:relative;overflow:hidden;
+    }
+    .about-card::before{
+      content:'';position:absolute;top:0;left:0;
+      width:3px;height:100%;
+      background:linear-gradient(to bottom,var(--accent),var(--blue));
+    }
+    .about-card-title{
+      font-family:'Syne',sans-serif;
+      font-size:1rem;font-weight:700;
+      color:var(--text);margin-bottom:1.2rem;
+    }
+    .about-list{display:flex;flex-direction:column;gap:0.75rem;}
+    .about-list-item{
+      display:flex;align-items:flex-start;gap:0.75rem;
+      font-size:0.85rem;font-weight:300;
+      color:var(--muted);line-height:1.5;
+    }
+    .about-list-item .check{
+      color:var(--accent);font-size:0.75rem;
+      margin-top:2px;flex-shrink:0;
+    }
+
+    /* starting notice */
+    .starting-notice{
+      background:rgba(232,255,71,0.05);
+      border:1px solid rgba(232,255,71,0.2);
+      padding:1.5rem 2rem;
+      display:flex;align-items:flex-start;gap:1rem;
+      margin-top:2rem;
+    }
+    .starting-notice-icon{font-size:1.5rem;flex-shrink:0;}
+    .starting-notice-title{
+      font-family:'Space Mono',monospace;
+      font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+      color:var(--accent);margin-bottom:0.35rem;
+    }
+    .starting-notice-text{
+      font-size:0.85rem;font-weight:300;
+      color:var(--muted);line-height:1.6;
+    }
+
+    /* ── SERVICES / WHAT I OFFER ── */
+    .services-bg{background:var(--bg2);}
+    .services-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1.5rem;
+    }
+    .service-card{
+      background:var(--card);border:1px solid var(--border);
+      padding:2rem;position:relative;overflow:hidden;
+      transition:border-color 0.3s,transform 0.3s;
+      cursor:default;
+    }
+    .service-card::after{
+      content:'';position:absolute;top:-50%;left:-50%;
+      width:60%;height:200%;
+      background:linear-gradient(105deg,transparent 40%,rgba(232,255,71,0.04) 50%,transparent 60%);
+      transform:skewX(-20deg);transition:left 0.6s ease;pointer-events:none;
+    }
+    .service-card:hover::after{left:120%;}
+    .service-card:hover{border-color:rgba(232,255,71,0.3);transform:translateY(-5px);}
+    .service-card::before{
+      content:'';position:absolute;top:0;left:0;
+      width:3px;height:100%;
+      background:linear-gradient(to bottom,var(--accent),var(--blue));
+      transform:scaleY(0);transform-origin:bottom;
+      transition:transform 0.3s var(--ease);
+    }
+    .service-card:hover::before{transform:scaleY(1);}
+    .service-icon{font-size:2rem;margin-bottom:1rem;}
+    .service-name{
+      font-family:'Syne',sans-serif;
+      font-size:1.1rem;font-weight:700;
+      color:var(--text);margin-bottom:0.5rem;
+    }
+    .service-desc{
+      font-size:0.83rem;font-weight:300;
+      color:var(--muted);line-height:1.65;margin-bottom:1.2rem;
+    }
+    .service-price{
+      font-family:'Space Mono',monospace;
+      font-size:0.78rem;font-weight:700;
+      color:var(--accent);
+    }
+
+    /* ── PROCESS ── */
+    .process-steps{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:1.5rem;margin-top:3rem;
+      counter-reset:step;
+    }
+    .process-step{
+      background:var(--card);border:1px solid var(--border);
+      padding:1.8rem;position:relative;
+      transition:border-color 0.25s;
+    }
+    .process-step:hover{border-color:var(--blue);}
+    .step-num{
+      font-family:'Space Mono',monospace;
+      font-size:2rem;font-weight:700;
+      color:rgba(232,255,71,0.15);line-height:1;
+      margin-bottom:0.7rem;
+    }
+    .step-title{
+      font-family:'Syne',sans-serif;
+      font-size:0.95rem;font-weight:700;
+      color:var(--text);margin-bottom:0.4rem;
+    }
+    .step-desc{
+      font-size:0.8rem;font-weight:300;
+      color:var(--muted);line-height:1.6;
+    }
+    .step-connector{
+      position:absolute;right:-1px;top:50%;
+      width:3px;height:40px;
+      background:var(--accent);
+      transform:translateY(-50%);
+      opacity:0.3;
+    }
+
+    /* ── SAMPLE WORK ── */
+    .work-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:1.5rem;margin-top:0;
+    }
+    .work-card{
+      background:var(--card);border:1px solid var(--border);
+      overflow:hidden;
+      transition:border-color 0.3s,transform 0.3s;
+    }
+    .work-card:hover{border-color:rgba(232,255,71,0.3);transform:translateY(-5px);}
+
+    /* mini browser chrome */
+    .work-browser{
+      background:#111128;
+      border-bottom:1px solid var(--border);
+      padding:0.55rem 0.8rem;
+      display:flex;align-items:center;gap:0.5rem;
+    }
+    .browser-dots{display:flex;gap:5px;}
+    .browser-dot{width:9px;height:9px;border-radius:50%;}
+    .browser-dot:nth-child(1){background:#ff5f57;}
+    .browser-dot:nth-child(2){background:#febc2e;}
+    .browser-dot:nth-child(3){background:#28c840;}
+    .browser-url{
+      flex:1;
+      background:rgba(255,255,255,0.06);
+      border-radius:4px;
+      padding:0.2rem 0.6rem;
+      font-family:'Space Mono',monospace;
+      font-size:0.6rem;
+      color:var(--muted2);
+      margin-left:0.5rem;
+    }
+
+    .work-preview{
+      height:200px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:4rem;
+      position:relative;overflow:hidden;
+    }
+
+    .work-info{padding:1.5rem;}
+    .work-tag{
+      display:inline-block;
+      font-family:'Space Mono',monospace;
+      font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;
+      color:var(--accent);
+      border:1px solid rgba(232,255,71,0.2);
+      background:rgba(232,255,71,0.05);
+      padding:0.2rem 0.6rem;
+      margin-bottom:0.6rem;
+    }
+    .work-name{
+      font-family:'Syne',sans-serif;
+      font-size:1.15rem;font-weight:700;
+      color:var(--text);margin-bottom:0.4rem;
+    }
+    .work-desc{
+      font-size:0.82rem;font-weight:300;
+      color:var(--muted);line-height:1.6;margin-bottom:1.2rem;
+    }
+    .work-link{
+      display:inline-flex;align-items:center;gap:0.4rem;
+      font-family:'Space Mono',monospace;
+      font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+      color:var(--accent);
+      transition:gap 0.2s;
+    }
+    .work-link:hover{gap:0.7rem;}
+
+    /* ── PRICING ── */
+    .pricing-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1.5rem;
+    }
+    .pricing-card{
+      background:var(--card);border:1px solid var(--border);
+      padding:2.2rem;
+      transition:border-color 0.3s,transform 0.3s;
+    }
+    .pricing-card.featured{
+      border-color:var(--accent);
+      position:relative;
+    }
+    .pricing-card.featured::before{
+      content:'Most Popular';
+      position:absolute;top:-1px;left:50%;
+      transform:translateX(-50%);
+      background:var(--accent);color:#07070f;
+      padding:0.2rem 1rem;
+      font-family:'Space Mono',monospace;
+      font-size:0.58rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+    }
+    .pricing-card:hover:not(.featured){border-color:var(--border2);transform:translateY(-4px);}
+    .pricing-name{
+      font-family:'Space Mono',monospace;
+      font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;
+      color:var(--muted);margin-bottom:1rem;
+    }
+    .pricing-price{
+      font-family:'Syne',sans-serif;
+      font-size:2.5rem;font-weight:800;
+      color:var(--accent);line-height:1;
+      margin-bottom:0.3rem;
+    }
+    .pricing-note{
+      font-size:0.75rem;font-weight:300;
+      color:var(--muted);margin-bottom:1.8rem;
+    }
+    .pricing-features{
+      display:flex;flex-direction:column;gap:0.7rem;
+      margin-bottom:2rem;
+    }
+    .pricing-feature{
+      display:flex;align-items:flex-start;gap:0.6rem;
+      font-size:0.84rem;font-weight:300;
+      color:var(--muted);line-height:1.4;
+    }
+    .pricing-feature .tick{color:var(--accent);flex-shrink:0;font-size:0.75rem;margin-top:2px;}
+    .pricing-feature .cross{color:var(--muted2);flex-shrink:0;font-size:0.75rem;margin-top:2px;}
+    .pricing-cta{
+      width:100%;padding:0.85rem;
+      background:var(--accent);color:#07070f;
+      font-family:'Space Mono',monospace;
+      font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+      border:none;cursor:pointer;
+      transition:background 0.2s,transform 0.2s;
+      display:block;text-align:center;
+    }
+    .pricing-cta:hover{background:var(--accent-d);transform:translateY(-2px);}
+    .pricing-cta.outline{
+      background:transparent;color:var(--text);
+      border:1px solid var(--border2);
+    }
+    .pricing-cta.outline:hover{border-color:var(--accent);color:var(--accent);}
+
+    /* ── FAQ ── */
+    .faq-list{max-width:700px;}
+    .faq-item{
+      border-bottom:1px solid var(--border);
+      padding:1.4rem 0;
+    }
+    .faq-q{
+      font-family:'Syne',sans-serif;
+      font-size:0.97rem;font-weight:700;
+      color:var(--text);cursor:pointer;
+      display:flex;justify-content:space-between;align-items:center;gap:1rem;
+      user-select:none;
+    }
+    .faq-q:hover{color:var(--accent);}
+    .faq-arrow{
+      color:var(--muted);font-size:0.75rem;
+      transition:transform 0.3s,color 0.2s;flex-shrink:0;
+    }
+    .faq-item.open .faq-arrow{transform:rotate(180deg);color:var(--accent);}
+    .faq-a{
+      font-size:0.88rem;font-weight:300;
+      color:var(--muted);line-height:1.75;
+      max-height:0;overflow:hidden;
+      transition:max-height 0.4s ease,padding 0.3s;
+      padding-top:0;
+    }
+    .faq-item.open .faq-a{max-height:300px;padding-top:0.9rem;}
+
+    /* ── CONTACT ── */
+    .contact-grid{
+      display:grid;grid-template-columns:1fr 1.3fr;
+      gap:2.5rem;align-items:start;
+    }
+    .contact-panel{
+      background:var(--card);border:1px solid var(--border);
+      padding:2.2rem;
+    }
+    .contact-panel-title{
+      font-family:'Syne',sans-serif;
+      font-size:1.5rem;font-weight:800;
+      margin-bottom:0.4rem;
+    }
+    .contact-panel-title span{color:var(--accent);}
+    .contact-panel-sub{
+      font-size:0.88rem;font-weight:300;
+      color:var(--muted);line-height:1.7;
+      margin-bottom:2rem;
+    }
+    .contact-item{
+      display:flex;align-items:center;gap:0.9rem;
+      margin-bottom:1.2rem;font-size:0.88rem;
+    }
+    .contact-icon{
+      width:2.1rem;height:2.1rem;
+      background:rgba(232,255,71,0.07);
+      border:1px solid rgba(232,255,71,0.15);
+      display:flex;align-items:center;justify-content:center;
+      font-size:0.85rem;flex-shrink:0;
+      transition:background 0.2s;
+    }
+    .contact-item:hover .contact-icon{background:rgba(232,255,71,0.14);}
+    .contact-item a{color:var(--text);transition:color 0.2s;}
+    .contact-item a:hover{color:var(--accent);}
+    .contact-socials{display:flex;gap:0.7rem;flex-wrap:wrap;margin-top:1.5rem;}
+
+    /* form */
+    .contact-form-panel{
+      background:var(--card);border:1px solid var(--border);padding:2.2rem;
+    }
+    .form-title{
+      font-family:'Space Mono',monospace;
+      font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;
+      color:var(--muted);margin-bottom:1.5rem;
+    }
+    .form-group{margin-bottom:1.1rem;}
+    .form-label{
+      display:block;
+      font-family:'Space Mono',monospace;
+      font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;
+      color:var(--muted);margin-bottom:0.4rem;
+      transition:color 0.2s;
+    }
+    .form-group:focus-within .form-label{color:var(--accent);}
+    .form-input,.form-textarea,.form-select{
+      width:100%;
+      background:rgba(255,255,255,0.03);
+      border:1px solid var(--border);
+      color:var(--text);
+      font-family:'DM Sans',sans-serif;font-size:0.88rem;
+      padding:0.75rem 1rem;outline:none;
+      transition:border-color 0.25s,background 0.25s,box-shadow 0.25s;
+      -webkit-appearance:none;
+    }
+    .form-input::placeholder,.form-textarea::placeholder{color:var(--muted2);}
+    .form-input:focus,.form-textarea:focus,.form-select:focus{
+      border-color:var(--accent);
+      background:rgba(232,255,71,0.025);
+      box-shadow:0 0 0 3px rgba(232,255,71,0.07);
+    }
+    .form-select{cursor:pointer;}
+    .form-select option{background:#10101e;color:var(--text);}
+    .form-textarea{height:120px;resize:none;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+    .form-submit{
+      width:100%;padding:0.9rem;
+      background:var(--accent);color:#07070f;border:none;
+      font-family:'Space Mono',monospace;
+      font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+      cursor:pointer;
+      transition:background 0.2s,transform 0.2s,box-shadow 0.2s;
+    }
+    .form-submit:hover{background:var(--accent-d);transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,255,71,0.3);}
+    .form-status{
+      margin-top:0.75rem;font-size:0.75rem;
+      font-family:'Space Mono',monospace;min-height:1.2em;
+    }
+    .form-status.success{color:#47ffb4;}
+    .form-status.error{color:#ff5c5c;}
+
+    /* ── FOOTER ── */
+    footer{
+      border-top:1px solid var(--border);
+      padding:2.5rem;
+      display:flex;justify-content:space-between;align-items:center;
+      flex-wrap:wrap;gap:1rem;
+      position:relative;z-index:1;
+    }
+    .footer-brand{
+      font-family:'Space Mono',monospace;
+      font-size:0.95rem;font-weight:700;
+      color:var(--text);
+    }
+    .footer-brand span{color:var(--accent);}
+    .footer-links{display:flex;gap:1.5rem;}
+    .footer-links a{
+      font-family:'Space Mono',monospace;
+      font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;
+      color:var(--muted2);transition:color 0.2s;
+    }
+    .footer-links a:hover{color:var(--accent);}
+    .footer-copy{
+      font-family:'Space Mono',monospace;
+      font-size:0.6rem;letter-spacing:0.06em;color:var(--muted2);
+    }
+
+    /* ── REVEAL ── */
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity 0.6s var(--ease),transform 0.6s var(--ease);}
+    .reveal.visible{opacity:1;transform:none;}
+    .reveal-l{opacity:0;transform:translateX(-26px);transition:opacity 0.6s var(--ease),transform 0.6s var(--ease);}
+    .reveal-l.visible{opacity:1;transform:none;}
+    .reveal-s{opacity:0;transform:scale(0.94);transition:opacity 0.6s var(--ease),transform 0.6s var(--ease-b);}
+    .reveal-s.visible{opacity:1;transform:none;}
+
+    /* ── KEYFRAMES ── */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px){
+      nav{padding:0 1.2rem;}
+      .nav-links a:not(.nav-cta){display:none;}
+      .hero{padding:7rem 1.5rem 4rem;}
+      .section{padding:4.5rem 1.5rem;}
+      .section-full{padding:4.5rem 1.5rem;}
+      .about-grid{grid-template-columns:1fr;}
+      .contact-grid{grid-template-columns:1fr;}
+      .form-row{grid-template-columns:1fr;}
+      footer{flex-direction:column;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAV ══ -->
+  <nav id="main-nav">
+    <div class="nav-brand">
+      <div class="nav-brand-dot"></div>
+      Misa<span style="color:var(--accent)">Digital</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero" id="home">
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+
+    <div class="hero-launch-badge">
+      <div class="launch-dot"></div>
+      Now Accepting Clients · Calamba City, Laguna
+    </div>
+
+    <h1 class="hero-title">
+      Your <span class="accent">business</span><br>
+      deserves a real<br>
+      <span class="outline">website.</span>
+    </h1>
+
+    <p class="hero-desc">
+      <strong>Misa Digital</strong> builds clean, professional, and affordable static websites
+      for small local businesses — coffee shops, salons, sari-sari stores, and more.
+      No bloated systems. <strong>Just a site that works and looks great.</strong>
+    </p>
+
+    <div class="hero-cta-row">
+      <a href="#contact" class="btn btn-primary">Get a Free Quote →</a>
+      <a href="#work" class="btn btn-ghost">See Sample Work</a>
+      <a href="https://www.facebook.com/jeromemisa2020/" target="_blank" rel="noopener" class="btn btn-fb">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.413c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        Facebook
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Sample Sites Built</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">₱3K</div>
+        <div class="stat-label">Starting Price</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7</div>
+        <div class="stat-label">Days to Deliver</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Custom Made</div>
+      </div>
+    </div>
+
+    <div class="scroll-cue">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ ABOUT ══ -->
+  <section class="section" id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label reveal">About Misa Digital</p>
+        <h2 class="section-title reveal">Simple websites.<br>Real results.</h2>
+        <p class="reveal">
+          Hi — I'm <strong>Jerome Misa</strong>, a web developer from <span class="accent">Calamba City, Laguna</span>.
+          I build static websites for small local businesses that want a professional online presence
+          without paying agency-level prices.
+        </p>
+        <p class="reveal">
+          I focus on what matters most for small businesses: a fast-loading, good-looking website
+          that shows up clean on phones, gives customers the info they need, and makes your business
+          look credible. <strong>No subscriptions, no backend complexity</strong> — just a solid site
+          delivered in a week.
+        </p>
+        <p class="reveal">
+          I work with coffee shops, salons, food stalls, sari-sari stores, home-based businesses,
+          freelancers, and any small operation that wants to be taken seriously online.
+        </p>
+
+        <div class="starting-notice reveal">
+          <div class="starting-notice-icon">🚀</div>
+          <div>
+            <div class="starting-notice-title">Just Getting Started</div>
+            <div class="starting-notice-text">
+              Misa Digital is a brand-new service. I'm currently taking my first clients
+              at <strong style="color:var(--accent)">introductory prices</strong> to build my portfolio
+              and earn your trust. This means you get a quality website at a below-market rate —
+              and I get a real project to showcase. A win for both of us.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-card reveal-s">
+        <div class="about-card-title">What you get with every site</div>
+        <div class="about-list">
+          <div class="about-list-item"><span class="check">✓</span> Clean, mobile-first design built for your brand</div>
+          <div class="about-list-item"><span class="check">✓</span> Deployed on GitHub Pages or Netlify — free hosting</div>
+          <div class="about-list-item"><span class="check">✓</span> Your domain set up (you pay the ₱800–₱1,200/yr fee directly)</div>
+          <div class="about-list-item"><span class="check">✓</span> Contact details, location, and social links</div>
+          <div class="about-list-item"><span class="check">✓</span> Smooth scroll animations and hover effects</div>
+          <div class="about-list-item"><span class="check">✓</span> Fast load time — no heavy plugins or CMS</div>
+          <div class="about-list-item"><span class="check">✓</span> Two rounds of revisions included</div>
+          <div class="about-list-item"><span class="check">✓</span> Delivered in 5–7 business days</div>
+          <div class="about-list-item"><span class="check">✓</span> Free minor text/photo updates for 30 days</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ SERVICES ══ -->
+  <div class="services-bg section-full" id="services">
+    <div class="section" style="padding-top:0;padding-bottom:0;">
+      <p class="section-label reveal">What I Build</p>
+      <h2 class="section-title reveal">Services</h2>
+      <p class="section-sub reveal">Every website is handcrafted from scratch — no templates, no page builders. Just clean code tailored to your business.</p>
+      <div class="services-grid">
+
+        <div class="service-card reveal-s">
+          <div class="service-icon">🍽️</div>
+          <div class="service-name">Restaurant & Café Sites</div>
+          <div class="service-desc">Menu display, opening hours, location, ambiance gallery, and a contact section. Perfect for coffee shops, carinderias, and food stalls.</div>
+          <div class="service-price">Starting at ₱3,500</div>
+        </div>
+
+        <div class="service-card reveal-s">
+          <div class="service-icon">💇</div>
+          <div class="service-name">Salon & Beauty Sites</div>
+          <div class="service-desc">Services and pricing, team profiles, testimonials, gallery, booking call-to-action. Works for salons, spas, nail shops, and more.</div>
+          <div class="service-price">Starting at ₱3,500</div>
+        </div>
+
+        <div class="service-card reveal-s">
+          <div class="service-icon">🏪</div>
+          <div class="service-name">Retail & Sari-Sari Store</div>
+          <div class="service-desc">Products showcase, store hours, location, and social links. Great for neighbourhood stores, online sellers, and small shops.</div>
+          <div class="service-price">Starting at ₱3,000</div>
+        </div>
+
+        <div class="service-card reveal-s">
+          <div class="service-icon">🧑‍💼</div>
+          <div class="service-name">Freelancer / Personal Portfolio</div>
+          <div class="service-desc">Skills, past work, about section, and a contact form. Ideal for freelancers, tutors, photographers, and independent professionals.</div>
+          <div class="service-price">Starting at ₱3,000</div>
+        </div>
+
+        <div class="service-card reveal-s">
+          <div class="service-icon">🔧</div>
+          <div class="service-name">Service Business Sites</div>
+          <div class="service-desc">For repair shops, laundry services, car wash, and other service-based businesses. Clean, direct, and built to drive inquiries.</div>
+          <div class="service-price">Starting at ₱3,000</div>
+        </div>
+
+        <div class="service-card reveal-s">
+          <div class="service-icon">🌐</div>
+          <div class="service-name">Domain Setup & Deployment</div>
+          <div class="service-desc">I handle connecting your custom domain (e.g. yourbusiness.com) to your live site. Domain registration cost is separate and paid by you directly.</div>
+          <div class="service-price">₱500 setup fee</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ══ PROCESS ══ -->
+  <section class="section" id="process">
+    <p class="section-label reveal">How It Works</p>
+    <h2 class="section-title reveal">From idea to live site<br>in one week.</h2>
+    <p class="section-sub reveal">A simple, transparent process with no surprises.</p>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Discovery Call</div>
+        <div class="step-desc">We talk about your business, what you need, and what you want visitors to do. Free, 30 minutes, via Messenger or in person.</div>
+        <div class="step-connector"></div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">02</div>
+        <div class="step-title">Content Collection</div>
+        <div class="step-desc">You send me your logo, photos, text, and contact info. Phone shots work fine — no need for a professional shoot.</div>
+        <div class="step-connector"></div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">03</div>
+        <div class="step-title">Design & Build</div>
+        <div class="step-desc">I design and build your site in 5–7 days. You'll get a preview link to review before anything goes live.</div>
+        <div class="step-connector"></div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">04</div>
+        <div class="step-title">Revisions</div>
+        <div class="step-desc">Two rounds of feedback and changes are included. We adjust until you're happy with how it looks and reads.</div>
+        <div class="step-connector"></div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">05</div>
+        <div class="step-title">Launch & Handoff</div>
+        <div class="step-desc">Your site goes live. I give you the link, walk you through what you have, and stay available for 30 days of free minor updates.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ SAMPLE WORK ══ -->
+  <section class="section" id="work">
+    <p class="section-label reveal">Portfolio</p>
+    <h2 class="section-title reveal">Sample Work</h2>
+    <p class="section-sub reveal">These are demonstration sites I built to show the range of designs I can create. Each one is tailored to a specific type of small business.</p>
+
+    <div class="work-grid">
+
+      <!-- Brew & Co -->
+      <div class="work-card reveal-s">
+        <div class="work-browser">
+          <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+          <div class="browser-url">brew-co-demo.misadigital.com</div>
+        </div>
+        <div class="work-preview" style="background:linear-gradient(135deg,#3b1f0e,#5c3317);">
+          <span>☕</span>
+        </div>
+        <div class="work-info">
+          <span class="work-tag">Coffee Shop</span>
+          <div class="work-name">Brew & Co. Coffee</div>
+          <div class="work-desc">Warm editorial design with animated hero, scrolling menu marquee, coffee illustration, and full contact section.</div>
+          <a href="brew-co.html" target="_blank" class="work-link">View Demo →</a>
+        </div>
+      </div>
+
+      <!-- Shear Style -->
+      <div class="work-card reveal-s">
+        <div class="work-browser">
+          <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+          <div class="browser-url">shear-style-demo.misadigital.com</div>
+        </div>
+        <div class="work-preview" style="background:linear-gradient(135deg,#1a1410,#2d2420);">
+          <span>✂️</span>
+        </div>
+        <div class="work-info">
+          <span class="work-tag">Beauty Salon</span>
+          <div class="work-name">Shear Style Salon</div>
+          <div class="work-desc">Elegant serif editorial layout with asymmetric hero, animated scissors illustration, services grid, and team section.</div>
+          <a href="shear-style.html" target="_blank" class="work-link">View Demo →</a>
+        </div>
+      </div>
+
+      <!-- Corner Bites -->
+      <div class="work-card reveal-s">
+        <div class="work-browser">
+          <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
+          <div class="browser-url">corner-bites-demo.misadigital.com</div>
+        </div>
+        <div class="work-preview" style="background:linear-gradient(135deg,#1a1208,#2a1e08);">
+          <span>🏪</span>
+        </div>
+        <div class="work-info">
+          <span class="work-tag">Sari-Sari Store</span>
+          <div class="work-name">Corner Bites Store</div>
+          <div class="work-desc">Vibrant, playful neighbourhood feel with store illustration, product cards, daily needs grid, and a Filipino promo banner.</div>
+          <a href="corner-bites.html" target="_blank" class="work-link">View Demo →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ PRICING ══ -->
+  <section class="section" id="pricing">
+    <p class="section-label reveal">Transparent Pricing</p>
+    <h2 class="section-title reveal">Simple. Honest. Affordable.</h2>
+    <p class="section-sub reveal">No hidden fees, no ongoing charges. You pay once and own your website. Domain registration is a separate annual cost you pay directly to the registrar.</p>
+
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="pricing-name">Starter</div>
+        <div class="pricing-price">₱3,000</div>
+        <div class="pricing-note">One-time payment · Delivered in 5–7 days</div>
+        <div class="pricing-features">
+          <div class="pricing-feature"><span class="tick">✓</span> Single-page website (up to 5 sections)</div>
+          <div class="pricing-feature"><span class="tick">✓</span> Mobile-responsive design</div>
+          <div class="pricing-feature"><span class="tick">✓</span> Contact details & social links</div>
+          <div class="pricing-feature"><span class="tick">✓</span> Free hosting via GitHub Pages</div>
+          <div class="pricing-feature"><span class="tick">✓</span> 2 rounds of revisions</div>
+          <div class="pricing-feature"><span class="tick">✓</span> 30 days free minor updates</div>
+          <div class="pricing-feature"><span class="cross">✗</span> Custom domain setup (add ₱500)</div>
+        </div>
+        <a href="#contact" class="pricing-cta outline">Get Started</a>
+      </div>
+
+      <div class="pricing-card featured reveal">
+        <div class="pricing-name">Standard</div>
+        <div class="pricing-price">₱5,500</div>
+        <div class="pricing-note">One-time payment · Delivered in 5–7 days</div>
+        <div class="pricing-features">
+          <div class="pricing-feature"><span class="tick">✓</span> Multi-section website (up to 8 sections)</div>
+          <div class="pricing-feature"><span class="tick">✓</span> Mobile-responsive design</div>
+          <div class="pricing-feature"><span class="tick">✓</span> Scroll animations & hover effects</div>
+          <div class="pricing-feature"><span class="tick">✓</span> Menu / services / product showcase</div>
+          <div class="pricing-feature"><span class="tick">✓</span> Contact form with email integration</div>
+          <div class="pricing-feature"><span class="tick">✓</span> Free hosting via GitHub Pages / Netlify</div>
+          <div class="pricing-feature"><span class="tick">✓</span> Custom domain setup included</div>
+          <div class="pricing-feature"><span class="tick">✓</span> 2 rounds of revisions</div>
+          <div class="pricing-feature"><span class="tick">✓</span> 30 days free minor updates</div>
+        </div>
+        <a href="#contact" class="pricing-cta">Get Started →</a>
+      </div>
+
+      <div class="pricing-card reveal">
+        <div class="pricing-name">Maintenance</div>
+        <div class="pricing-price">₱800</div>
+        <div class="pricing-note">Per year · Optional after 30-day free period</div>
+        <div class="pricing-features">
+          <div class="pricing-feature"><span class="tick">✓</span> Text & price updates (up to 3/month)</div>
+          <div class="pricing-feature"><span class="tick">✓</span> Photo updates</div>
+          <div class="pricing-feature"><span class="tick">✓</span> Minor layout adjustments</div>
+          <div class="pricing-feature"><span class="tick">✓</span> Priority response</div>
+          <div class="pricing-feature"><span class="cross">✗</span> Full redesigns (quoted separately)</div>
+        </div>
+        <a href="#contact" class="pricing-cta outline">Add Maintenance</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ FAQ ══ -->
+  <section class="section">
+    <p class="section-label reveal">FAQ</p>
+    <h2 class="section-title reveal">Common Questions</h2>
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <div class="faq-q">Do I need to know anything about websites? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Not at all. I handle everything technical. You just need to tell me about your business, send me some photos and text, and I'll take care of the rest. After launch, I'll explain how to contact me for updates.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Why is hosting free? Is there a catch? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">No catch. Static websites (which is what I build) can be hosted for free on platforms like GitHub Pages and Netlify. Because there's no database or server-side code, these platforms offer free tier hosting. The only cost is your custom domain name (optional), which you pay directly to a registrar like Namecheap — around ₱800–₱1,200 per year.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What if I want to update my menu prices or photos later? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">For the first 30 days after launch, minor text and photo updates are free. After that, you can add an annual maintenance plan (₱800/year) for ongoing updates. Alternatively, you can always reach out and I'll give you a small per-update rate.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Can you add online ordering or a booking system? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Currently, I focus on static websites — meaning no complex backend features like live ordering, payment processing, or user accounts. However, I can integrate simple solutions like a contact form that sends emails, a "Call to Order" button, or a WhatsApp/Messenger chat link that works great for most small businesses.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How do I pay? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">50% downpayment to start, 50% upon delivery and your approval. Payment via GCash, Maya, or bank transfer. No payment is collected until we've agreed on the scope and you're comfortable moving forward.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Are you based in Calamba? Can we meet in person? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Yes, I'm based in Purok 4, Asia 2, Brgy. Canlubang, Calamba City, Laguna. I'm happy to meet in person for clients in Calamba and nearby areas (Los Baños, Sta. Rosa, Biñan, San Pedro). For clients farther away, we can work entirely through Messenger or email.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ CONTACT ══ -->
+  <section class="section" id="contact">
+    <p class="section-label reveal">Get in Touch</p>
+    <h2 class="section-title reveal">Let's build your<br>website together.</h2>
+
+    <div class="contact-grid">
+
+      <div class="contact-panel reveal-l">
+        <div class="contact-panel-title">Open for <span>new clients.</span></div>
+        <p class="contact-panel-sub">
+          Ready to give your business a real online presence? Fill in the form or reach out directly.
+          I respond within 24 hours.
+        </p>
+
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <span>Purok 4, Asia 2, Brgy. Canlubang<br>Calamba City, Laguna</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <a href="tel:+639614975156">0961-497-5156</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <a href="mailto:jeromemisa2020@gmail.com">jeromemisa2020@gmail.com</a>
+        </div>
+
+        <div class="contact-socials">
+          <a href="https://www.facebook.com/jeromemisa2020/" target="_blank" rel="noopener" class="btn btn-fb" style="font-size:0.67rem;padding:0.5rem 1rem;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.413c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+            Message on Facebook
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form-panel reveal">
+        <p class="form-title">Send a Message</p>
+        <form id="inquiry-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="q-name">Your Name *</label>
+              <input class="form-input" type="text" id="q-name" placeholder="Juan dela Cruz" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="q-phone">Phone / Viber *</label>
+              <input class="form-input" type="tel" id="q-phone" placeholder="09XX XXX XXXX" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="q-business">Business Name</label>
+            <input class="form-input" type="text" id="q-business" placeholder="e.g. Aling Rosa's Taho"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="q-type">Type of Business *</label>
+            <select class="form-select" id="q-type" required>
+              <option value="" disabled selected>Select your business type…</option>
+              <option>Coffee Shop / Café</option>
+              <option>Restaurant / Carinderia / Food Stall</option>
+              <option>Salon / Barbershop / Beauty</option>
+              <option>Sari-Sari Store / Retail</option>
+              <option>Freelancer / Personal Portfolio</option>
+              <option>Service Business (Repair, Laundry, etc.)</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="q-message">Tell me about your business</label>
+            <textarea class="form-textarea" id="q-message" placeholder="What does your business do? What do you want your website to show? Any questions?"></textarea>
+          </div>
+          <button class="form-submit" type="submit" id="q-submit">Send Inquiry →</button>
+          <p class="form-status" id="q-status"></p>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="footer-brand">Misa<span>Digital</span></div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 Jerome Misa · Misa Digital · Calamba City, Laguna</div>
+  </footer>
+
+  <script>
+    /* scroll nav */
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), {passive:true});
+
+    /* reveal */
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal,.reveal-l,.reveal-s').forEach((el,i) => {
+      el.style.transitionDelay = (i % 5 * 0.07) + 's';
+      obs.observe(el);
+    });
+
+    /* FAQ accordion */
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if(!isOpen) item.classList.add('open');
+      });
+    });
+
+    /* contact form */
+    const form = document.getElementById('inquiry-form');
+    const statusEl = document.getElementById('q-status');
+    const submitBtn = document.getElementById('q-submit');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const name    = document.getElementById('q-name').value.trim();
+      const phone   = document.getElementById('q-phone').value.trim();
+      const biz     = document.getElementById('q-business').value.trim();
+      const type    = document.getElementById('q-type').value;
+      const msg     = document.getElementById('q-message').value.trim();
+      if(!name || !phone || !type){ setStatus('⚠ Please fill in all required fields.','error'); return; }
+      submitBtn.disabled = true; submitBtn.textContent = 'Opening mail client…';
+      const body = encodeURIComponent(
+        `Hi Jerome,\n\nI'm interested in getting a website for my business.\n\nName: ${name}\nPhone: ${phone}\nBusiness: ${biz || 'N/A'}\nType: ${type}\n\n${msg ? 'Message:\n'+msg : ''}\n\nLooking forward to hearing from you!`
+      );
+      const sub = encodeURIComponent(`Website Inquiry from ${name}${biz ? ' — '+biz : ''}`);
+      setTimeout(() => {
+        window.location.href = `mailto:jeromemisa2020@gmail.com?subject=${sub}&body=${body}`;
+        setStatus('✓ Mail client opened! I\'ll get back to you within 24 hours.','success');
+        form.reset(); submitBtn.disabled=false; submitBtn.textContent='Send Inquiry →';
+      }, 500);
+    });
+    function setStatus(m,t){ statusEl.textContent=m; statusEl.className='form-status '+t; }
+  </script>
+</body>
+</html>
