@@ -56,20 +56,15 @@
     nav.scrolled{border-color:var(--border);background:rgba(7,7,15,0.94);}
 
     .nav-brand{
-      display:flex;align-items:center;gap:0.6rem;
+      display:flex;align-items:center;gap:0;
+      /* logo fills exactly — no extra spacing */
       font-family:'Space Mono',monospace;
       font-size:1.05rem;font-weight:700;
       color:var(--text);letter-spacing:0.02em;
     }
-    .nav-brand-mark{
-      width:28px;height:28px;
-      background:var(--accent);
-      display:flex;align-items:center;justify-content:center;
-      flex-shrink:0;
-    }
-    .nav-brand-mark svg{width:16px;height:16px;}
-    .nav-brand-name{color:var(--text);}
-    .nav-brand-name span{color:var(--accent);}
+    .nav-logo-svg{width:72px;height:36px;flex-shrink:0;overflow:hidden;display:block;box-shadow:0 0 0 rgba(232,255,71,0);animation:logoGlowPulse 3.5s ease-in-out infinite alternate;border-radius:4px;}
+    @keyframes logoGlowPulse{from{box-shadow:0 0 6px rgba(232,255,71,0.22);}to{box-shadow:0 0 20px rgba(232,255,71,0.55);}}
+    .nav-brand:hover .nav-logo-svg{transform:scale(1.04);transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1);}
 
     .nav-links{display:flex;align-items:center;gap:2rem;}
     .nav-links a{
@@ -113,9 +108,14 @@
 
     /* ── HERO ── */
     .hero{
+      min-height:100svh;
       min-height:100vh;
       display:flex;flex-direction:column;justify-content:center;align-items:center;
-      text-align:center;padding:8rem 2rem 5rem;
+      text-align:center;
+      padding-top:calc(64px + 4rem);
+      padding-bottom:4rem;
+      padding-left:2rem;
+      padding-right:2rem;
       position:relative;z-index:1;overflow:hidden;
     }
     .hero-blob{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;animation:blobFloat 9s ease-in-out infinite alternate;}
@@ -138,7 +138,7 @@
 
     .hero-title{
       font-family:'Syne',sans-serif;
-      font-size:clamp(3rem,7.5vw,7.5rem);
+      font-size:clamp(2.6rem,6.5vw,6.5rem);
       font-weight:800;line-height:0.93;letter-spacing:-0.04em;
       max-width:920px;margin-bottom:1.8rem;
       animation:fadeUp 0.8s 0.25s ease both;
@@ -148,7 +148,7 @@
 
     .hero-desc{
       font-size:1.05rem;font-weight:300;line-height:1.85;
-      color:var(--muted);max-width:560px;margin-bottom:2.8rem;
+      color:var(--muted);max-width:560px;margin-bottom:2rem;
       animation:fadeUp 0.8s 0.42s ease both;
     }
     .hero-desc strong{color:var(--text);font-weight:500;}
@@ -178,8 +178,8 @@
 
     /* ── HERO STATS ── */
     .hero-stats{
-      display:flex;gap:3rem;flex-wrap:wrap;justify-content:center;
-      margin-top:4rem;padding-top:2.5rem;
+      display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center;
+      margin-top:2.8rem;padding-top:2rem;
       border-top:1px solid var(--border);
       animation:fadeUp 0.8s 0.72s ease both;
     }
@@ -187,11 +187,7 @@
     .stat-num{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--accent);line-height:1;}
     .stat-label{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-top:0.22rem;}
 
-    /* scroll cue */
-    .scroll-cue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.4rem;opacity:0;animation:fadeIn 1s 1.5s ease forwards;z-index:2;}
-    .scroll-cue span{font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted2);}
-    .scroll-line{width:1px;height:34px;background:linear-gradient(to bottom,var(--muted2),transparent);animation:scrollLineAnim 2.2s ease-in-out infinite;}
-    @keyframes scrollLineAnim{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+
 
     /* ── SHARED SECTION ── */
     .section{padding:6rem 2.5rem;max-width:1200px;margin:0 auto;position:relative;z-index:1;}
@@ -419,12 +415,22 @@
 
 <!-- ══ NAV ══ -->
 <nav id="main-nav">
-  <a href="#" class="nav-brand">
-    <div class="nav-brand-mark">
-      <!-- J monogram -->
-      <svg viewBox="0 0 16 16" fill="none"><text x="2" y="13" font-family="Space Mono,monospace" font-size="11" font-weight="700" fill="#07070f">J</text></svg>
-    </div>
-    <div class="nav-brand-name">JC<span>MD</span></div>
+  <a href="#" class="nav-brand" aria-label="JCMD Home">
+    <!-- Logo: stacked JCM with D accent bar — Jerome Christian Misa · Digital -->
+    <svg class="nav-logo-svg" viewBox="0 0 72 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Background pill -->
+      <rect width="72" height="36" rx="4" fill="#e8ff47"/>
+      <!-- Thin accent bar on left -->
+      <rect width="4" height="36" rx="4" fill="#b8cc1a"/>
+      <!-- D accent line — bottom right, represents "Digital" -->
+      <rect x="8" y="30" width="56" height="2" rx="1" fill="rgba(0,0,0,0.18)"/>
+      <!-- JCM lettering — fitted, tight tracking -->
+      <text x="8" y="24" font-family="Space Mono, monospace" font-size="15" font-weight="700" fill="#07070f" letter-spacing="-0.5">JCM</text>
+      <!-- D sub-label — small, right-aligned, represents Digital -->
+      <text x="50" y="16" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="rgba(7,7,15,0.45)" letter-spacing="1">D</text>
+      <!-- Corner accent mark top-right -->
+      <polyline points="62,3 69,3 69,10" stroke="rgba(7,7,15,0.25)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -478,12 +484,11 @@
 
   <div class="hero-stats">
     <div class="stat"><div class="stat-num">3</div><div class="stat-label">Sample Sites</div></div>
-    <div class="stat"><div class="stat-num">₱3K</div><div class="stat-label">Starting Price</div></div>
+    <div class="stat"><div class="stat-num">Free</div><div class="stat-label">Initial Quote</div></div>
     <div class="stat"><div class="stat-num">7</div><div class="stat-label">Days to Deliver</div></div>
     <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Custom Built</div></div>
   </div>
-
-  <div class="scroll-cue"><span>Scroll</span><div class="scroll-line"></div></div>
+</div>
 </section>
 
 <div class="divider"></div>
@@ -648,7 +653,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
       </div>
       <div class="service-name">Restaurant & Café Sites</div>
-      <div class="service-desc">Menu display, opening hours, location, ambiance gallery, and a contact section. Built using HTML, CSS, JavaScript, and Google Fonts — looks great on any device.</div>
+      <div class="service-desc">Menu display, opening hours, location, gallery, and a contact section. A clean, welcoming site that gives customers everything they need to visit or order from you.</div>
     </div>
 
     <div class="service-card reveal-s">
@@ -656,7 +661,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
       </div>
       <div class="service-name">Salon & Beauty Sites</div>
-      <div class="service-desc">Services list and pricing, team profiles, testimonials, and a booking call-to-action. Styled with Bootstrap or custom CSS depending on the look you need.</div>
+      <div class="service-desc">Services list, pricing, team profiles, client testimonials, and a booking call-to-action. Designed to build trust and bring new clients through your door.</div>
     </div>
 
     <div class="service-card reveal-s">
@@ -664,7 +669,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       </div>
       <div class="service-name">Retail & Sari-Sari Store</div>
-      <div class="service-desc">Product showcase, store hours, location, and social media links. Uses clean CSS layouts and Font Awesome icons to keep things clear and scannable.</div>
+      <div class="service-desc">Product showcase, store hours, location, and social media links. Straightforward and easy to read — so customers know exactly what you carry and where to find you.</div>
     </div>
 
     <div class="service-card reveal-s">
@@ -672,7 +677,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
       </div>
       <div class="service-name">Freelancer / Personal Portfolio</div>
-      <div class="service-desc">Skills section, past work, about me, and a working contact form. Built the same way my own portfolio is — using Syne and Space Mono fonts with scroll animations.</div>
+      <div class="service-desc">Skills, past work, about you, and a working contact form. A professional online presence that helps you stand out and get noticed by potential clients or employers.</div>
     </div>
 
     <div class="service-card reveal-s">
@@ -680,7 +685,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
       </div>
       <div class="service-name">Service Business Sites</div>
-      <div class="service-desc">For repair shops, laundry services, car wash, and similar businesses. Straightforward layout focused on your services, pricing, and how to reach you.</div>
+      <div class="service-desc">For repair shops, laundry services, car wash, and similar businesses. A clear, direct site focused on what you offer, how much it costs, and how to reach you.</div>
     </div>
 
     <div class="service-card reveal-s">
@@ -688,112 +693,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
       </div>
       <div class="service-name">Domain Setup & Deployment</div>
-      <div class="service-desc">I connect your custom domain to your live site via GitHub Pages or Netlify. Domain registration is paid by you directly to a registrar — around ₱800–₱1,200/year.</div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══ TOOLS / STACK ══ -->
-<section class="section">
-  <p class="section-label reveal">Tools & Stack</p>
-  <h2 class="section-title reveal">What I use to build your site</h2>
-  <p class="section-sub reveal">
-    I use a combination of reliable industry-standard tools and quality free resources to build
-    fast, well-designed websites efficiently.
-  </p>
-
-  <div class="tools-grid">
-
-    <div class="tool-card reveal">
-      <div class="tool-logo">
-        <svg viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z" fill="#E44D26"/></svg>
-      </div>
-      <div class="tool-name">HTML5</div>
-    </div>
-
-    <div class="tool-card reveal">
-      <div class="tool-logo">
-        <svg viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z" fill="#1572B6"/></svg>
-      </div>
-      <div class="tool-name">CSS3</div>
-    </div>
-
-    <div class="tool-card reveal">
-      <div class="tool-logo">
-        <svg viewBox="0 0 24 24"><rect width="24" height="24" fill="#F7DF1E"/><path d="M6.235 17.932c.313.53.728.92 1.455.92.727 0 1.19-.363 1.19-.866 0-.601-.476-.815-1.276-1.164l-.439-.189c-1.264-.538-2.104-1.214-2.104-2.64 0-1.314 1.002-2.314 2.566-2.314 1.114 0 1.915.388 2.491 1.402l-1.364.875c-.301-.538-.626-.751-1.127-.751-.513 0-.839.325-.839.751 0 .526.325.739 1.077 1.064l.44.188c1.49.638 2.329 1.29 2.329 2.754 0 1.578-1.239 2.44-2.905 2.44-1.626 0-2.678-.775-3.192-1.79l1.498-.88zm7.41.138c.363.65.688.9 1.19.9.5 0 .788-.2.788-.965v-5.21h1.726v5.235c0 1.59-.938 2.315-2.303 2.315-1.239 0-1.953-.64-2.317-1.415l.915-.86z" fill="#000"/></svg>
-      </div>
-      <div class="tool-name">JavaScript</div>
-    </div>
-
-    <div class="tool-card reveal">
-      <div class="tool-logo">
-        <svg viewBox="0 0 24 24"><path d="M11.77 11.24H9.956V8.202h2.174c1.174 0 1.809.574 1.809 1.496 0 .967-.68 1.542-2.169 1.542zm.324 1.206H9.956v3.348h2.231c1.467 0 2.137-.6 2.137-1.694 0-1.099-.738-1.654-2.23-1.654zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-5.34-2.716c0-1.648-1.262-2.666-3.312-2.666H8.464V16.78h4.658c2.393 0 3.786-1.022 3.786-2.83 0-1.306-.774-2.271-2.001-2.588v-.043c.948-.423 1.524-1.334 1.524-2.433l-.771-.602z" fill="#7952B3"/></svg>
-      </div>
-      <div class="tool-name">Bootstrap</div>
-    </div>
-
-    <div class="tool-card reveal">
-      <div class="tool-logo">
-        <svg viewBox="0 0 24 24"><path d="M23.546 10.93L13.067.452a1.55 1.55 0 0 0-2.188 0L8.708 2.627l2.76 2.76a1.838 1.838 0 0 1 2.327 2.341l2.658 2.66a1.838 1.838 0 1 1-1.101 1.102l-2.48-2.48v6.511a1.84 1.84 0 1 1-1.512-.021V9.367a1.839 1.839 0 0 1-.996-2.41L7.614 4.196.45 11.36a1.55 1.55 0 0 0 0 2.187l10.48 10.478a1.55 1.55 0 0 0 2.186 0l10.43-10.43a1.548 1.548 0 0 0 0-2.184" fill="#F05032"/></svg>
-      </div>
-      <div class="tool-name">Git</div>
-    </div>
-
-    <div class="tool-card reveal">
-      <div class="tool-logo">
-        <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" fill="#eeeeff"/></svg>
-      </div>
-      <div class="tool-name">GitHub</div>
-    </div>
-
-    <div class="tool-card reveal">
-      <div class="tool-logo">
-        <svg viewBox="0 0 24 24"><path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .326 8.74L3.899 12 .326 15.26a1 1 0 0 0 .001 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zm-5.146 14.861L10.826 12l7.178-5.448v10.896z" fill="#007ACC"/></svg>
-      </div>
-      <div class="tool-name">VS Code</div>
-    </div>
-
-    <div class="tool-card reveal">
-      <div class="tool-logo">
-        <!-- Netlify - teal N -->
-        <svg viewBox="0 0 24 24"><path d="M16.934 8.519a1.044 1.044 0 0 1 .303.23l2.349-1.045-2.192-2.171-.491 2.954zM12.06 6.546a1.305 1.305 0 0 1 .209.574l3.497 1.057 .55-3.31-2.553-.947-1.703 2.626zm-2.285 7.006a1.3 1.3 0 0 1-.874-.234L6.654 15.16l2.375 2.351.931-3.979-.185.02zm10.507-2.971L17.265 8.77l-.407 2.574 2.414 1.017v-1.786zm-8.49-5.887l-3.768 1.321 1.28 1.28 2.603-1.8-.115-.801zm-5.507 1.494L4.48 7.5l-.002.002 1.948 1.948 1.17-1.17-1.311-1.092zm8.332 10.466a1.3 1.3 0 0 1-.323-.08l-1.956 2.987 3.306-1.066-.027-.038-1.0-1.803zm3.756-1.456l-2.88-1.213-1.064 1.63 1.82 3.305 2.124-3.722zM8.394 12.7l-.91 3.917 1.845-1.495-.935-2.422zm5.524-3.374a1.304 1.304 0 0 1 .606.776l2.085.892.357-2.15-3.048-.92v1.402zm-1.318-.604v-1.51L10.43 9.017l1.39 1.39c.243-.4.588-.702.78-.685zm-3.813 3.79l.944 2.442 1.994-1.59-1.122-1.12-1.816.268zm4.626-1.084a.297.297 0 0 0 .023-.1L12 9.892l-1.932 1.54 1.978 1.978 1.366-1.083a.282.282 0 0 0 .024-.1 .3.3 0 0 0-.017-.1zm-2.067 2.58l-2.115 1.685 2.8.997.378-.498-1.063-2.184zm8.05-8.463L17.478 2.96 16.4 8.965l2.996-1.335v-.085zM5.004 15.469l-1.39 4.735 4.093-1.424-2.703-3.311zm-.5-7.24L2.186 9.887l3.02 2.974.54-3.647-1.243-.985zm10.862 4.56l-2.367-.998-.347.457 1.116 2.295 1.598-1.754zm-9.347 8.577l5.001 2.188-1.804-3.273-3.197 1.085zm5.42 2.222l5.158-1.223-1.603-2.898-3.554 4.121zm3.23-14.604l-3.396-1.028v1.6l2.27 1.073 1.126-1.645zm-4.72-.943l-2.52 1.745 1.138 1.135 1.382-2.88zm-3.384 8.034l-1.18 2.187 1.857 2.275.688-4.204-1.365-.258zm9.665-3.034l-2.468-1.038-.366 2.198 1.993.838.841-1.998z" fill="#00AD9F"/></svg>
-      </div>
-      <div class="tool-name">Netlify</div>
-    </div>
-
-    <div class="tool-card reveal">
-      <div class="tool-logo">
-        <!-- Google Fonts G -->
-        <svg viewBox="0 0 24 24"><path d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z" fill="#4285F4"/></svg>
-      </div>
-      <div class="tool-name">Google Fonts</div>
-    </div>
-
-    <div class="tool-card reveal">
-      <div class="tool-logo">
-        <!-- Font Awesome F -->
-        <svg viewBox="0 0 24 24"><path d="M7.5 0C5.76 0 4.36.31 3.15.92 1.94 1.54 1 2.35.58 3.5.19 4.65 0 5.87 0 7.5c0 1.69.17 2.9.5 3.96.34 1.06 1.09 1.93 2.12 2.54a5.72 5.72 0 0 0 3.11.7V17.2H3.5v2.3h2.23V22c0 1.1.9 2 2 2h4.54c1.1 0 2-.9 2-2v-2.5H16.5v-2.3h-2.23v-3.5c1.28-.1 2.33-.38 3.11-.7 1.03-.61 1.78-1.48 2.12-2.54.33-1.06.5-2.27.5-3.96 0-1.63-.19-2.85-.58-4C18.99 2.35 18.06 1.54 16.85.92 15.64.31 14.24 0 12.5 0H7.5z" fill="#528DD7"/></svg>
-      </div>
-      <div class="tool-name">Font Awesome</div>
-    </div>
-
-    <div class="tool-card reveal">
-      <div class="tool-logo">
-        <!-- GitHub Pages -->
-        <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" fill="#eeeeff" opacity="0.6"/></svg>
-      </div>
-      <div class="tool-name">GH Pages</div>
-    </div>
-
-    <div class="tool-card reveal">
-      <div class="tool-logo">
-        <!-- Figma -->
-        <svg viewBox="0 0 24 24"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.354-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.019 3.019 3.019h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.026-4.49 4.515-4.49c2.489 0 4.515 2.014 4.515 4.49S10.661 24 8.172 24zm0-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.019 3.019 3.019 3.019-1.355 3.019-3.019-1.354-3.019-3.019-3.019zm7.703.014h-.005c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.005c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm0-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.019 3.019 3.019h.005c1.665 0 3.019-1.355 3.019-3.019s-1.354-3.019-3.024-3.019z" fill="#F24E1E"/></svg>
-      </div>
-      <div class="tool-name">Figma</div>
+      <div class="service-desc">Want a proper web address like <em>yourbusiness.com</em>? I handle the full setup and make sure your site goes live on a domain that customers can easily remember.</div>
     </div>
 
   </div>
@@ -990,24 +890,36 @@
 
     <div class="contact-form-panel reveal">
       <p class="form-title">Send an Inquiry</p>
-      <form id="inquiry-form" novalidate>
+      <form id="inquiry-form" action="YOUR_FORMSPREE_ENDPOINT" method="POST" novalidate>
+        <!--
+          SETUP: Go to https://formspree.io, sign up with jeromemisa2020@gmail.com,
+          create a new form, and paste your endpoint URL above in place of YOUR_FORMSPREE_ENDPOINT.
+          All inquiries will then arrive directly in your Gmail inbox.
+        -->
+        <input type="hidden" name="_subject" value="New JCMD Website Inquiry"/>
+        <input type="hidden" name="_replyto" id="reply-email"/>
+
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="q-name">Your Name *</label>
-            <input class="form-input" type="text" id="q-name" placeholder="Juan dela Cruz" required/>
+            <input class="form-input" type="text" id="q-name" name="name" placeholder="Juan dela Cruz" required/>
           </div>
           <div class="form-group">
             <label class="form-label" for="q-phone">Phone / Viber *</label>
-            <input class="form-input" type="tel" id="q-phone" placeholder="09XX XXX XXXX" required/>
+            <input class="form-input" type="tel" id="q-phone" name="phone" placeholder="09XX XXX XXXX" required/>
           </div>
         </div>
         <div class="form-group">
+          <label class="form-label" for="q-email">Email Address *</label>
+          <input class="form-input" type="email" id="q-email" name="email" placeholder="you@example.com" required/>
+        </div>
+        <div class="form-group">
           <label class="form-label" for="q-business">Business Name</label>
-          <input class="form-input" type="text" id="q-business" placeholder="e.g. Aling Rosa's Taho"/>
+          <input class="form-input" type="text" id="q-business" name="business" placeholder="e.g. Aling Rosa's Taho"/>
         </div>
         <div class="form-group">
           <label class="form-label" for="q-type">Type of Business *</label>
-          <select class="form-select" id="q-type" required>
+          <select class="form-select" id="q-type" name="business_type" required>
             <option value="" disabled selected>Select your business type…</option>
             <option>Coffee Shop / Café</option>
             <option>Restaurant / Carinderia / Food Stall</option>
@@ -1020,7 +932,7 @@
         </div>
         <div class="form-group">
           <label class="form-label" for="q-message">Tell me about your business</label>
-          <textarea class="form-textarea" id="q-message" placeholder="What do you sell or offer? What do you want your website to show? Any questions?"></textarea>
+          <textarea class="form-textarea" id="q-message" name="message" placeholder="What do you sell or offer? What do you want your website to show? Any questions?"></textarea>
         </div>
         <button class="form-submit" type="submit" id="q-submit">Send Inquiry →</button>
         <p class="form-status" id="q-status"></p>
@@ -1033,10 +945,13 @@
 <!-- ══ FOOTER ══ -->
 <footer>
   <div class="footer-brand">
-    <div class="footer-brand-mark">
-      <svg viewBox="0 0 12 12" fill="none"><text x="1" y="10" font-family="Space Mono,monospace" font-size="9" font-weight="700" fill="#07070f">J</text></svg>
-    </div>
-    JC<span>MD</span>
+    <svg style="width:52px;height:26px;overflow:hidden;border-radius:3px;flex-shrink:0;" viewBox="0 0 72 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="72" height="36" rx="4" fill="#e8ff47"/>
+      <rect width="4" height="36" rx="4" fill="#b8cc1a"/>
+      <rect x="8" y="30" width="56" height="2" rx="1" fill="rgba(0,0,0,0.18)"/>
+      <text x="8" y="24" font-family="Space Mono, monospace" font-size="15" font-weight="700" fill="#07070f" letter-spacing="-0.5">JCM</text>
+      <text x="50" y="16" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="rgba(7,7,15,0.45)" letter-spacing="1">D</text>
+    </svg>
   </div>
   <div class="footer-links">
     <a href="#about">About</a>
@@ -1101,27 +1016,70 @@
     });
   });
 
-  /* form */
-  const form = document.getElementById('inquiry-form');
-  const statusEl = document.getElementById('q-status');
+  /* form — Formspree real submission */
+  const form      = document.getElementById('inquiry-form');
+  const statusEl  = document.getElementById('q-status');
   const submitBtn = document.getElementById('q-submit');
-  form.addEventListener('submit', e => {
+
+  form.addEventListener('submit', async e => {
     e.preventDefault();
+
     const name  = document.getElementById('q-name').value.trim();
     const phone = document.getElementById('q-phone').value.trim();
-    const biz   = document.getElementById('q-business').value.trim();
+    const email = document.getElementById('q-email').value.trim();
     const type  = document.getElementById('q-type').value;
-    const msg   = document.getElementById('q-message').value.trim();
-    if(!name || !phone || !type){ setStatus('Please fill in all required fields.','error'); return; }
-    submitBtn.disabled = true; submitBtn.textContent = 'Opening mail client…';
-    const body = encodeURIComponent(`Hi Jerome,\n\nI'd like to inquire about getting a website.\n\nName: ${name}\nPhone: ${phone}\nBusiness: ${biz||'N/A'}\nType: ${type}\n\n${msg?'Message:\n'+msg:''}\n\nLooking forward to hearing from you!`);
-    const sub  = encodeURIComponent(`Website Inquiry from ${name}${biz?' — '+biz:''}`);
-    setTimeout(() => {
+
+    if(!name || !phone || !email || !type){
+      setStatus('Please fill in all required fields.', 'error'); return;
+    }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      setStatus('Please enter a valid email address.', 'error'); return;
+    }
+
+    // mirror email to _replyto hidden field so Formspree sets Reply-To correctly
+    document.getElementById('reply-email').value = email;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    const formAction = form.getAttribute('action');
+
+    // If still using placeholder, fall back to mailto gracefully
+    if(!formAction || formAction === 'YOUR_FORMSPREE_ENDPOINT'){
+      const biz  = document.getElementById('q-business').value.trim();
+      const msg  = document.getElementById('q-message').value.trim();
+      const body = encodeURIComponent(`Hi Jerome,\n\nI'd like to inquire about a website.\n\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nBusiness: ${biz||'N/A'}\nType: ${type}\n\n${msg?'Message:\n'+msg:''}\n\nLooking forward to hearing from you!`);
+      const sub  = encodeURIComponent(`Website Inquiry from ${name}${biz?' — '+biz:''}`);
       window.location.href = `mailto:jeromemisa2020@gmail.com?subject=${sub}&body=${body}`;
-      setStatus('Mail client opened. I\'ll respond within 24 hours.','success');
+      setStatus('Mail client opened. I\'ll get back to you within 24 hours.', 'success');
       form.reset(); submitBtn.disabled=false; submitBtn.textContent='Send Inquiry →';
-    }, 500);
+      return;
+    }
+
+    try {
+      const data = new FormData(form);
+      const res  = await fetch(formAction, {
+        method:'POST',
+        body: data,
+        headers:{ 'Accept':'application/json' }
+      });
+
+      if(res.ok){
+        setStatus('Message sent! I\'ll get back to you within 24 hours.', 'success');
+        form.reset();
+      } else {
+        const json = await res.json().catch(()=>({}));
+        const msg  = json.errors ? json.errors.map(e=>e.message).join(', ') : 'Something went wrong. Please try again or message me on Facebook.';
+        setStatus(msg, 'error');
+      }
+    } catch(err){
+      setStatus('Could not send. Please try again or message me on Facebook.', 'error');
+    }
+
+    submitBtn.disabled=false;
+    submitBtn.textContent='Send Inquiry →';
   });
+
   function setStatus(m,t){ statusEl.textContent=m; statusEl.className='form-status '+t; }
 </script>
 </body>
