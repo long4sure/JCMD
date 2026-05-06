@@ -479,6 +479,47 @@
       .section-wrap{padding:4rem 1.2rem;}
       .contact-wrap{grid-template-columns:1fr;padding:4rem 1.2rem;}
       footer{flex-direction:column;text-align:center;padding:2rem 1.2rem;}
+      .products-grid{grid-template-columns:1fr 1fr;}
+      .why-grid{grid-template-columns:1fr 1fr;}
+      .needs-list{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));}
+    }
+    @media(max-width:640px){
+      nav{padding:0.7rem 1rem;}
+      .hero-title{font-size:clamp(2.2rem,9vw,3rem);}
+      .hero-cta{flex-direction:column;align-items:stretch;gap:0.7rem;}
+      .hero-cta a{text-align:center;}
+      .btn-orange,.btn-green{display:block;text-align:center;}
+      .hero-notice{font-size:0.7rem;padding:0.4rem 0.8rem;text-align:center;justify-content:center;}
+      .category-strip{padding:0;}
+      .cat-item{min-width:60px;padding:0.8rem 0.5rem;}
+      .cat-name{font-size:0.55rem;}
+      .products-grid{grid-template-columns:1fr 1fr;gap:0.8rem;}
+      .product-card{padding:1.1rem;}
+      .product-name{font-size:0.95rem;}
+      .product-desc{font-size:0.75rem;}
+      .why-grid{grid-template-columns:1fr;}
+      .why-card{padding:1.4rem;}
+      .needs-list{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:0.7rem;}
+      .need-item{padding:0.9rem 0.6rem;}
+      .need-name{font-size:0.72rem;}
+      .promo{padding:2.5rem 1.2rem;}
+      .promo-title{font-size:clamp(1.5rem,6vw,2.2rem);}
+      .promo-sub{font-size:0.85rem;}
+      .info-card{padding:1.2rem;}
+      .section-wrap{padding:3.5rem 1.2rem;}
+      .contact-wrap{padding:3.5rem 1.2rem;}
+      .hours-table td{font-size:0.82rem;padding:0.55rem 0;}
+      footer{flex-direction:column;text-align:center;padding:1.8rem 1rem;}
+      .section-title{font-size:clamp(1.75rem,7vw,2.5rem);}
+      .section-tag{font-size:0.65rem;}
+      /* prevent iOS zoom */
+      .form-input,.form-textarea{font-size:1rem;}
+    }
+    @media(max-width:380px){
+      .hero-title{font-size:1.95rem;}
+      .products-grid{grid-template-columns:1fr;}
+      nav{padding:0.6rem 0.8rem;}
+      .nav-brand{font-size:1.3rem;}
     }
   </style>
 </head>

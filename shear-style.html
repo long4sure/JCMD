@@ -432,10 +432,45 @@
       .hero{grid-template-columns:1fr;}
       .hero-left{padding:5rem 1.5rem 3rem;}
       .hero-left::after{display:none;}
-      .hero-right{padding:2rem 1.5rem;min-height:320px;}
+      .hero-right{padding:2rem 1.5rem;min-height:280px;}
       .section-wrap{padding:4rem 1.5rem;}
       .contact-section{grid-template-columns:1fr;padding:4rem 1.5rem;}
       footer{flex-direction:column;text-align:center;padding:2rem 1.5rem;}
+      .services-grid{grid-template-columns:1fr;}
+      .team-grid{grid-template-columns:1fr 1fr;}
+      .testimonials-grid{grid-template-columns:1fr;}
+    }
+    @media(max-width:640px){
+      nav{padding:0.8rem 1rem;}
+      .nav-links-right a:not(.nav-book){display:none;}
+      .hero-title{font-size:clamp(2.4rem,9vw,3.2rem);}
+      .hero-left{padding:5.5rem 1.2rem 2.5rem;}
+      .hero-cta{flex-direction:column;align-items:stretch;}
+      .hero-cta a{text-align:center;}
+      .btn-rose,.btn-outline{display:block;text-align:center;}
+      .hero-right{min-height:220px;padding:1.5rem 1.2rem;}
+      .hero-review{display:none;}
+      .section-wrap{padding:3.5rem 1.2rem;}
+      .services-grid{grid-template-columns:1fr;gap:1px;}
+      .service-card{padding:1.6rem;}
+      .team-grid{grid-template-columns:1fr 1fr;gap:1.2rem;}
+      .testimonials-grid{grid-template-columns:1fr;}
+      .booking-cta{padding:3rem 1.2rem;}
+      .booking-cta-title{font-size:clamp(1.8rem,7vw,2.8rem);}
+      .booking-phone{font-size:1.5rem;}
+      .contact-section{padding:3.5rem 1.2rem;}
+      .hours-row{font-size:0.8rem;}
+      footer{flex-direction:column;text-align:center;padding:1.8rem 1.2rem;}
+      .services-strip{padding:0;}
+      .service-strip-item{min-width:80px;padding:1.2rem 0.8rem;}
+      .section-title{font-size:clamp(1.75rem,7vw,2.5rem);}
+      /* prevent iOS zoom */
+      .form-input,.form-textarea,.form-select{font-size:1rem;}
+    }
+    @media(max-width:380px){
+      .hero-title{font-size:2rem;}
+      .team-grid{grid-template-columns:1fr;}
+      nav{padding:0.7rem 0.9rem;}
     }
   </style>
 </head>
