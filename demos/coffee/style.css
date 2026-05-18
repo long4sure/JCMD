@@ -1,0 +1,10 @@
+:root { --accent: #92400E; --accent2: #B45309; }
+.login-page { background: linear-gradient(135deg, #FDF6EC 0%, #F5E6D0 100%); }
+.login-card { border-top: 3px solid #92400E; }
+.btn.primary { background: #92400E; border-color: #92400E; }
+.btn.primary:hover { background: #78350F; border-color: #78350F; }
+input:focus { border-color: #92400E; box-shadow: 0 0 0 3px rgba(146,64,14,.1); }
+.login-footer a { color: #92400E; }
+
+input:focus, select:focus { border-color: #92400E; box-shadow: 0 0 0 3px rgba(146,64,14,.1); }
+.nav-item.active { background: rgba(255,255,255,.12); }

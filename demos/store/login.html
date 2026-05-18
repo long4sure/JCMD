@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StoreERP — Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="login-page">
+  <div class="login-box">
+    <div class="login-logo">
+      <div class="logo-icon">🏪</div>
+      <h1>StoreERP</h1>
+      <p>Retail & Sari-sari Store Management</p>
+    </div>
+    <div class="card login-card">
+      <h2 id="form-title">Sign in to your account</h2>
+      <div class="login-error" id="login-error"></div>
+
+      <div id="login-form">
+        <div class="form-group" style="margin-bottom:14px">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="you@example.com">
+        </div>
+        <div class="form-group" style="margin-bottom:20px">
+          <label>Password</label>
+          <input type="password" id="password" placeholder="••••••••">
+        </div>
+        <button class="btn primary" id="login-btn" onclick="handleLogin()" style="width:100%;justify-content:center;padding:10px">Sign in</button>
+      </div>
+
+      <div id="register-form" style="display:none">
+        <div class="form-group" style="margin-bottom:14px">
+          <label>Your name</label>
+          <input type="text" id="reg-name" placeholder="Juan dela Cruz">
+        </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label>Email</label>
+          <input type="email" id="reg-email" placeholder="you@example.com">
+        </div>
+        <div class="form-group" style="margin-bottom:20px">
+          <label>Password</label>
+          <input type="password" id="reg-password" placeholder="Min 6 characters">
+        </div>
+        <button class="btn primary" id="register-btn" onclick="handleRegister()" style="width:100%;justify-content:center;padding:10px">Create account</button>
+      </div>
+
+      <div class="login-footer">
+        <span id="toggle-text">Don't have an account?</span>
+        <a href="#" id="toggle-link" onclick="toggleMode(event)"> Register</a>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:16px">
+      <a href="../../index.html" style="font-size:12px;color:var(--muted);display:inline-flex;align-items:center;gap:4px">
+        <i class="ti ti-arrow-left"></i> Back to home
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="../../js/supabase.js"></script>
+<script src="login.js"></script>
+</body>
+</html>

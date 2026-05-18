@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StoreERP — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div style="font-size:22px;margin-bottom:4px">🏪</div>
+      <div class="brand-name">StoreERP</div>
+      <div class="brand-sub">Retail & Sari-sari Store</div>
+    </div>
+    <nav>
+      <button class="nav-item active" data-page="dashboard" onclick="nav('dashboard')"><i class="ti ti-layout-dashboard"></i> Dashboard</button>
+      <button class="nav-item" data-page="inventory" onclick="nav('inventory')"><i class="ti ti-box"></i> Inventory</button>
+      <button class="nav-item" data-page="purchases" onclick="nav('purchases')"><i class="ti ti-truck"></i> Purchases</button>
+      <button class="nav-item" data-page="expenses" onclick="nav('expenses')"><i class="ti ti-receipt"></i> Expenses</button>
+      <button class="nav-item" data-page="contacts" onclick="nav('contacts')"><i class="ti ti-users"></i> Contacts</button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar" id="user-avatar">U</div>
+        <div>
+          <div class="user-name" id="user-name">Loading…</div>
+          <div class="user-email" id="user-email"></div>
+        </div>
+      </div>
+      <button class="nav-item" onclick="handleLogout()" style="color:rgba(255,255,255,.4)"><i class="ti ti-logout"></i> Sign out</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+    <!-- DASHBOARD -->
+    <div class="page active fade-in" id="page-dashboard">
+      <div class="page-header">
+        <div><div class="page-title">Dashboard</div><div class="page-sub" id="dash-date"></div></div>
+      </div>
+      <div class="metric-grid" id="dash-metrics"></div>
+      <div class="grid-2">
+        <div class="card" style="padding:20px">
+          <div style="font-size:14px;font-weight:600;margin-bottom:16px">Low stock alerts</div>
+          <div id="dash-lowstock"></div>
+        </div>
+        <div class="card" style="padding:20px">
+          <div style="font-size:14px;font-weight:600;margin-bottom:16px">Recent purchases</div>
+          <div id="dash-purchases"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INVENTORY -->
+    <div class="page" id="page-inventory">
+      <div class="page-header">
+        <div><div class="page-title">Inventory</div><div class="page-sub">Products & stock levels</div></div>
+        <button class="btn primary" onclick="openModal('inv-modal')"><i class="ti ti-plus"></i> Add product</button>
+      </div>
+      <div class="card" style="padding:16px 20px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <div class="search-wrap" style="margin:0">
+            <i class="ti ti-search text-muted"></i>
+            <input placeholder="Search products…" id="inv-search" oninput="renderInventory()">
+          </div>
+          <div id="inv-total" style="font-size:13px;color:var(--muted)"></div>
+        </div>
+        <table><thead><tr><th>Product</th><th>Category</th><th>Stock</th><th>Unit</th><th>Min</th><th>Buy price</th><th>Sell price</th><th>Status</th><th></th></tr></thead>
+        <tbody id="inv-table"></tbody></table>
+      </div>
+    </div>
+
+    <!-- PURCHASES / PO -->
+    <div class="page" id="page-purchases">
+      <div class="page-header">
+        <div><div class="page-title">Purchase Orders</div><div class="page-sub">Track restocking from suppliers</div></div>
+        <button class="btn primary" onclick="openModal('po-modal')"><i class="ti ti-plus"></i> New purchase</button>
+      </div>
+      <div class="card" style="padding:16px 20px">
+        <div class="search-wrap">
+          <i class="ti ti-search text-muted"></i>
+          <input placeholder="Search purchases…" id="po-search" oninput="renderPurchases()">
+        </div>
+        <table><thead><tr><th>Date</th><th>Product</th><th>Supplier</th><th>Qty</th><th>Unit cost</th><th>Total</th><th>Status</th><th></th></tr></thead>
+        <tbody id="po-table"></tbody></table>
+      </div>
+    </div>
+
+    <!-- EXPENSES -->
+    <div class="page" id="page-expenses">
+      <div class="page-header">
+        <div><div class="page-title">Expenses</div><div class="page-sub">Operating costs & bills</div></div>
+        <button class="btn primary" onclick="openModal('exp-modal')"><i class="ti ti-plus"></i> Add expense</button>
+      </div>
+      <div class="card" style="padding:16px 20px">
+        <div class="search-wrap">
+          <i class="ti ti-search text-muted"></i>
+          <input placeholder="Search expenses…" id="exp-search" oninput="renderExpenses()">
+        </div>
+        <table><thead><tr><th>Date</th><th>Description</th><th>Category</th><th>Amount</th><th>Status</th><th></th></tr></thead>
+        <tbody id="exp-table"></tbody></table>
+      </div>
+    </div>
+
+    <!-- CONTACTS -->
+    <div class="page" id="page-contacts">
+      <div class="page-header">
+        <div><div class="page-title">Contacts</div><div class="page-sub">Suppliers & customers</div></div>
+        <button class="btn primary" onclick="openModal('con-modal')"><i class="ti ti-plus"></i> Add contact</button>
+      </div>
+      <div class="card" style="padding:16px 20px">
+        <div class="search-wrap">
+          <i class="ti ti-search text-muted"></i>
+          <input placeholder="Search contacts…" id="con-search" oninput="renderContacts()">
+        </div>
+        <table><thead><tr><th>Name</th><th>Type</th><th>Category</th><th>Email</th><th>Phone</th><th></th></tr></thead>
+        <tbody id="con-table"></tbody></table>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="inv-modal">
+  <div class="modal">
+    <div class="modal-header"><span class="modal-title" id="inv-modal-title">Add product</span><button class="btn sm ghost" onclick="closeModal('inv-modal')"><i class="ti ti-x"></i></button></div>
+    <div class="form-grid">
+      <div class="form-group full"><label>Product name</label><input id="inv-name" placeholder="e.g. Lucky Me Pancit Canton"></div>
+      <div class="form-group"><label>Category</label>
+        <select id="inv-cat"><option>Food & Snacks</option><option>Beverages</option><option>Personal Care</option><option>Household</option><option>School Supplies</option><option>Clothing</option><option>Electronics</option><option>Other</option></select>
+      </div>
+      <div class="form-group"><label>Unit</label>
+        <select id="inv-unit"><option>pcs</option><option>pack</option><option>box</option><option>kg</option><option>L</option><option>dozen</option><option>sack</option></select>
+      </div>
+      <div class="form-group"><label>Current stock</label><input type="number" id="inv-stock" min="0" placeholder="0"></div>
+      <div class="form-group"><label>Min stock</label><input type="number" id="inv-min" min="0" placeholder="0"></div>
+      <div class="form-group"><label>Buy price (₱)</label><input type="number" id="inv-buy" min="0" step="0.01" placeholder="0.00"></div>
+      <div class="form-group"><label>Sell price (₱)</label><input type="number" id="inv-sell" min="0" step="0.01" placeholder="0.00"></div>
+      <div class="form-group"><label>Supplier</label><input id="inv-supplier" placeholder="Supplier name"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('inv-modal')">Cancel</button>
+      <button class="btn primary" id="inv-save-btn" onclick="saveInventory()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="po-modal">
+  <div class="modal">
+    <div class="modal-header"><span class="modal-title" id="po-modal-title">New purchase order</span><button class="btn sm ghost" onclick="closeModal('po-modal')"><i class="ti ti-x"></i></button></div>
+    <div class="form-grid">
+      <div class="form-group full"><label>Product</label><input id="po-product" placeholder="Product name"></div>
+      <div class="form-group"><label>Date</label><input type="date" id="po-date"></div>
+      <div class="form-group"><label>Supplier</label><input id="po-supplier" placeholder="Supplier name"></div>
+      <div class="form-group"><label>Quantity</label><input type="number" id="po-qty" min="1" placeholder="0"></div>
+      <div class="form-group"><label>Unit cost (₱)</label><input type="number" id="po-cost" min="0" step="0.01" placeholder="0.00"></div>
+      <div class="form-group"><label>Status</label><select id="po-status"><option>Received</option><option>Ordered</option><option>Pending</option><option>Cancelled</option></select></div>
+      <div class="form-group full"><label>Notes</label><input id="po-notes" placeholder="Any notes…"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('po-modal')">Cancel</button>
+      <button class="btn primary" id="po-save-btn" onclick="savePurchase()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="exp-modal">
+  <div class="modal">
+    <div class="modal-header"><span class="modal-title" id="exp-modal-title">Add expense</span><button class="btn sm ghost" onclick="closeModal('exp-modal')"><i class="ti ti-x"></i></button></div>
+    <div class="form-grid">
+      <div class="form-group full"><label>Description</label><input id="exp-desc" placeholder="e.g. Electricity bill"></div>
+      <div class="form-group"><label>Date</label><input type="date" id="exp-date"></div>
+      <div class="form-group"><label>Amount (₱)</label><input type="number" id="exp-amount" min="0" step="0.01" placeholder="0.00"></div>
+      <div class="form-group"><label>Category</label>
+        <select id="exp-cat"><option>Utilities</option><option>Rent</option><option>Salaries</option><option>Transport</option><option>Marketing</option><option>Equipment</option><option>Other</option></select>
+      </div>
+      <div class="form-group"><label>Paid to</label><input id="exp-payee" placeholder="Name or company"></div>
+      <div class="form-group"><label>Status</label><select id="exp-status"><option>Paid</option><option>Pending</option><option>Overdue</option></select></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('exp-modal')">Cancel</button>
+      <button class="btn primary" id="exp-save-btn" onclick="saveExpense()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="con-modal">
+  <div class="modal">
+    <div class="modal-header"><span class="modal-title" id="con-modal-title">Add contact</span><button class="btn sm ghost" onclick="closeModal('con-modal')"><i class="ti ti-x"></i></button></div>
+    <div class="form-grid">
+      <div class="form-group full"><label>Name</label><input id="con-name" placeholder="Name or business"></div>
+      <div class="form-group"><label>Type</label><select id="con-type"><option>Supplier</option><option>Customer</option></select></div>
+      <div class="form-group"><label>Category</label><input id="con-cat" placeholder="e.g. Wholesale supplier"></div>
+      <div class="form-group"><label>Email</label><input type="email" id="con-email" placeholder="email@example.com"></div>
+      <div class="form-group"><label>Phone</label><input id="con-phone" placeholder="+63 9xx xxx xxxx"></div>
+      <div class="form-group full"><label>Notes</label><input id="con-notes" placeholder="Credit terms, MOQ, etc."></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('con-modal')">Cancel</button>
+      <button class="btn primary" id="con-save-btn" onclick="saveContact()">Save</button>
+    </div>
+  </div>
+</div>
+
+<script src="../../js/supabase.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

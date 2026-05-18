@@ -1,630 +1,759 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JCMD — Affordable Websites for Small Businesses</title>
-  <meta name="description" content="JCMD builds clean, professional, and affordable websites for small local businesses in Calamba and nearby areas. Run by Jerome Misa, aspiring full stack web developer."/>
-  <meta name="theme-color" content="#07070f"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JCMD — Custom Software, Free ERP, and High-Speed Websites in Calamba</title>
+  <meta name="description" content="JCMD builds custom offline software, free simulated ERP systems, and modern, high-speed websites for small businesses in Calamba City, Laguna. 100% free and open-source.">
+  <meta name="keywords" content="JCMD, custom software Laguna, free ERP Calamba, offline POS system Philippines, web developer Calamba City, local business web design, open source software Laguna, Library Management System java">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jcmd.online/">
+  <meta property="og:title" content="JCMD — Custom Software, Free ERP, and High-Speed Websites">
+  <meta property="og:description" content="JCMD builds custom offline software, free simulated ERP systems, and modern, high-speed websites for small businesses in Calamba City, Laguna. 100% free and open-source.">
+  <meta property="og:image" content="https://jcmd.online/assets/meta-cover.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://jcmd.online/">
+  <meta property="twitter:title" content="JCMD — Custom Software, Free ERP, and High-Speed Websites">
+  <meta property="twitter:description" content="JCMD builds custom offline software, free simulated ERP systems, and modern, high-speed websites for small businesses in Calamba City, Laguna. 100% free and open-source.">
+  <meta property="twitter:image" content="https://jcmd.online/assets/meta-cover.jpg">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://jcmd.online/">
+
+  <!-- Favicon / Apple Touch Icon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  
+  <!-- Structured Data JSON-LD (SEO Schema) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "JCMD",
+    "image": "https://jcmd.online/assets/meta-cover.jpg",
+    "@id": "https://jcmd.online/#service",
+    "url": "https://jcmd.online/",
+    "telephone": "+639614975156",
+    "priceRange": "₱0 (Free & Open Source)",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Purok 4, Asia 2, Brgy. Canlubang",
+      "addressLocality": "Calamba City",
+      "addressRegion": "Laguna",
+      "postalCode": "4027",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 14.2167,
+      "longitude": 121.1167
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "08:00",
+      "closes": "21:00"
+    },
+    "sameAs": [
+      "https://www.facebook.com/jeromemisa2020/"
+    ],
+    "description": "JCMD builds custom offline software, free simulated ERP systems, and modern, high-speed websites for small businesses in Calamba City, Laguna.",
+    "areaServed": [
+      {
+        "@type": "AdministrativeArea",
+        "name": "Calamba City"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Laguna"
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+  <link rel="stylesheet" href="css/portfolio.css">
 </head>
 <body>
 
-<!-- ══ NAV ══ -->
-<nav id="main-nav">
-  <div class="nav-progress" id="nav-progress"></div>
-      <a href="#" class="nav-brand" aria-label="JCMD Home">
-    <svg class="logo-svg" viewBox="0 0 80 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Accent mark: top-left bracket shape -->
-      <rect x="0" y="0" width="5" height="36" fill="#e8ff47"/>
-      <rect x="0" y="0" width="18" height="5" fill="#e8ff47"/>
-      <rect x="0" y="31" width="18" height="5" fill="#e8ff47"/>
-      <!-- JCMD wordmark -->
-      <text x="24" y="25" font-family="Space Mono, monospace" font-size="15" font-weight="700" fill="#e8ff47" letter-spacing="-0.5">JCMD</text>
-    </svg>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
-  </ul>
-  <button class="nav-ham" id="nav-ham" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-</nav>
+  <!-- ══ NAVIGATION ══ -->
+  <nav id="main-nav">
+    <div class="nav-brand" onclick="scrollToSection('home')">
+      <svg class="logo-svg" viewBox="0 0 160 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 130px; height: 32px; display: block; overflow: visible;">
+        <!-- Modern stylish tech diamond lettermark -->
+        <path d="M12 2L2 18L12 34L22 18L12 2Z" fill="url(#logo-grad-1)"/>
+        <path d="M22 6L14 18L22 30L30 18L22 6Z" fill="url(#logo-grad-2)" opacity="0.85"/>
+        <text x="38" y="25" font-family="'Inter', sans-serif" font-size="16" font-weight="800" fill="#1A1A1A" letter-spacing="1">JCMD</text>
+        <text x="88" y="25" font-family="'Inter', sans-serif" font-size="8" font-weight="600" fill="#4A90D9" letter-spacing="3">LABS</text>
+        <defs>
+          <linearGradient id="logo-grad-1" x1="2" y1="18" x2="22" y2="18" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#1A1A1A"/>
+            <stop offset="100%" stop-color="#357ABD"/>
+          </linearGradient>
+          <linearGradient id="logo-grad-2" x1="14" y1="18" x2="30" y2="18" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#4A90D9"/>
+            <stop offset="100%" stop-color="#82B1FF"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="nav-links">
+      <button class="nav-link" onclick="scrollToSection('about')">About</button>
+      <button class="nav-link" onclick="scrollToSection('demos')">ERP Systems</button>
+      <button class="nav-link" onclick="scrollToSection('custom')">Custom Apps</button>
+      <button class="nav-link" onclick="scrollToSection('web')">Web Design</button>
+      <button class="nav-link" onclick="scrollToSection('faq')">FAQ</button>
+      <button class="nav-link" onclick="scrollToSection('contact')">Contact</button>
+      <button class="nav-cta" onclick="openLmsModal()"><i class="ti ti-download"></i> Download LMS</button>
+    </div>
+    <button class="nav-ham" id="nav-ham" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </nav>
 
-<div class="nav-mobile" id="nav-mobile">
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#work">Work</a>
-  <a href="#faq">FAQ</a>
-  <a href="#contact">Get a Quote</a>
-  <a href="https://www.facebook.com/jeromemisa2020/" target="_blank" rel="noopener">Facebook</a>
-</div>
-
-<!-- ══ HERO ══ -->
-<section class="hero" id="home">
-  <div class="hero-blob hero-blob-1"></div>
-  <div class="hero-blob hero-blob-2"></div>
-
-  <div class="hero-badge">
-    <div class="badge-dot"></div>
-    Now Accepting Clients &nbsp;·&nbsp; Calamba City, Laguna
+  <!-- ══ MOBILE NAVIGATION PANEL ══ -->
+  <div id="mobile-nav-panel" class="nav-mobile">
+    <button class="nav-link" onclick="scrollToSection('about')">About</button>
+    <button class="nav-link" onclick="scrollToSection('demos')">ERP Systems</button>
+    <button class="nav-link" onclick="scrollToSection('custom')">Custom Apps</button>
+    <button class="nav-link" onclick="scrollToSection('web')">Web Design</button>
+    <button class="nav-link" onclick="scrollToSection('faq')">FAQ</button>
+    <button class="nav-link" onclick="scrollToSection('contact')">Contact</button>
+    <button class="nav-cta" onclick="openLmsModal()"><i class="ti ti-download"></i> Download LMS</button>
   </div>
 
-  <h1 class="hero-title">
-    Your <span class="t-accent">business</span><br>
-    deserves a real<br>
-    <span class="t-outline">website.</span>
-  </h1>
+  <!-- ══ HERO ══ -->
+  <section class="hero" id="home">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
 
-  <p class="hero-desc">
-    <strong>JCMD</strong> builds clean, professional, and affordable websites for small local businesses —
-    coffee shops, salons, sari-sari stores, and more.
-    <strong>No bloated systems. No hidden fees. Just a site that works and looks great.</strong>
-  </p>
+    <div class="hero-badge reveal">
+      <div class="badge-dot"></div>
+      Free & Open-Source Projects &nbsp;·&nbsp; Calamba City, Laguna
+    </div>
 
-  <div class="hero-btns">
-    <a href="#contact" class="btn btn-primary">Get a Free Quote →</a>
-    <a href="#work" class="btn btn-ghost">See Sample Work</a>
-    <a href="https://www.facebook.com/jeromemisa2020/" target="_blank" rel="noopener" class="btn btn-fb">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.413c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-      Facebook
-    </a>
-  </div>
+    <h1 class="hero-title reveal">
+      High-performance software,<br>
+      free ERP systems, and modern<br>
+      <span>websites for small businesses.</span>
+    </h1>
 
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Works Built</div></div>
-    <div class="stat"><div class="stat-num">Free</div><div class="stat-label">Initial Quote</div></div>
-    <div class="stat"><div class="stat-num">7</div><div class="stat-label">Days to Deliver</div></div>
-    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Custom Built</div></div>
-  </div>
-</div>
-</section>
+    <p class="hero-desc reveal">
+      JCMD builds clean, open-source web solutions, simulated points-of-sale, and portable native tools to help local businesses automate daily operations and look incredibly professional online.
+    </p>
 
-<div class="divider"></div>
+    <div class="hero-btns reveal">
+      <button onclick="scrollToSection('demos')" class="btn btn-blue"><i class="ti ti-layout-dashboard"></i> Explore Demos</button>
+      <button onclick="scrollToSection('contact')" class="btn btn-ghost">Get in Touch →</button>
+    </div>
 
-<!-- ══ ABOUT ══ -->
-<section class="section" id="about">
-  <div class="about-grid">
-    <div class="about-text">
-      <p class="section-label reveal">About JCMD</p>
-      <h2 class="section-title reveal">Simple websites.<br>Real results.</h2>
+    <div class="hero-stats reveal">
+      <div class="stat">
+        <div class="stat-num" data-count="4" data-suffix="">0</div>
+        <div class="stat-label">Free Templates</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-count="4" data-suffix="">0</div>
+        <div class="stat-label">Offline ERPs</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-count="100" data-suffix="%">0</div>
+        <div class="stat-label">Free & Open Source</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-count="24" data-suffix="h">0</div>
+        <div class="stat-label">Response Time</div>
+      </div>
+    </div>
+  </section>
 
-      <p class="reveal">
-        Hi — I'm <strong>Jerome Misa</strong>, an <span class="hi">aspiring full stack web developer</span>
-        from Calamba City, Laguna. Through JCMD, I build websites for small local businesses that want a
-        professional online presence without paying agency-level prices.
-      </p>
-      <p class="reveal">
-        I focus on what matters most for small businesses: a fast, good-looking website that works on
-        any device, gives customers the information they need, and makes your business look credible online.
-        <strong>No subscriptions, no backend complexity</strong> — just a solid site delivered in a week.
-      </p>
-      <p class="reveal">
-        I work with coffee shops, salons, food stalls, sari-sari stores, home-based businesses, freelancers,
-        and any small operation that wants to be taken seriously online.
-      </p>
+  <div class="divider"></div>
 
-      <div class="notice reveal">
-        <div class="notice-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-          </svg>
-        </div>
-        <div>
-          <div class="notice-title">Just Getting Started</div>
-          <div class="notice-text">
-            JCMD is a brand-new service. I'm taking my first clients at
-            <strong>introductory prices</strong> to build my portfolio and earn your trust.
-            You get a quality website at a below-market rate — I get a real project to showcase.
-            A win for both of us.
+  <!-- ══ ABOUT SECTION ══ -->
+  <section class="section" id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label reveal">About JCMD</p>
+        <h2 class="section-title reveal">Simple tools.<br>Helpful results.</h2>
+
+        <p class="reveal">
+          <strong>JCMD</strong> is a simple tech project based in Calamba City, Laguna. JCMD builds friendly websites and easy-to-use tools for local shops, cafes, and community organizations. Good software should be accessible to everyone, which is why everything built by JCMD is 100% free and open-source.
+        </p>
+        <p class="reveal">
+          JCMD focuses on making things simple: pages that open instantly on mobile phones, offline point-of-sale systems that run right in your browser, and straightforward guides. There is no need for expensive monthly subscriptions or complicated setups.
+        </p>
+        <p class="reveal">
+          Whether you run a neighborhood coffee shop, a family karinderya, a retail store, or a local club, JCMD is ready to help organize daily work and showcase services beautifully.
+        </p>
+      </div>
+
+      <div class="about-features-card reveal-s">
+        <div class="about-features-title">What you get with JCMD</div>
+        <div class="about-list">
+          <div class="about-item">
+            <span class="about-item-check"><i class="ti ti-check"></i></span>
+            Clean, mobile-friendly designs that fit any screen
+          </div>
+          <div class="about-item">
+            <span class="about-item-check"><i class="ti ti-check"></i></span>
+            Simple, lightweight files (CSS, JS, and HTML only)
+          </div>
+          <div class="about-item">
+            <span class="about-item-check"><i class="ti ti-check"></i></span>
+            Simulated database structures using browser local storage
+          </div>
+          <div class="about-item">
+            <span class="about-item-check"><i class="ti ti-check"></i></span>
+            Deployment setup on free high-performance hosting
+          </div>
+          <div class="about-item">
+            <span class="about-item-check"><i class="ti ti-check"></i></span>
+            Custom domains setup (e.g. yourbusiness.com)
+          </div>
+          <div class="about-item">
+            <span class="about-item-check"><i class="ti ti-check"></i></span>
+            Helpful launch support and open source code updates
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="about-card reveal-s">
-      <div class="about-card-title">What you get with every site</div>
-      <div class="about-list">
-        <div class="about-item">
-          <div class="about-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          Clean, mobile-first design built for your brand
-        </div>
-        <div class="about-item">
-          <div class="about-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          Deployed on GitHub Pages or Netlify — free hosting
-        </div>
-        <div class="about-item">
-          <div class="about-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          Custom domain setup (domain fee paid by you directly)
-        </div>
-        <div class="about-item">
-          <div class="about-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          Contact details, location, and social media links
-        </div>
-        <div class="about-item">
-          <div class="about-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          Scroll animations and hover effects
-        </div>
-        <div class="about-item">
-          <div class="about-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          Fast load time — no heavy plugins or CMS overhead
-        </div>
-        <div class="about-item">
-          <div class="about-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          Two rounds of revisions included
-        </div>
-        <div class="about-item">
-          <div class="about-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          Delivered in 5–7 business days
-        </div>
-        <div class="about-item">
-          <div class="about-item-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          30 days free minor text and photo updates
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <div class="divider"></div>
 
-<div class="divider"></div>
+  <!-- ══ SECTION 1: FREE ERP & POS SYSTEMS ══ -->
+  <section class="section" id="demos">
+    <p class="section-label reveal">Free Operations Demos</p>
+    <h2 class="section-title reveal">Point of Sale & ERP Systems</h2>
+    <p class="section-sub reveal">
+      Experience JCMD's high-performance ERP dashboards built for local business models. Intercepting database calls with simulated local storage, these systems run completely offline right inside your browser!
+    </p>
 
-<!-- ══ WHO THIS IS FOR ══ -->
-<div class="for-section-bg section-full">
-  <div class="section-full-inner">
-    <div style="padding:6rem 0 0;">
-      <p class="section-label reveal">Who This Is For</p>
-      <h2 class="section-title reveal">Built for small<br>local businesses.</h2>
-      <p class="section-sub reveal">
-        Any small business that wants to be found online, look professional, and give customers
-        a place to learn about them — without the cost of a full web agency.
-      </p>
-
-      <div class="business-tags reveal">
-        <div class="biz-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg> Coffee Shop / Café</div>
-        <div class="biz-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2l1.5 15h15L21 2H3z"/><path d="M7 2v4a2 2 0 0 0 4 0V2"/><path d="M13 2v4a2 2 0 0 0 4 0V2"/></svg> Restaurant / Food Stall</div>
-        <div class="biz-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Salon / Barbershop / Nail Shop</div>
-        <div class="biz-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Sari-Sari Store / Retail</div>
-        <div class="biz-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> Home-Based Business</div>
-        <div class="biz-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg> Freelancer / Professional</div>
-        <div class="biz-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Repair / Service Shop</div>
-        <div class="biz-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 1.13h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Any Small Business</div>
-      </div>
-
-      <div class="value-grid" style="margin-top:3rem;margin-bottom:0;padding-bottom:6rem;">
-        <div class="value-card reveal">
-          <div class="value-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    <div class="card-grid">
+      
+      <!-- KarindERP -->
+      <div class="custom-card reveal-s">
+        <div class="card-top-preview" style="background: linear-gradient(135deg, #FFF1F0 0%, #FFCCC7 100%);">
+          <i class="ti ti-tools-kitchen-2" style="font-size: 56px; color: #FF4D4F;"></i>
+        </div>
+        <div class="card-body">
+          <span class="card-tag erp">Free ERP · Food POS</span>
+          <div class="card-title">KarindERP</div>
+          <div class="card-desc">Designed specifically for local karinderyas and food stalls. Manage daily viand stocks, check out customer servings, log ingredient expenses, and save contacts.</div>
+          <div class="card-specs">
+            <span class="card-spec">POS Register</span>
+            <span class="card-spec">Viand Stock tracker</span>
+            <span class="card-spec">Expense Log</span>
+            <span class="card-spec">Offline Simulator</span>
           </div>
-          <div class="value-card-title">Get Found Online</div>
-          <div class="value-card-desc">Customers search on Google before visiting. A website means they can find your hours, location, and services instantly.</div>
+          <a href="demos/fastfood/dashboard.html" class="btn btn-primary card-action"><i class="ti ti-device-laptop"></i> Open Fastfood POS</a>
         </div>
-        <div class="value-card reveal">
-          <div class="value-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+
+      <!-- StoreERP -->
+      <div class="custom-card reveal-s">
+        <div class="card-top-preview" style="background: linear-gradient(135deg, #EEF5FF 0%, #D0E2FF 100%);">
+          <i class="ti ti-building-store" style="font-size: 56px; color: #1C64F2;"></i>
+        </div>
+        <div class="card-body">
+          <span class="card-tag erp">Free ERP · Retail</span>
+          <div class="card-title">StoreERP</div>
+          <div class="card-desc">Sleek management system for retail operations and sari-sari stores. Aggregates inventory values, tracks purchase orders, flags low-stock items, and manages bills.</div>
+          <div class="card-specs">
+            <span class="card-spec">Low Stock Alerts</span>
+            <span class="card-spec">Purchase Orders</span>
+            <span class="card-spec">Retail Inventory</span>
+            <span class="card-spec">Contact Ledger</span>
           </div>
-          <div class="value-card-title">Look Professional</div>
-          <div class="value-card-desc">A good website builds trust before a customer even walks through your door. It shows you take your business seriously.</div>
+          <a href="demos/store/dashboard.html" class="btn btn-primary card-action"><i class="ti ti-device-laptop"></i> Open Store ERP</a>
         </div>
-        <div class="value-card reveal">
-          <div class="value-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+
+      <!-- CafePOS -->
+      <div class="custom-card reveal-s">
+        <div class="card-top-preview" style="background: linear-gradient(135deg, #FEF7EC 0%, #FCE8CA 100%);">
+          <i class="ti ti-coffee" style="font-size: 56px; color: #B45309;"></i>
+        </div>
+        <div class="card-body">
+          <span class="card-tag erp">Free ERP · Cafe POS</span>
+          <div class="card-title">CafePOS</div>
+          <div class="card-desc">High-speed operations register for coffee shops. Seamless drink and menu categorization, instant sales processing, order histories, and simple expense reports.</div>
+          <div class="card-specs">
+            <span class="card-spec">Quick POS Register</span>
+            <span class="card-spec">Drinks Catalog</span>
+            <span class="card-spec">Sales Ledger</span>
+            <span class="card-spec">Interactive Mock</span>
           </div>
-          <div class="value-card-title">Affordable Entry Point</div>
-          <div class="value-card-desc">Agency websites cost ₱30K–₱100K+. JCMD delivers a professional result at a price that makes sense for small businesses.</div>
+          <a href="demos/coffee/dashboard.html" class="btn btn-primary card-action"><i class="ti ti-device-laptop"></i> Open Coffee POS</a>
         </div>
-        <div class="value-card reveal">
-          <div class="value-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      </div>
+
+      <!-- Brew & Bean -->
+      <div class="custom-card reveal-s">
+        <div class="card-top-preview" style="background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);">
+          <i class="ti ti-chart-bar" style="font-size: 56px; color: #10B981;"></i>
+        </div>
+        <div class="card-body">
+          <span class="card-tag erp">Premium ERP · Analytics</span>
+          <div class="card-title">Brew & Bean Admin</div>
+          <div class="card-desc">The most advanced cafe operations suite. Handles relational order item records, dynamic staff directories, operational RPC procedures, and visual analytics dashboards.</div>
+          <div class="card-specs">
+            <span class="card-spec">Relational Database</span>
+            <span class="card-spec">Analytics Charts</span>
+            <span class="card-spec">Staff Directory</span>
+            <span class="card-spec">Procedural RPCs</span>
           </div>
-          <div class="value-card-title">Works on Every Phone</div>
-          <div class="value-card-desc">Most of your customers browse on mobile. Every JCMD site is fully responsive and optimised for small screens first.</div>
+          <a href="demos/brew-and-bean/index.html" class="btn btn-blue card-action"><i class="ti ti-chart-bar"></i> Launch Admin Panel</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ SECTION 2: CUSTOM APPLICATIONS (LMS & MISA) ══ -->
+  <section class="section" id="custom">
+    <p class="section-label reveal">Custom Native & Web Applications</p>
+    <h2 class="section-title reveal">Bespoke Software Automation</h2>
+    <p class="section-sub reveal">
+      JCMD designs and packages fast, offline-friendly native desktop utilities and web-based P2P tools for specialized local services, institutional cataloging, and administrative workflows.
+    </p>
+
+    <div class="card-grid">
+
+      <!-- Library Management System (LMS) -->
+      <div class="custom-card reveal-s">
+        <div class="card-top-preview" style="background: linear-gradient(135deg, #F5F5F4 0%, #E7E5E4 100%);">
+          <i class="ti ti-books" style="font-size: 56px; color: #78716C;"></i>
+        </div>
+        <div class="card-body">
+          <span class="card-tag app">Offline Native App · Java & SQLite</span>
+          <div class="card-title">Library Management System (LMS)</div>
+          <p class="card-desc">
+            A complete, portable school library circulation utility. Features book cataloging, borrower ledger records, active issue-return monitoring, real-time fine calculation engines, and simple offline operations. Packages with an embedded SQLite relational database—simply extract and launch on any Windows OS!
+          </p>
+          <div class="card-specs">
+            <span class="card-spec">Portable Batch EXE</span>
+            <span class="card-spec">Relational SQLite DB</span>
+            <span class="card-spec">Circulation Engine</span>
+            <span class="card-spec">Real-time Fine Calc</span>
+          </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: auto;">
+            <a href="https://github.com/long4sure/LMS-SSCR/releases/download/v2.1.0/LMS_Portable.zip" class="btn btn-blue" style="flex-grow: 1; justify-content: center;"><i class="ti ti-download"></i> Download LMS ZIP</a>
+            <button class="btn btn-ghost" onclick="openLmsModal()" style="flex-grow: 1; justify-content: center;"><i class="ti ti-info-circle"></i> Run Guide</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MISA P2P Web Sharing -->
+      <div class="custom-card reveal-s">
+        <div class="card-top-preview" style="background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);">
+          <i class="ti ti-video" style="font-size: 56px; color: #8B5CF6;"></i>
+        </div>
+        <div class="card-body">
+          <span class="card-tag app">Live Web Tool · P2P WebRTC</span>
+          <div class="card-title">MISA P2P Web Sharing</div>
+          <p class="card-desc">
+            A high-speed, browser-based peer-to-peer live media transfer platform. Connect devices instantly via unique room keys to transfer videos, photos, and large files directly with zero size limits, integrated chat, and robust encryption.
+          </p>
+          <div class="card-specs">
+            <span class="card-spec">Direct Peer-to-Peer</span>
+            <span class="card-spec">Zero File Size Limits</span>
+            <span class="card-spec">Encrypted Transfers</span>
+            <span class="card-spec">WebRTC Connections</span>
+          </div>
+          <a href="https://misa.jcmd.online/" target="_blank" rel="noopener" class="btn btn-blue card-action" style="margin-top: auto;"><i class="ti ti-external-link"></i> Launch Live Web App</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ SECTION 3: WEBSITES & TEMPLATES SHOWCASE ══ -->
+  <section class="section" id="web">
+    <p class="section-label reveal">Professional Website Templates</p>
+    <h2 class="section-title reveal">Mobile-First Websites Showcase</h2>
+    <p class="section-sub reveal">
+      Handcrafted static website structures designed to establish online credibility and attract local customers. Deployed with free high-performance hosting on Netlify or GitHub Pages with zero subscription fees.
+    </p>
+
+    <!-- Templates -->
+    <p class="section-label reveal" style="margin-bottom: 1.5rem; letter-spacing: 0.05em; color: var(--hint);">Sample Business Templates</p>
+    <div class="card-grid" style="margin-bottom: 4rem;">
+
+      <!-- Cortado Coffee -->
+      <div class="custom-card reveal-s">
+        <div class="browser-frame">
+          <div class="browser-dots"><div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div></div>
+          <div class="browser-address">cortado-coffee · JCMD Sample</div>
+        </div>
+        <div class="card-top-preview" style="background: linear-gradient(135deg, #2A1508 0%, #5C3317 100%);">
+          <i class="ti ti-coffee" style="font-size: 56px; color: #D7CCC8;"></i>
+        </div>
+        <div class="card-body">
+          <span class="card-tag web">Website Template · Cafe</span>
+          <div class="card-title">Cortado Coffee</div>
+          <div class="card-desc">Warm editorial styling with custom SVG components, responsive menu structures, marquees, and dynamic contact sections.</div>
+          <a href="templates/brew-co/index.html" target="_blank" class="btn btn-ghost card-action">Launch Template Demo →</a>
+        </div>
+      </div>
+
+      <!-- Long & Polished -->
+      <div class="custom-card reveal-s">
+        <div class="browser-frame">
+          <div class="browser-dots"><div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div></div>
+          <div class="browser-address">long-polished · JCMD Sample</div>
+        </div>
+        <div class="card-top-preview" style="background: linear-gradient(135deg, #1A1410 0%, #3D2820 100%);">
+          <i class="ti ti-sparkles" style="font-size: 56px; color: #F472B6;"></i>
+        </div>
+        <div class="card-body">
+          <span class="card-tag web">Website Template · Beauty</span>
+          <div class="card-title">Long & Polished</div>
+          <div class="card-desc">Elegant, high-contrast serif editorial layout with asymmetric cards, services rosters, salon galleries, and testimonials.</div>
+          <a href="templates/shear-style/index.html" target="_blank" class="btn btn-ghost card-action">Launch Template Demo →</a>
+        </div>
+      </div>
+
+      <!-- Misa's Corner -->
+      <div class="custom-card reveal-s">
+        <div class="browser-frame">
+          <div class="browser-dots"><div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div></div>
+          <div class="browser-address">misa-corner · JCMD Sample</div>
+        </div>
+        <div class="card-top-preview" style="background: linear-gradient(135deg, #1A1208 0%, #3A2A08 100%);">
+          <i class="ti ti-basket" style="font-size: 56px; color: #F59E0B;"></i>
+        </div>
+        <div class="card-body">
+          <span class="card-tag web">Website Template · Retail</span>
+          <div class="card-title">Misa's Corner</div>
+          <div class="card-desc">Vibrant neighborhood retail vibe. Highlights product catalogs, localized promo sections, opening hours, and domain options.</div>
+          <a href="templates/corner-bites/index.html" target="_blank" class="btn btn-ghost card-action">Launch Template Demo →</a>
+        </div>
+      </div>
+
+      <!-- Long Live -->
+      <div class="custom-card reveal-s">
+        <div class="browser-frame">
+          <div class="browser-dots"><div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div></div>
+          <div class="browser-address">long-live · JCMD Sample</div>
+        </div>
+        <div class="card-top-preview" style="background: linear-gradient(135deg, #0A0608 0%, #1A0812 50%, #0C0814 100%);">
+          <i class="ti ti-music" style="font-size: 56px; color: #C084FC;"></i>
+        </div>
+        <div class="card-body">
+          <span class="card-tag web">Website Template · Media</span>
+          <div class="card-title">Long Live Showcase</div>
+          <div class="card-desc">Dark cinematic layout designed for media artists. Integrates audio showcases, show calendars, video features, and discographies.</div>
+          <a href="templates/music-artist/index.html" target="_blank" class="btn btn-ghost card-action">Launch Template Demo →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Live Client Deployments -->
+    <p class="section-label reveal" style="margin-bottom: 1.5rem; letter-spacing: 0.05em; color: var(--hint);">Live Client Deployments</p>
+    <div class="card-grid">
+
+      <!-- Asia 2 -->
+      <div class="custom-card reveal-s">
+        <div class="browser-frame">
+          <div class="browser-dots"><div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div></div>
+          <div class="browser-address">long4sure.github.io/asia2chapter</div>
+        </div>
+        <div class="card-top-preview" style="background: linear-gradient(135deg, #04080C 0%, #081428 50%, #060c1a 100%);">
+          <i class="ti ti-shield" style="font-size: 56px; color: #60A5FA;"></i>
+        </div>
+        <div class="card-body">
+          <span class="card-tag live">Deployed · Community Org</span>
+          <div class="card-title">Asia 2 Community Chapter</div>
+          <div class="card-desc">Complete organizational timeline, history catalog, executive structure grids, and responsive membership registers for Tau Gamma Phi.</div>
+          <a href="https://long4sure.github.io/asia2chapter/" target="_blank" rel="noopener" class="btn btn-primary card-action">Visit Live Site <i class="ti ti-external-link"></i></a>
+        </div>
+      </div>
+
+      <!-- JCMD Portfolio -->
+      <div class="custom-card reveal-s">
+        <div class="browser-frame">
+          <div class="browser-dots"><div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div></div>
+          <div class="browser-address">long4sure.github.io/my-webdev-portfolio</div>
+        </div>
+        <div class="card-top-preview" style="background: linear-gradient(135deg, #06060E 0%, #0D0D20 50%, #080812 100%);">
+          <i class="ti ti-device-laptop" style="font-size: 56px; color: #818CF8;"></i>
+        </div>
+        <div class="card-body">
+          <span class="card-tag live">Deployed · Developer Portfolio</span>
+          <div class="card-title">JCMD — Developer Showcase</div>
+          <div class="card-desc">A comprehensive, high-fidelity developer portfolio showcase featuring active enquiry forms and dynamic layout structures.</div>
+          <a href="https://long4sure.github.io/my-webdev-portfolio/" target="_blank" rel="noopener" class="btn btn-primary card-action">Visit Live Site <i class="ti ti-external-link"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ SECTION 4: SERVICES & PROCESS ══ -->
+  <section class="section" id="services">
+    <p class="section-label reveal">What JCMD Builds</p>
+    <h2 class="section-title reveal">Bespoke Local Dev Services</h2>
+    <p class="section-sub reveal">
+      JCMD builds clean, robust operational utilities and static websites customized for small enterprises looking to organize sales data and look extremely modern online.
+    </p>
+
+    <div class="services-grid">
+      <div class="service-card reveal-s">
+        <div class="service-icon"><i class="ti ti-tools-kitchen-2"></i></div>
+        <div class="service-name">Cafes & Dining Sites</div>
+        <div class="service-desc">Clean digital menu boards, operating schedules, map locations, contact listings, and call-to-order messenger hooks.</div>
+      </div>
+      <div class="service-card reveal-s">
+        <div class="service-icon"><i class="ti ti-scissors"></i></div>
+        <div class="service-name">Salons & Spas</div>
+        <div class="service-desc">Detailed pricing grids, service rosters, customer reviews, team portfolios, and direct appointment integrations.</div>
+      </div>
+      <div class="service-card reveal-s">
+        <div class="service-icon"><i class="ti ti-box"></i></div>
+        <div class="service-name">Retail & Sari-sari Stores</div>
+        <div class="service-desc">Product listings showcasing available goods, catalog search bars, supplier directory lists, and domain configurations.</div>
+      </div>
+      <div class="service-card reveal-s">
+        <div class="service-icon"><i class="ti ti-device-laptop"></i></div>
+        <div class="service-name">Custom Desktop Apps</div>
+        <div class="service-desc">Compact native database programs (such as libraries, cash registers) running completely portable and offline via SQLite.</div>
+      </div>
+    </div>
+
+    <!-- Process -->
+    <div style="margin-top: 5rem;">
+      <p class="section-label reveal">The JCMD Workflow</p>
+      <h2 class="section-title reveal">From Outline to Deployed System in 7 Days</h2>
+      <p class="section-sub reveal">A straightforward, rapid software prototyping flow with zero complicated technical jargon.</p>
+      
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-num">01</div>
+          <div class="step-title">Scope Session</div>
+          <div class="step-desc">JCMD discusses your business needs, inventory formats, and template styling. 30-min online or in-person sync.</div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">02</div>
+          <div class="step-title">Resource File</div>
+          <div class="step-desc">You share your menu lists, logo files, text descriptions, and photos. Normal mobile shots work perfectly!</div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">03</div>
+          <div class="step-title">System Build</div>
+          <div class="step-desc">JCMD writes and deploys the first layout in 5-7 days. You receive an active staging link to test every button.</div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">04</div>
+          <div class="step-title">Review & Refine</div>
+          <div class="step-desc">Includes two full iterations of minor spacing, image, and copy updates until everything feels absolutely perfect.</div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">05</div>
+          <div class="step-title">Deploy & Support</div>
+          <div class="step-desc">Your site goes live under your domain with free hosting. JCMD remains available for 30 days of free post-launch support.</div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<div class="divider"></div>
+  <div class="divider"></div>
 
-<!-- ══ SERVICES ══ -->
-<section class="section" id="services">
-  <p class="section-label reveal">What I Build</p>
-  <h2 class="section-title reveal">Services</h2>
-  <p class="section-sub reveal">
-    Each website is built using modern web tools and best practices — designed to look great,
-    load fast, and represent your business well.
-  </p>
-
-  <div class="services-grid">
-
-    <div class="service-card reveal-s">
-      <div class="service-icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+  <!-- ══ SECTION 5: FAQ ACCORDION ══ -->
+  <section class="section" id="faq">
+    <p class="section-label reveal">FAQ</p>
+    <h2 class="section-title reveal">Common Questions</h2>
+    
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q">Are the POS registers and ERP demos completely free? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Yes! The Point-of-Sale registers, general retail directories, and the Brew & Bean cafe dashboards are open-source and free to launch directly in your browser. JCMD created a local storage database simulator so you can catalog items and process orders locally without paying any backend hosting fees.</div>
       </div>
-      <div class="service-name">Restaurant & Café Sites</div>
-      <div class="service-desc">Menu display, opening hours, location, gallery, and a contact section. A clean, welcoming site that gives customers everything they need to visit or order from you.</div>
-    </div>
-
-    <div class="service-card reveal-s">
-      <div class="service-icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <div class="faq-item">
+        <div class="faq-q">How does the Library Management System (LMS) work? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">The LMS is a native, offline-capable desktop cataloging and lending system built in Java. It packages all files, launchers, and a local SQLite database into a single compact folder. You simply download the portable ZIP, extract it, and click launch—no server, internet, or databases configuration required.</div>
       </div>
-      <div class="service-name">Salon & Beauty Sites</div>
-      <div class="service-desc">Services list, pricing, team profiles, client testimonials, and a booking call-to-action. Designed to build trust and bring new clients through your door.</div>
-    </div>
-
-    <div class="service-card reveal-s">
-      <div class="service-icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <div class="faq-item">
+        <div class="faq-q">Is the website hosting truly free? Are there any hidden fees? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Absolutely no catch. Static HTML/CSS/JS websites contain no server-side compilation, meaning platforms like GitHub Pages and Netlify host them completely free of charge. The only yearly cost is a custom web domain (e.g. yourbusiness.com), which costs around ₱800–₱1,200 per year, paid directly to registrars like Namecheap.</div>
       </div>
-      <div class="service-name">Retail & Sari-Sari Store</div>
-      <div class="service-desc">Product showcase, store hours, location, and social media links. Straightforward and easy to read — so customers know exactly what you carry and where to find you.</div>
-    </div>
-
-    <div class="service-card reveal-s">
-      <div class="service-icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+      <div class="faq-item">
+        <div class="faq-q">Can we add online ordering or real-time appointment bookings? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">JCMD builds clean static sites, which do not contain heavy database architectures for live online payment processing. Instead, JCMD configures simple, high-efficiency email inquiry forms, call-to-order triggers, and floating Facebook Messenger chat buttons which work exceptionally well for local businesses!</div>
       </div>
-      <div class="service-name">Freelancer / Personal Portfolio</div>
-      <div class="service-desc">Skills, past work, about you, and a working contact form. A professional online presence that helps you stand out and get noticed by potential clients or employers.</div>
-    </div>
-
-    <div class="service-card reveal-s">
-      <div class="service-icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      <div class="faq-item">
+        <div class="faq-q">Are you based in Calamba City? Can we coordinate in person? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Yes! JCMD is based in Purok 4, Asia 2, Brgy. Canlubang, Calamba City, Laguna. JCMD is happy to coordinate directly to design systems with clients around Calamba and neighboring areas (Los Baños, Cabuyao, Santa Rosa). For clients elsewhere, everything can be handled smoothly via Messenger or email.</div>
       </div>
-      <div class="service-name">Service Business Sites</div>
-      <div class="service-desc">For repair shops, laundry services, car wash, and similar businesses. A clear, direct site focused on what you offer, how much it costs, and how to reach you.</div>
     </div>
+  </section>
 
-    <div class="service-card reveal-s">
-      <div class="service-icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      </div>
-      <div class="service-name">Domain Setup & Deployment</div>
-      <div class="service-desc">Want a proper web address like <em>yourbusiness.com</em>? I handle the full setup and make sure your site goes live on a domain that customers can easily remember.</div>
-    </div>
+  <div class="divider"></div>
 
-  </div>
-</section>
+  <!-- ══ SECTION 6: CONTACT INQUIRY FORM ══ -->
+  <section class="section" id="contact">
+    <p class="section-label reveal">Get in Touch</p>
+    <h2 class="section-title reveal">Let's build your next<br>system together.</h2>
 
-<div class="divider"></div>
+    <div class="contact-grid">
+      <div class="contact-info-panel reveal-l">
+        <div class="contact-info-title">Open for <span>new projects.</span></div>
+        <p class="contact-info-sub">Ready to streamline your operational databases or launch a modern site? Fill in the form or reach out directly. JCMD replies in 24 hours.</p>
 
-<!-- ══ PROCESS ══ -->
-<section class="section" id="process">
-  <p class="section-label reveal">How It Works</p>
-  <h2 class="section-title reveal">From idea to live site<br>in one week.</h2>
-  <p class="section-sub reveal">A simple, transparent process with no surprises and no technical jargon.</p>
-  <div class="process-steps">
-    <div class="process-step reveal">
-      <div class="step-num">01</div>
-      <div class="step-title">Discovery</div>
-      <div class="step-desc">We talk about your business, who your customers are, and what you want your site to do. Free, 30 minutes, via Messenger or in person.</div>
-    </div>
-    <div class="process-step reveal">
-      <div class="step-num">02</div>
-      <div class="step-title">Content</div>
-      <div class="step-desc">You send me your logo, photos, text, and contact info. Phone shots work fine — no professional shoot needed.</div>
-    </div>
-    <div class="process-step reveal">
-      <div class="step-num">03</div>
-      <div class="step-title">Build</div>
-      <div class="step-desc">I design and build your site in 5–7 days. You get a preview link to review before anything goes live.</div>
-    </div>
-    <div class="process-step reveal">
-      <div class="step-num">04</div>
-      <div class="step-title">Revisions</div>
-      <div class="step-desc">Two rounds of feedback included. We adjust until you're happy with how it looks and reads.</div>
-    </div>
-    <div class="process-step reveal">
-      <div class="step-num">05</div>
-      <div class="step-title">Launch</div>
-      <div class="step-desc">Your site goes live. I hand you the link and stay available for 30 days of free minor updates.</div>
-    </div>
-  </div>
-</section>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="ti ti-map-pin"></i></div>
+          <span>Purok 4, Asia 2, Brgy. Canlubang<br>Calamba City, Laguna</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="ti ti-phone"></i></div>
+          <a href="tel:+639614975156">0961-497-5156</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="ti ti-mail"></i></div>
+          <a href="mailto:jeromemisa2020@gmail.com">jeromemisa2020@gmail.com</a>
+        </div>
 
-<div class="divider"></div>
-
-<!-- ══ SAMPLE WORK ══ -->
-<section class="section" id="work">
-  <p class="section-label reveal">Portfolio</p>
-  <h2 class="section-title reveal">Sample Work</h2>
-  <p class="section-sub reveal">
-    Demonstration sites built to show the range of designs and layouts possible. Each one is
-    tailored to a different type of small business.
-  </p>
-
-  <!-- section sub-label to separate demo vs live -->
-  <p class="section-sub reveal" style="margin-bottom:1.5rem;">
-    <strong style="color:var(--text);">Sample Demos</strong> — built to showcase different business types.
-  </p>
-
-  <div class="work-grid">
-
-    <div class="work-card reveal-s">
-      <div class="work-browser">
-        <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
-        <div class="browser-url">cortado-coffee · JCMD Sample</div>
-      </div>
-      <div class="work-preview" style="background:linear-gradient(135deg,#2a1508 0%,#5c3317 100%);">
-        <div class="work-preview-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#c07830" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        <div class="contact-socials">
+          <a href="https://www.facebook.com/jeromemisa2020/" target="_blank" rel="noopener" class="btn btn-fb">
+            <i class="ti ti-brand-facebook"></i> Message on Facebook
+          </a>
         </div>
       </div>
-      <div class="work-info">
-        <span class="work-tag">Coffee Shop</span>
-        <div class="work-name">Cortado Coffee</div>
-        <div class="work-desc">Warm editorial design with animated SVG hero, scrolling menu marquee, and a full contact section.</div>
-        <a href="brew-co.html" target="_blank" class="work-link">View Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      </div>
-    </div>
 
-    <div class="work-card reveal-s">
-      <div class="work-browser">
-        <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
-        <div class="browser-url">long-polished · JCMD Sample</div>
-      </div>
-      <div class="work-preview" style="background:linear-gradient(135deg,#1a1410 0%,#3d2820 100%);">
-        <div class="work-preview-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#c8836a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
-        </div>
-      </div>
-      <div class="work-info">
-        <span class="work-tag">Beauty Salon</span>
-        <div class="work-name">Long &amp; Polished</div>
-        <div class="work-desc">Elegant serif editorial layout with asymmetric hero, services grid, team cards, and testimonials.</div>
-        <a href="shear-style.html" target="_blank" class="work-link">View Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      </div>
-    </div>
+      <div class="contact-form-panel reveal">
+        <p class="form-title">Send a Project Inquiry</p>
+        <form id="inquiry-form" action="https://formspree.io/f/xgodvrne" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="New JCMD Website & App Inquiry">
+          <input type="hidden" name="_replyto" id="reply-email">
 
-    <div class="work-card reveal-s">
-      <div class="work-browser">
-        <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
-        <div class="browser-url">misa-corner · JCMD Sample</div>
-      </div>
-      <div class="work-preview" style="background:linear-gradient(135deg,#1a1208 0%,#3a2a08 100%);">
-        <div class="work-preview-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#f5c842" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-      </div>
-      <div class="work-info">
-        <span class="work-tag">Sari-Sari Store</span>
-        <div class="work-name">Misa's Corner</div>
-        <div class="work-desc">Vibrant neighbourhood feel with store illustration, product grid with sale badges, and a Filipino promo banner.</div>
-        <a href="corner-bites.html" target="_blank" class="work-link">View Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      </div>
-    </div>
-
-    <div class="work-card reveal-s">
-      <div class="work-browser">
-        <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
-        <div class="browser-url">longlive · JCMD Sample</div>
-      </div>
-      <div class="work-preview" style="background:linear-gradient(135deg,#0a0608 0%,#1a0812 50%,#0c0814 100%);">
-        <div class="work-preview-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#ff2d55" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="22"/></svg>
-        </div>
-      </div>
-      <div class="work-info">
-        <span class="work-tag">Music Artist</span>
-        <div class="work-name">longlive</div>
-        <div class="work-desc">Dark cinematic artist site with spinning vinyl hero, animated music bars, discography, live shows, and a merch CTA.</div>
-        <a href="music-artist.html" target="_blank" class="work-link">View Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- LIVE PROJECTS -->
-  <p class="section-sub reveal" style="margin-top:3.5rem;margin-bottom:1.5rem;">
-    <strong style="color:var(--text);">Live Projects</strong> — real sites built and deployed.
-  </p>
-
-  <div class="work-grid">
-
-    <div class="work-card reveal-s">
-      <div class="work-browser">
-        <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
-        <div class="browser-url">long4sure.github.io/asia2chapter</div>
-      </div>
-      <div class="work-preview" style="background:linear-gradient(135deg,#04080c 0%,#081428 50%,#060c1a 100%);">
-        <div class="work-preview-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-      </div>
-      <div class="work-info">
-        <span class="work-tag" style="color:var(--blue);border-color:rgba(91,156,246,0.25);background:rgba(91,156,246,0.07);">Live · Community Org</span>
-        <div class="work-name">Asia 2 Community Chapter</div>
-        <div class="work-desc">Full organization website for Tau Gamma Phi – Triskelion Grand Fraternity Asia 2 Chapter. Features timeline history, photo gallery, org chart, member directory, and a contact form.</div>
-        <a href="https://long4sure.github.io/asia2chapter/" target="_blank" rel="noopener" class="work-link" style="color:var(--blue);">Visit Live Site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      </div>
-    </div>
-
-    <div class="work-card reveal-s">
-      <div class="work-browser">
-        <div class="browser-dots"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div></div>
-        <div class="browser-url">long4sure.github.io/my-webdev-portfolio</div>
-      </div>
-      <div class="work-preview" style="background:linear-gradient(135deg,#06060e 0%,#0d0d20 50%,#080812 100%);">
-        <div class="work-preview-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#e8ff47" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        </div>
-      </div>
-      <div class="work-info">
-        <span class="work-tag" style="color:var(--blue);border-color:rgba(91,156,246,0.25);background:rgba(91,156,246,0.07);">Live · Personal Portfolio</span>
-        <div class="work-name">Jerome Misa — Portfolio</div>
-        <div class="work-desc">Personal web developer portfolio featuring a space background canvas, custom cursor, typed hero, skill cards with tech logos, and a working contact form.</div>
-        <a href="https://long4sure.github.io/my-webdev-portfolio/" target="_blank" rel="noopener" class="work-link" style="color:var(--blue);">Visit Live Site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══ FAQ ══ -->
-<section class="section" id="faq">
-  <p class="section-label reveal">FAQ</p>
-  <h2 class="section-title reveal">Common Questions</h2>
-  <div class="faq-list reveal">
-
-    <div class="faq-item">
-      <div class="faq-q">Do I need to know anything about websites? <span class="faq-arrow">▼</span></div>
-      <div class="faq-a">Not at all. I handle everything technical. You just need to tell me about your business, send me some photos and text, and I'll take care of the rest. I'll also walk you through how to reach me for future updates.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Why is hosting free? Is there a catch? <span class="faq-arrow">▼</span></div>
-      <div class="faq-a">No catch. Static websites can be hosted for free on platforms like GitHub Pages and Netlify. There's no database or server-side code, so these platforms provide free hosting. The only potential cost is a custom domain name (optional) — around ₱800–₱1,200 per year, paid directly to a registrar like Namecheap.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">What if I want to update my menu or prices later? <span class="faq-arrow">▼</span></div>
-      <div class="faq-a">For the first 30 days after launch, minor text and photo updates are free. After that, updates are available at a small flat rate. You can reach me anytime via Messenger or email.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Can you add online ordering or an appointment booking system? <span class="faq-arrow">▼</span></div>
-      <div class="faq-a">JCMD currently builds static websites — no complex backend features like live ordering or payment processing. However, I can add simple solutions like a contact form that emails you directly, a "Call to Order" button, or a Messenger chat link. For most small businesses, this covers the need well.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">How do payments work? <span class="faq-arrow">▼</span></div>
-      <div class="faq-a">50% downpayment to start, 50% upon your approval of the final site. Payment via GCash, Maya, or bank transfer. Nothing is collected until we've agreed on the scope and you're comfortable moving forward.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Are you based in Calamba? Can we meet in person? <span class="faq-arrow">▼</span></div>
-      <div class="faq-a">Yes — I'm based in Purok 4, Asia 2, Brgy. Canlubang, Calamba City, Laguna. I'm happy to meet clients in Calamba and nearby areas (Los Baños, Sta. Rosa, Biñan, San Pedro). For farther clients, everything can be done through Messenger or email.</div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══ CONTACT ══ -->
-<section class="section" id="contact">
-  <p class="section-label reveal">Get in Touch</p>
-  <h2 class="section-title reveal">Let's build your<br>website together.</h2>
-
-  <div class="contact-grid">
-
-    <div class="contact-panel reveal-l">
-      <div class="contact-panel-title">Open for <span>new clients.</span></div>
-      <p class="contact-panel-sub">Ready to give your business a real online presence? Fill in the form or reach out directly. I respond within 24 hours.</p>
-
-      <div class="contact-item">
-        <div class="contact-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <span>Purok 4, Asia 2, Brgy. Canlubang<br>Calamba City, Laguna</span>
-      </div>
-
-      <div class="contact-item">
-        <div class="contact-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12 19.79 19.79 0 0 1 1.92 3.38 2 2 0 0 1 3.92 1.13h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        </div>
-        <a href="tel:+639614975156">0961-497-5156</a>
-      </div>
-
-      <div class="contact-item">
-        <div class="contact-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </div>
-        <a href="mailto:jeromemisa2020@gmail.com">jeromemisa2020@gmail.com</a>
-      </div>
-
-      <div class="contact-socials">
-        <a href="https://www.facebook.com/jeromemisa2020/" target="_blank" rel="noopener" class="btn btn-fb" style="font-size:0.67rem;padding:0.52rem 1rem;">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.413c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-          Message on Facebook
-        </a>
-      </div>
-    </div>
-
-    <div class="contact-form-panel reveal">
-      <p class="form-title">Send an Inquiry</p>
-      <form id="inquiry-form" action="https://formspree.io/f/xgodvrne" method="POST" novalidate>
-        <!--
-          SETUP: Go to https://formspree.io, sign up with jeromemisa2020@gmail.com,
-          create a new form, and paste your endpoint URL above in place of https://formspree.io/f/xgodvrne.
-          All inquiries will then arrive directly in your Gmail inbox.
-        -->
-        <input type="hidden" name="_subject" value="New JCMD Website Inquiry"/>
-        <input type="hidden" name="_replyto" id="reply-email"/>
-
-        <div class="form-row">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="q-name">Your Name *</label>
+              <input class="form-input" type="text" id="q-name" name="name" placeholder="Juan dela Cruz" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="q-phone">Phone / Viber *</label>
+              <input class="form-input" type="tel" id="q-phone" name="phone" placeholder="09XX XXX XXXX" required>
+            </div>
+          </div>
           <div class="form-group">
-            <label class="form-label" for="q-name">Your Name *</label>
-            <input class="form-input" type="text" id="q-name" name="name" placeholder="Juan dela Cruz" required/>
+            <label class="form-label" for="q-email">Email Address *</label>
+            <input class="form-input" type="email" id="q-email" name="email" placeholder="juan@example.com" required>
           </div>
           <div class="form-group">
-            <label class="form-label" for="q-phone">Phone / Viber *</label>
-            <input class="form-input" type="tel" id="q-phone" name="phone" placeholder="09XX XXX XXXX" required/>
+            <label class="form-label" for="q-business">Business Name</label>
+            <input class="form-input" type="text" id="q-business" name="business" placeholder="e.g. Aling Nena's Sari-Sari">
           </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="q-email">Email Address *</label>
-          <input class="form-input" type="email" id="q-email" name="email" placeholder="you@example.com" required/>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="q-business">Business Name</label>
-          <input class="form-input" type="text" id="q-business" name="business" placeholder="e.g. Aling Rosa's Taho"/>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="q-type">Type of Business *</label>
-          <select class="form-select" id="q-type" name="business_type" required>
-            <option value="" disabled selected>Select your business type…</option>
-            <option>Coffee Shop / Café</option>
-            <option>Restaurant / Carinderia / Food Stall</option>
-            <option>Salon / Barbershop / Beauty</option>
-            <option>Sari-Sari Store / Retail</option>
-            <option>Freelancer / Personal Portfolio</option>
-            <option>Service Business (Repair, Laundry, etc.)</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="q-message">Tell me about your business</label>
-          <textarea class="form-textarea" id="q-message" name="message" placeholder="What do you sell or offer? What do you want your website to show? Any questions?"></textarea>
-        </div>
-        <button class="form-submit" type="submit" id="q-submit">Send Inquiry →</button>
-        <p class="form-status" id="q-status"></p>
-      </form>
+          <div class="form-group">
+            <label class="form-label" for="q-type">Type of Project *</label>
+            <select class="form-select" id="q-type" name="business_type" required>
+              <option value="" disabled selected>Select a project focus…</option>
+              <option>Free Simulated ERP setup (POS, Stock tracking)</option>
+              <option>Custom Portable Desktop Application (LMS, sqlite)</option>
+              <option>Custom Website (Cafe, Salon, Retail, Portfolio)</option>
+              <option>Other Operational Automation</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="q-message">Tell JCMD about your operational needs</label>
+            <textarea class="form-textarea" id="q-message" name="message" placeholder="Describe what you sell, your daily stock workflows, what pages you want your website to show, or any questions."></textarea>
+          </div>
+          <button class="form-submit" type="submit" id="q-submit">Send Inquiry →</button>
+          <p class="form-status" id="q-status"></p>
+        </form>
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- ══ FOOTER ══ -->
-<footer>
+  <!-- ══ FOOTER ══ -->
+  <footer>
     <div class="footer-brand">
-    <svg style="width:64px;height:29px;display:block;overflow:visible;" viewBox="0 0 80 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="0" width="5" height="36" fill="#e8ff47"/>
-      <rect x="0" y="0" width="18" height="5" fill="#e8ff47"/>
-      <rect x="0" y="31" width="18" height="5" fill="#e8ff47"/>
-      <text x="24" y="25" font-family="Space Mono, monospace" font-size="15" font-weight="700" fill="#e8ff47" letter-spacing="-0.5">JCMD</text>
-    </svg>
-  </div>
-  <div class="footer-links">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#work">Work</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
-    <a href="https://www.facebook.com/jeromemisa2020/" target="_blank" rel="noopener">Facebook</a>
-  </div>
-  <div class="footer-copy">© 2026 Jerome Misa · JCMD · Calamba City, Laguna</div>
-</footer>
+      <svg style="width: 100px; height: 26px; display: block; overflow: visible;" viewBox="0 0 160 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L2 18L12 34L22 18L12 2Z" fill="url(#logo-grad-footer-1)"/>
+        <path d="M22 6L14 18L22 30L30 18L22 6Z" fill="url(#logo-grad-footer-2)" opacity="0.85"/>
+        <text x="38" y="25" font-family="'Inter', sans-serif" font-size="16" font-weight="800" fill="#1A1A1A" letter-spacing="1">JCMD</text>
+        <text x="88" y="25" font-family="'Inter', sans-serif" font-size="8" font-weight="600" fill="#4A90D9" letter-spacing="3">LABS</text>
+        <defs>
+          <linearGradient id="logo-grad-footer-1" x1="2" y1="18" x2="22" y2="18" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#1A1A1A"/>
+            <stop offset="100%" stop-color="#357ABD"/>
+          </linearGradient>
+          <linearGradient id="logo-grad-footer-2" x1="14" y1="18" x2="30" y2="18" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#4A90D9"/>
+            <stop offset="100%" stop-color="#82B1FF"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="footer-links">
+      <button onclick="scrollToSection('about')" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:12px;font-weight:500;">About</button>
+      <button onclick="scrollToSection('demos')" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:12px;font-weight:500;">ERP Demos</button>
+      <button onclick="scrollToSection('custom')" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:12px;font-weight:500;">Custom Apps</button>
+      <button onclick="scrollToSection('web')" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:12px;font-weight:500;">Web Showcase</button>
+      <button onclick="scrollToSection('faq')" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:12px;font-weight:500;">FAQ</button>
+      <button onclick="scrollToSection('contact')" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:12px;font-weight:500;">Contact</button>
+    </div>
+    <div class="footer-copy">© 2026 JCMD · Calamba City, Laguna</div>
+  </footer>
 
-<script src="script.js"></script>
+  <!-- ══ GLASSY OVERLAY HELP INSTRUCTIONS MODAL (LMS) ══ -->
+  <div class="modal-overlay" id="lms-modal">
+    <div class="lms-modal">
+      <div class="modal-header">
+        <span class="modal-title"><i class="ti ti-info-circle"></i> LMS Run Instructions</span>
+        <button class="modal-close" onclick="closeLmsModal()"><i class="ti ti-x"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="steps-list">
+          <div class="modal-step">
+            <div class="modal-step-num">1</div>
+            <div>
+              <div class="modal-step-title">Download the Package</div>
+              <div class="modal-step-desc">Click the download button to grab the <code>LMS_Portable.zip</code> file.</div>
+            </div>
+          </div>
+          <div class="modal-step">
+            <div class="modal-step-num">2</div>
+            <div>
+              <div class="modal-step-title">Extract the Archive</div>
+              <div class="modal-step-desc">Extract the downloaded ZIP package to any folder on your local drive (like your Desktop).</div>
+            </div>
+          </div>
+          <div class="modal-step">
+            <div class="modal-step-num">3</div>
+            <div>
+              <div class="modal-step-title">Run the Application</div>
+              <div class="modal-step-desc">Open the extracted directory and double-click the <code>LMS_Launcher.bat</code> file or the <code>LMS.exe</code> launcher to run it instantly.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeLmsModal()">Close Instructions</button>
+        <a href="https://github.com/long4sure/LMS-SSCR/releases/download/v2.1.0/LMS_Portable.zip" class="btn btn-blue"><i class="ti ti-download"></i> Start Download</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/portfolio.js"></script>
 </body>
 </html>

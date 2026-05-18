@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cortado Coffee — Brews & Vibe</title>
+  <meta name="description" content="Cortado Coffee is Calamba's cozy specialty coffee spot. Rich espresso, slow cold brew, and a seat waiting just for you.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div style="background:#0b0b18;border-bottom:1px solid #1a1a32;padding:0.5rem 2rem;display:flex;justify-content:space-between;align-items:center;font-family:Space Mono,monospace;font-size:0.6rem;letter-spacing:0.12em;color:#6464a0;"><span>JCMD SAMPLE SITE — For demonstration purposes only</span><a href="../../index.html" style="color:#e8ff47;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">← Back to JCMD</a></div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">Cortado <span>Coffee</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#hours">Hours</a></li>
+      <li><a href="#contact" class="nav-cta">Find Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span> Specialty Coffee, Calamba</div>
+      <h1 class="hero-title">
+        Every cup<br>tells a<br><em>story.</em>
+      </h1>
+      <p class="hero-desc">
+        Handcrafted drinks made with single-origin beans, brewed slowly,
+        served with care. Your neighbourhood coffee refuge — morning, noon, and afternoon.
+      </p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn-primary">View Our Menu</a>
+        <a href="#contact" class="btn-secondary">Get Directions</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">12+</div>
+          <div class="hero-stat-label">Drinks on menu</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">7am</div>
+          <div class="hero-stat-label">We open daily</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Fresh brewed</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="coffee-cup-art">
+        <!-- SVG coffee cup illustration -->
+        <svg class="cup-scene" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- background circle -->
+          <circle cx="240" cy="240" r="220" fill="#ede4d3" opacity="0.5"/>
+          <circle cx="240" cy="240" r="180" fill="#e8dcc8" opacity="0.4"/>
+
+          <!-- saucer -->
+          <ellipse cx="240" cy="360" rx="150" ry="22" fill="#c07830" opacity="0.25"/>
+          <ellipse cx="240" cy="355" rx="140" ry="18" fill="#3b1f0e" opacity="0.12"/>
+          <rect x="100" y="340" width="280" height="20" rx="10" fill="#5c3317" opacity="0.6"/>
+          <rect x="90" y="355" width="300" height="10" rx="5" fill="#3b1f0e" opacity="0.4"/>
+
+          <!-- cup body -->
+          <path d="M130 220 L150 345 Q150 355 160 355 L320 355 Q330 355 330 345 L350 220 Z" fill="#3b1f0e"/>
+          <!-- cup highlight -->
+          <path d="M140 220 L155 330 Q155 340 162 340 L230 340 L250 220 Z" fill="#5c3317" opacity="0.4"/>
+          <!-- cup rim -->
+          <ellipse cx="240" cy="222" rx="112" ry="18" fill="#4a2510"/>
+          <!-- coffee surface -->
+          <ellipse cx="240" cy="220" rx="108" ry="16" fill="#2a1508"/>
+          <!-- latte art — leaf -->
+          <path d="M200 220 Q225 208 240 215 Q255 208 280 220 Q255 232 240 225 Q225 232 200 220Z" fill="#c07830" opacity="0.6"/>
+          <path d="M235 210 Q240 218 240 225" stroke="#c07830" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+          <!-- foam bubbles -->
+          <circle cx="210" cy="218" r="3" fill="rgba(245,239,228,0.3)"/>
+          <circle cx="270" cy="222" r="2" fill="rgba(245,239,228,0.2)"/>
+
+          <!-- handle -->
+          <path d="M350 240 Q400 240 400 280 Q400 320 350 320" stroke="#3b1f0e" stroke-width="22" fill="none" stroke-linecap="round"/>
+          <path d="M350 240 Q392 240 392 280 Q392 318 350 320" stroke="#5c3317" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.4"/>
+
+          <!-- steam lines -->
+          <path d="M200 200 Q195 185 202 170 Q208 155 203 140" stroke="#c07830" stroke-width="3" fill="none" stroke-linecap="round" opacity="0" style="animation:steam 2.5s ease-in-out infinite"/>
+          <path d="M240 196 Q234 178 241 162 Q247 146 242 130" stroke="#c07830" stroke-width="3" fill="none" stroke-linecap="round" opacity="0" style="animation:steam 2.5s 0.8s ease-in-out infinite"/>
+          <path d="M280 200 Q285 183 278 168 Q272 153 277 138" stroke="#c07830" stroke-width="3" fill="none" stroke-linecap="round" opacity="0" style="animation:steam 2.5s 1.6s ease-in-out infinite"/>
+
+          <!-- beans decoration -->
+          <ellipse cx="100" cy="150" rx="14" ry="9" fill="#3b1f0e" transform="rotate(-30 100 150)" opacity="0.5"/>
+          <path d="M100 143 Q100 157 100 150" stroke="#5c3317" stroke-width="1.5" fill="none" opacity="0.5" transform="rotate(-30 100 150)"/>
+          <ellipse cx="380" cy="130" rx="14" ry="9" fill="#3b1f0e" transform="rotate(20 380 130)" opacity="0.5"/>
+          <path d="M380 123 Q380 137 380 130" stroke="#5c3317" stroke-width="1.5" fill="none" opacity="0.5" transform="rotate(20 380 130)"/>
+          <ellipse cx="90" cy="320" rx="12" ry="7.5" fill="#3b1f0e" transform="rotate(15 90 320)" opacity="0.35"/>
+          <ellipse cx="390" cy="300" rx="12" ry="7.5" fill="#3b1f0e" transform="rotate(-10 390 300)" opacity="0.35"/>
+
+          <!-- decorative dots -->
+          <circle cx="130" cy="80" r="4" fill="#c07830" opacity="0.3"/>
+          <circle cx="355" cy="400" r="6" fill="#c07830" opacity="0.2"/>
+          <circle cx="400" cy="160" r="3" fill="#c07830" opacity="0.25"/>
+          <circle cx="70" cy="250" r="5" fill="#c07830" opacity="0.2"/>
+        </svg>
+      </div>
+      <div class="hero-badge hero-badge-1">Single Origin</div>
+      <div class="hero-badge hero-badge-2">Cold Brew Available</div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">Espresso<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Cold Brew<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Matcha Latte<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Caramel Macchiato<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Iced Americano<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Cappuccino<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Spanish Latte<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Dirty Chai<span class="marquee-dot">✦</span></span>
+      <!-- repeat for seamless scroll -->
+      <span class="marquee-item">Espresso<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Cold Brew<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Matcha Latte<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Caramel Macchiato<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Iced Americano<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Cappuccino<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Spanish Latte<span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Dirty Chai<span class="marquee-dot">✦</span></span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="about" id="about">
+    <div class="about-inner">
+      <div class="about-text">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title reveal">More than a coffee shop.<br>A <em>third place.</em></h2>
+        <p class="reveal">Cortado Coffee started as a small corner cart in 2021 with one espresso machine and a big dream.
+        Today, we're a full café where <strong>locals come to slow down</strong> — to work, to meet, to just exist for a while.</p>
+        <p class="reveal">We source our beans from small farms in Benguet and Sagada, roasted weekly so every cup you get is as fresh as possible.
+        Our baristas are trained to care — not just to make drinks, but to make your day a little better.</p>
+        <div class="about-icons reveal">
+          <div class="about-icon-item"><span style="color:#3ab85c;font-size:0.7rem;">●</span> Locally sourced</div>
+          <div class="about-icon-item"><span style="color:#c07830;font-size:0.7rem;">●</span> Fresh roasted</div>
+          <div class="about-icon-item"><span style="color:#e8a83e;font-size:0.7rem;">●</span> Made with heart</div>
+        </div>
+      </div>
+      <div class="about-visual reveal">
+        <div class="about-card">
+          <blockquote>"Good coffee doesn't need to be complicated — just honest, warm, and made for you."</blockquote>
+          <cite>— J. Misa, Owner of Cortado Coffee</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENU -->
+  <section id="menu">
+    <p class="section-label reveal">What We Brew</p>
+    <h2 class="section-title reveal">Our Menu <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--caramel)">Favourites</em></h2>
+    <div class="menu-grid">
+      <div class="menu-card reveal">
+        <div class="menu-icon" style="font-size:1rem;letter-spacing:-0.02em;color:#c07830;font-family:serif;">ESPR</div>
+        <div class="menu-name">Signature Espresso</div>
+        <div class="menu-desc">Double shot of our house blend, pulled to a rich, velvety crema. Short. Intense. Perfect.</div>
+        <div class="menu-price">₱85</div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-icon" style="font-size:1rem;letter-spacing:-0.02em;color:#c07830;font-family:serif;">LATTE</div>
+        <div class="menu-name">Spanish Latte</div>
+        <div class="menu-desc">Espresso with condensed milk and fresh steamed milk. Sweet, creamy, and dangerously addictive.</div>
+        <div class="menu-price">₱130</div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-icon" style="font-size:1rem;letter-spacing:-0.02em;color:#c07830;font-family:serif;">COLD</div>
+        <div class="menu-name">Classic Cold Brew</div>
+        <div class="menu-desc">Steeped for 18 hours, smooth and low-acid. Best enjoyed over ice on a warm day.</div>
+        <div class="menu-price">₱120</div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-icon" style="font-size:1rem;letter-spacing:-0.02em;color:#c07830;font-family:serif;">MATCHA</div>
+        <div class="menu-name">Matcha Oat Latte</div>
+        <div class="menu-desc">Ceremonial grade matcha whisked smooth, topped with creamy oat milk. For the non-coffee days.</div>
+        <div class="menu-price">₱140</div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-icon" style="font-size:1rem;letter-spacing:-0.02em;color:#c07830;font-family:serif;">CARA</div>
+        <div class="menu-name">Caramel Macchiato</div>
+        <div class="menu-desc">Vanilla syrup, steamed milk, espresso, and a golden caramel drizzle on top. A crowd-pleaser.</div>
+        <div class="menu-price">₱145</div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-icon" style="font-size:1rem;letter-spacing:-0.02em;color:#c07830;font-family:serif;">CHAI</div>
+        <div class="menu-name">Dirty Chai</div>
+        <div class="menu-desc">Spiced chai tea with a double shot of espresso, steamed milk, and a touch of cinnamon.</div>
+        <div class="menu-price">₱135</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIBE -->
+  <div class="vibe">
+    <h2 class="vibe-title">"Your favourite <em>seat</em> is always waiting."</h2>
+    <p class="vibe-sub">Whether you need focus, company, or just a quiet corner — Cortado Coffee is your place.</p>
+    <div class="vibe-pills">
+      <div class="vibe-pill">Free Wi-Fi</div>
+      <div class="vibe-pill">Air-conditioned</div>
+      <div class="vibe-pill">Power Outlets</div>
+      <div class="vibe-pill">Solo-friendly</div>
+      <div class="vibe-pill">Pet-friendly patio</div>
+      <div class="vibe-pill">Group bookings</div>
+    </div>
+  </div>
+
+  <!-- HOURS -->
+  <section id="hours">
+    <p class="section-label reveal">When We're Open</p>
+    <h2 class="section-title reveal">Visit Us</h2>
+    <div class="hours-grid">
+      <div class="hours-card reveal">
+        <div class="hours-day">Monday – Friday</div>
+        <div class="hours-time">7:00 AM – 9:00 PM</div>
+      </div>
+      <div class="hours-card reveal">
+        <div class="hours-day">Saturday & Sunday</div>
+        <div class="hours-time">8:00 AM – 10:00 PM</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="contact-section" id="contact">
+    <div class="contact-inner">
+      <div>
+        <p class="section-label">Find Us</p>
+        <h2 class="section-title reveal">Come say hello.</h2>
+        <br>
+        <div class="contact-info-item reveal">
+          <div class="contact-icon"></div>
+          <div>
+            <div class="contact-label">Address</div>
+            <div class="contact-value">Purok 4, Asia 2, Brgy. Canlubang<br>Calamba City, Laguna</div>
+          </div>
+        </div>
+        <div class="contact-info-item reveal">
+          <div class="contact-icon"></div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">0961-497-5156</div>
+          </div>
+        </div>
+        <div class="contact-info-item reveal">
+          <div class="contact-icon"></div>
+          <div>
+            <div class="contact-label">Facebook</div>
+            <div class="contact-value">fb.com/cortadocoffeeph</div>
+          </div>
+        </div>
+        <div class="contact-info-item reveal">
+          <div class="contact-icon"></div>
+          <div>
+            <div class="contact-label">Instagram</div>
+            <div class="contact-value">jeromemisa2020@gmail.com</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="map-placeholder">
+          <div>Purok 4, Asia 2, Brgy. Canlubang, Calamba</div>
+          <div style="color:var(--caramel);font-weight:600;margin-top:0.3rem;">Get Directions →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">Cortado <span>Coffee</span></div>
+    <div class="footer-copy">© 2026 Cortado Coffee Calamba · A JCMD Sample Site</div>
+    <div class="footer-credit">Website by <a href="../../index.html" style="color:inherit;text-decoration:underline;">JCMD</a></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
