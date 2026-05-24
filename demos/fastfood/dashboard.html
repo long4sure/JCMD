@@ -13,9 +13,18 @@
 <body>
 <div class="app-shell">
 
+  <!-- MOBILE HEADER -->
+  <div class="mobile-header">
+    <div style="display:flex;align-items:center;gap:12px">
+      <button class="mobile-menu-btn" onclick="toggleSidebar()"><i class="ti ti-menu-2"></i></button>
+      <span class="mobile-header-title">KarindERP</span>
+    </div>
+    <button class="btn sm" onclick="handleLogout()" style="background:transparent;border:none;color:white;font-size:16px;padding:4px;cursor:pointer"><i class="ti ti-logout"></i></button>
+  </div>
+
   <aside class="sidebar">
     <div class="sidebar-brand">
-      <div style="font-size:22px;margin-bottom:4px">🍱</div>
+      <div style="font-size:22px;margin-bottom:4px"><i class="ti ti-tools-kitchen-2"></i></div>
       <div class="brand-name">KarindERP</div>
       <div class="brand-sub">Karinderya & Fast Food</div>
     </div>
@@ -69,7 +78,7 @@
           <div class="pos-items-grid" id="pos-items-grid"></div>
         </div>
         <div class="pos-cart">
-          <div class="pos-cart-header">🍽️ Current Order</div>
+          <div class="pos-cart-header"><i class="ti ti-basket"></i> Current Order</div>
           <div class="pos-cart-items" id="cart-items">
             <div class="empty" style="padding:32px 0">No items yet</div>
           </div>

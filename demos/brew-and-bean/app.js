@@ -341,18 +341,20 @@ function isAdmin() {
 function showAdminFeatures() {
     if (isAdmin()) {
         document.getElementById('usersTab').style.display = 'inline-block'
+        var bottomNavUsers = document.getElementById('bottomNavUsers')
+        if (bottomNavUsers) bottomNavUsers.style.display = 'flex'
     }
 }
 
 function getIcon(category) {
     var icons = {
-        'Hot Coffee': '☕',
-        'Iced Coffee': '🧊',
-        'Tea': '🍵',
-        'Pastry': '🥐',
-        'Sandwich': '🥪'
+        'Hot Coffee': '<i class="ti ti-coffee"></i>',
+        'Iced Coffee': '<i class="ti ti-glass-full"></i>',
+        'Tea': '<i class="ti ti-leaf"></i>',
+        'Pastry': '<i class="ti ti-bread"></i>',
+        'Sandwich': '<i class="ti ti-tools-kitchen-2"></i>'
     }
-    return icons[category] || '🍽️'
+    return icons[category] || '<i class="ti ti-bowl-spoon"></i>'
 }
 
 function formatPrice(price) {
@@ -408,9 +410,9 @@ function displayMenuTable(items) {
             '<td>' + item.category + '</td>' +
             '<td>' + formatPrice(item.price) + '</td>' +
             '<td>' + formatPrice(item.cost) + '</td>' +
-            '<td class="' + (item.stock < 5 ? 'low-stock' : '') + '">' + item.stock + (item.stock < 5 ? ' ⚠️' : '') + '</td>' +
+            '<td class="' + (item.stock < 5 ? 'low-stock' : '') + '">' + item.stock + (item.stock < 5 ? ' <i class="ti ti-alert-triangle" style="color:#d68910;vertical-align:middle"></i>' : '') + '</td>' +
             '<td>' + margin + '%</td>' +
-            '<td>' + (item.is_available ? '✅ Available' : '❌ Unavailable') + '</td>' +
+            '<td>' + (item.is_available ? '<i class="ti ti-circle-check" style="color:#27ae60;vertical-align:middle"></i> Available' : '<i class="ti ti-circle-x" style="color:#c0392b;vertical-align:middle"></i> Unavailable') + '</td>' +
             (isAdmin() ? '<td><button class="btn-sm btn-coffee" onclick="editMenuItem(' + item.id + ')">Edit</button></td>' : '<td></td>') +
         '</tr>'
     }).join('')
@@ -653,7 +655,7 @@ async function loadOrders() {
                     '<option ' + (order.status === 'Served' ? 'selected' : '') + '>Served</option>' +
                     '<option ' + (order.status === 'Cancelled' ? 'selected' : '') + '>Cancelled</option>' +
                 '</select>' +
-                '<button class="btn-sm" style="background:#6f4e37; color:white; padding:3px 8px; font-size:11px; width:100%;" onclick="printReceipt(' + order.id + ')">🖨️ Print</button>' +
+                '<button class="btn-sm" style="background:#6f4e37; color:white; padding:3px 8px; font-size:11px; width:100%;" onclick="printReceipt(' + order.id + ')"><i class="ti ti-printer"></i> Print</button>' +
             '</td>' +
         '</tr>'
     }).join('')
@@ -692,7 +694,7 @@ function printReceipt(orderId) {
         var receipt = ''
         
         receipt += '══════════════════════════\n'
-        receipt += '     ☕ BREW & BEAN ☕     \n'
+        receipt += '     BREW & BEAN     \n'
         receipt += '   Coffee Shop Manager    \n'
         receipt += '══════════════════════════\n\n'
         receipt += 'Order #: ' + order.id + '\n'
@@ -960,6 +962,32 @@ window.onclick = function(event) {
     if (event.target === document.getElementById('passwordModal')) {
         document.getElementById('passwordModal').style.display = 'none'
     }
+}
+
+// ============================================
+// BOTTOM NAV (Mobile)
+// ============================================
+
+function switchBottomTab(tabName, btn) {
+    // Update top nav-tabs to stay in sync
+    document.querySelectorAll('.nav-tab').forEach(function(t) { t.classList.remove('active') })
+    var topTab = document.querySelector('.nav-tab[data-tab="' + tabName + '"]')
+    if (topTab) topTab.classList.add('active')
+
+    // Update bottom nav active state
+    document.querySelectorAll('.bottom-nav .nav-btn').forEach(function(b) { b.classList.remove('active') })
+    if (btn) btn.classList.add('active')
+
+    // Switch tab content
+    document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active') })
+    var tabEl = document.getElementById('tab-' + tabName)
+    if (tabEl) tabEl.classList.add('active')
+
+    // Load data for the tab
+    if (tabName === 'orders') loadOrders()
+    if (tabName === 'menu') loadMenuItems()
+    if (tabName === 'reports') loadReports()
+    if (tabName === 'users') loadUsers()
 }
 
 // ============================================

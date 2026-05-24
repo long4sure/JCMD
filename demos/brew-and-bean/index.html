@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>☕ Brew & Bean - Coffee Shop Manager</title>
+    <title>Brew &amp; Bean - Coffee Shop Manager</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -342,6 +342,30 @@
 
         </div>
     </div>
+
+    <!-- ============ BOTTOM NAV (Mobile) ============ -->
+    <nav class="bottom-nav" id="bottomNav">
+        <button class="nav-btn active" data-tab="pos" onclick="switchBottomTab('pos', this)">
+            <span class="nav-icon"><i class="ti ti-calculator"></i></span>
+            <span class="nav-label">POS</span>
+        </button>
+        <button class="nav-btn" data-tab="orders" onclick="switchBottomTab('orders', this)">
+            <span class="nav-icon"><i class="ti ti-receipt"></i></span>
+            <span class="nav-label">Orders</span>
+        </button>
+        <button class="nav-btn" data-tab="menu" onclick="switchBottomTab('menu', this)">
+            <span class="nav-icon"><i class="ti ti-tools-kitchen-2"></i></span>
+            <span class="nav-label">Menu</span>
+        </button>
+        <button class="nav-btn" data-tab="reports" onclick="switchBottomTab('reports', this)">
+            <span class="nav-icon"><i class="ti ti-chart-bar"></i></span>
+            <span class="nav-label">Reports</span>
+        </button>
+        <button class="nav-btn admin-only" data-tab="users" id="bottomNavUsers" style="display:none;" onclick="switchBottomTab('users', this)">
+            <span class="nav-icon"><i class="ti ti-users"></i></span>
+            <span class="nav-label">Users</span>
+        </button>
+    </nav>
 
     <script src="app.js"></script>
 </body>

@@ -34,6 +34,19 @@ async function loadAll() {
   contacts = c.data || []; orders = o.data || []
 }
 
+window.toggleSidebar = () => {
+  const sidebar = document.querySelector('.sidebar');
+  let overlay = document.querySelector('.sidebar-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'sidebar-overlay';
+    document.body.appendChild(overlay);
+    overlay.addEventListener('click', window.toggleSidebar);
+  }
+  const isOpen = sidebar.classList.toggle('open');
+  overlay.classList.toggle('open', isOpen);
+}
+
 window.nav = (page) => {
   showPage(page)
   if (page === 'dashboard') loadDashboard()
@@ -41,6 +54,11 @@ window.nav = (page) => {
   if (page === 'expenses') renderExpenses()
   if (page === 'contacts') renderContacts()
   if (page === 'pos') renderPosItems()
+  
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.querySelector('.sidebar-overlay');
+  if (sidebar && sidebar.classList.contains('open')) sidebar.classList.remove('open');
+  if (overlay && overlay.classList.contains('open')) overlay.classList.remove('open');
 }
 
 async function loadDashboard() {

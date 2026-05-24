@@ -13,9 +13,18 @@
 <body>
 <div class="app-shell">
 
+  <!-- MOBILE HEADER -->
+  <div class="mobile-header">
+    <div style="display:flex;align-items:center;gap:12px">
+      <button class="mobile-menu-btn" onclick="toggleSidebar()"><i class="ti ti-menu-2"></i></button>
+      <span class="mobile-header-title">StoreERP</span>
+    </div>
+    <button class="btn sm" onclick="handleLogout()" style="background:transparent;border:none;color:white;font-size:16px;padding:4px;cursor:pointer"><i class="ti ti-logout"></i></button>
+  </div>
+
   <aside class="sidebar">
     <div class="sidebar-brand">
-      <div style="font-size:22px;margin-bottom:4px">🏪</div>
+      <div style="font-size:22px;margin-bottom:4px"><i class="ti ti-building-store"></i></div>
       <div class="brand-name">StoreERP</div>
       <div class="brand-sub">Retail & Sari-sari Store</div>
     </div>

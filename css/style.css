@@ -331,9 +331,58 @@ tr:hover td { background: #fafaf9; }
 
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
-  .sidebar { display: none; }
+  .sidebar {
+    position: fixed;
+    left: -220px;
+    top: 0;
+    height: 100vh;
+    z-index: 2000;
+    transition: left 0.3s ease;
+  }
+  .sidebar.open { left: 0; }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.4);
+    z-index: 1999;
+  }
+  .sidebar-overlay.open { display: block; }
+
+  .mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--accent);
+    color: #fff;
+    padding: 10px 16px;
+    height: 52px;
+  }
+  .mobile-header-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .mobile-menu-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+  }
+
   .main-content { padding: 16px; }
   .pos-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .grid-2 { grid-template-columns: 1fr; }
 }
+
+/* Mobile header hidden on desktop */
+.mobile-header { display: none; }

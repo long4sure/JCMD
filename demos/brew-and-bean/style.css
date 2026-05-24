@@ -697,11 +697,11 @@ tr:hover {
     
     /* Card style orders on tablet */
     #tab-orders .table-container {
-        display: none;
+        overflow-x: auto;
     }
     
     .orders-list {
-        display: flex;
+        display: none;
     }
     
     #usersTableBody {
@@ -709,7 +709,7 @@ tr:hover {
     }
     
     #usersList {
-        display: flex;
+        display: none;
     }
 }
 
@@ -821,11 +821,17 @@ tr:hover {
         font-size: 18px;
     }
     
-    /* Tables: hide on phone, show cards */
-    .table-container {
-        display: none;
+    /* Tables: show as scrollable on phone */
+    #tab-orders .table-container {
+        display: block;
+        overflow-x: auto;
     }
-    
+
+    #tab-users .table-container {
+        display: block;
+        overflow-x: auto;
+    }
+
     #tab-menu .table-container {
         display: block;
         font-size: 13px;
