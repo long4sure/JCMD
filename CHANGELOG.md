@@ -37,3 +37,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Route protection: signed-out users are redirected to `/login`, and
   `/dashboard` redirects users with no business yet to onboarding.
 - Generate typed Supabase client and remove unsafe cast.
+- Products management (sales core): `products` table with business-scoped RLS
+  and a reusable `set_updated_at()` trigger; prices stored as integer
+  centavos.
+- Products page with add/edit/delete/activate-toggle UI and an empty state,
+  backed by typed `getProducts()` and CRUD server actions.
+- `money.ts` (`formatCents`/`parseCents`) for exact currency handling
+  throughout the app.
