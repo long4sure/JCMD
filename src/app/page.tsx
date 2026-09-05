@@ -48,7 +48,7 @@ const FEATURES = [
     icon: IconInfinity,
     title: "Free. Forever.",
     description:
-      "No trial, no plan to upgrade to, no credit card. JCMD is free and open-source, full stop.",
+      "No trial, no plan to upgrade to, no credit card. Sagot is free and open-source, full stop.",
   },
 ];
 
@@ -79,8 +79,9 @@ export default function Home() {
       <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
           <Link href="/" className="flex items-center gap-2">
-            <Image src="/logo.png" alt="JCMD" width={32} height={32} className="rounded-full" priority />
-            <span className="text-lg font-bold tracking-tight text-slate-900">JCMD</span>
+            <span className="text-xl font-extrabold tracking-tight text-slate-900">
+              Sagot
+            </span>
           </Link>
           <nav className="flex items-center gap-2 sm:gap-4">
             <Link
@@ -129,19 +130,14 @@ export default function Home() {
           <div aria-hidden className="grain-overlay pointer-events-none absolute inset-0 -z-10" />
 
           <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 sm:py-28">
-            <Image
-              src="/logo.png"
-              alt=""
-              width={56}
-              height={56}
-              className="mx-auto mb-6 rounded-full ring-1 ring-white/10"
-              priority
-            />
+            <p className="mx-auto mb-6 text-2xl font-extrabold tracking-tight text-white">
+              Sagot
+            </p>
             <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-slate-200 backdrop-blur">
               Free &amp; open-source
             </p>
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-              Run your whole business. Pay nothing.
+              Everything you need to run your business — on us.
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-lg text-slate-300">
               Free, open-source management systems for coffee shops, retail,
@@ -173,7 +169,7 @@ export default function Home() {
                 Built for real businesses
               </h2>
               <p className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-                Whatever you run, JCMD fits.
+                Whatever you run, Sagot fits.
               </p>
             </Reveal>
             <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
@@ -201,7 +197,7 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <Reveal className="mx-auto max-w-xl text-center">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-amber-600">
-                Why JCMD
+                Why Sagot
               </h2>
               <p className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
                 Everything you need, nothing you don&apos;t.
@@ -261,7 +257,7 @@ export default function Home() {
               Built with free &amp; open tools
             </h2>
             <p className="mx-auto mt-2 max-w-xl text-slate-600">
-              JCMD is free because it's built on great free and open-source
+              Sagot is free because it's built on great free and open-source
               tools. Thank you to the projects that make this possible.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
@@ -321,7 +317,7 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <Image src="/logo.png" alt="JCMD" width={24} height={24} className="rounded-full" />
             <span className="text-sm text-slate-500">
-              JCMD is free and open-source, MIT licensed.
+              Sagot — a free product by JCMD, MIT licensed.
             </span>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-slate-500">

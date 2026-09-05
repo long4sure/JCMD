@@ -57,3 +57,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Restored the JCMD logo to `public/` and set site metadata (title,
   description).
 - `@tabler/icons-react` for iconography.
+- Rebranded the product to Sagot: JCMD is now retained only as the "made by"
+  footer credit (and in the unchanged GitHub repo URLs), with all wordmarks,
+  headings, copy, metadata, and legal-page prose updated to Sagot.

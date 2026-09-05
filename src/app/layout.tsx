@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "JCMD — Run your business, free",
+  title: "Sagot — Free business management",
   description:
-    "Free, open-source management systems for coffee shops, retail, salons, and more. Sign up, pick your business type, and start managing in minutes.",
+    "Sagot is a free, open-source management system for coffee shops, retail, salons, and more. Sign up, pick your business type, and start managing in minutes.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

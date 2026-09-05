@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Privacy Policy — JCMD",
+  title: "Privacy Policy — Sagot",
 };
 
 export default function PrivacyPage() {
@@ -18,7 +18,7 @@ export default function PrivacyPage() {
 
       <p className="mt-6 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
         This is a starter policy for an open-source project and not legal
-        advice. It describes, in plain language, what JCMD actually does with
+        advice. It describes, in plain language, what Sagot actually does with
         your data.
       </p>
 
@@ -106,7 +106,7 @@ export default function PrivacyPage() {
             We don't sell your data
           </h2>
           <p className="mt-2 leading-relaxed">
-            JCMD is free and open-source. There is no business model built on
+            Sagot is free and open-source. There is no business model built on
             selling, renting, or sharing your data with third parties, and
             there never will be.
           </p>

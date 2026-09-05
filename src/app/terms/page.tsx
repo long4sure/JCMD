@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Terms of Service — JCMD",
+  title: "Terms of Service — Sagot",
 };
 
 export default function TermsPage() {
@@ -27,7 +27,7 @@ export default function TermsPage() {
             Free and open-source
           </h2>
           <p className="mt-2 leading-relaxed">
-            JCMD is free, open-source software, licensed under the MIT
+            Sagot is free, open-source software, licensed under the MIT
             License. You can read, fork, and reuse the code at{" "}
             <a
               href="https://github.com/long4sure/JCMD"
@@ -47,7 +47,7 @@ export default function TermsPage() {
           </h2>
           <p className="mt-2 leading-relaxed">
             Consistent with the MIT License the software is released under,
-            JCMD is provided &quot;as is&quot;, without warranty of any kind,
+            Sagot is provided &quot;as is&quot;, without warranty of any kind,
             express or implied. We do our best to keep it running and your
             data safe, but we make no guarantees about uptime, availability,
             or fitness for any particular purpose.
@@ -59,7 +59,7 @@ export default function TermsPage() {
             Acceptable use
           </h2>
           <p className="mt-2 leading-relaxed">
-            Use JCMD lawfully and in good faith. Don't attempt to access
+            Use Sagot lawfully and in good faith. Don't attempt to access
             another business's data, disrupt the service, or use it for
             anything illegal. Accounts used to abuse the platform may be
             suspended or removed.
@@ -84,7 +84,7 @@ export default function TermsPage() {
             The service may change
           </h2>
           <p className="mt-2 leading-relaxed">
-            JCMD is a passion project. We may add, change, or remove
+            Sagot is a passion project. We may add, change, or remove
             features, and — while we hope not to — we may need to pause or
             discontinue the hosted free service at some point. Because it's
             open-source, the code will remain available either way.
