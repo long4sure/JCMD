@@ -44,3 +44,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   backed by typed `getProducts()` and CRUD server actions.
 - `money.ts` (`formatCents`/`parseCents`) for exact currency handling
   throughout the app.
+- Full landing page replacing the starter homepage: animated dark hero
+  (aurora/orb motion), business-type showcase, features, how-it-works, and a
+  final CTA.
+- Privacy Policy (`/privacy`) and Terms of Service (`/terms`), each with a
+  clear "not legal advice" disclaimer.
+- Scroll-reveal and hover motion across the landing page, entirely gated
+  behind `prefers-reduced-motion` for accessibility.
+- Acknowledgment section crediting the free/open tools (Next.js, Supabase,
+  Resend, Vercel, Tailwind CSS) and AI pair-programming (Claude, ChatGPT)
+  used to build JCMD.
+- Restored the JCMD logo to `public/` and set site metadata (title,
+  description).
+- `@tabler/icons-react` for iconography.
