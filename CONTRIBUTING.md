@@ -36,6 +36,29 @@ chore: bump supabase-js to latest
 
 Common prefixes: `feat:`, `fix:`, `docs:`, `chore:`, `refactor:`, `test:`.
 
+## Regenerating Supabase types
+
+`src/lib/database.types.ts` is generated from the live database schema and is
+committed to the repo. When you regenerate it after a migration, **do not**
+use PowerShell's `>` redirect — it writes the file as UTF-16 with a BOM,
+which is inconsistent with every other (UTF-8) file in this repo and can
+cause subtle build/tooling issues.
+
+Instead, either run the command in WSL/bash (plain UTF-8 by default):
+
+```bash
+npx --yes supabase@latest gen types typescript --project-id <PROJECT_REF> --schema public > src/lib/database.types.ts
+```
+
+or, if you're in PowerShell, force UTF-8 output explicitly:
+
+```powershell
+npx --yes supabase@latest gen types typescript --project-id <PROJECT_REF> --schema public | Out-File -Encoding utf8 src/lib/database.types.ts
+```
+
+`<PROJECT_REF>` is the subdomain in your Supabase project URL (the part
+before `.supabase.co`) — see `NEXT_PUBLIC_SUPABASE_URL` in your `.env.local`.
+
 ## Pull request process
 
 1. Keep PRs focused — one feature or fix per PR. Smaller PRs are easier to review and merge quickly.

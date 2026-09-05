@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getCurrentBusiness } from "@/lib/get-current-business";
@@ -32,6 +33,13 @@ export default async function DashboardPage() {
         </h1>
         <p className="text-sm text-gray-600">{businessTypeLabel}</p>
       </div>
+
+      <Link
+        href="/dashboard/products"
+        className="rounded border border-gray-300 px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100"
+      >
+        Manage products →
+      </Link>
 
       <p className="text-sm text-gray-600">
         Signed in as{" "}
