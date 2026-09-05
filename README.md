@@ -1,78 +1,53 @@
-# JCMD — Portfolio Website
+# JCMD
 
-**Live site:** [jcmd.online](https://jcmd.online)
+A free, open-source, multi-tenant business management platform. **Free and open source (MIT licensed).**
 
-JCMD is an open-source passion project based in Calamba City, Laguna. A young, emerging developer initiative focused on continuous learning and open sharing — building free, offline-capable ERP systems, native desktop utilities, and custom static websites.
-
----
-
-## What's in this repo
-
-### `/demos` — Free ERP & POS Simulators
-Simulated ERP dashboards that intercept database calls with browser local storage, running completely offline.
-
-| Demo | Description |
-|---|---|
-| `demos/fastfood/` | **KarindERP** — POS and viand stock manager for karinderyas and food stalls |
-| `demos/store/` | **StoreERP** — Retail inventory, purchase orders, and expense tracker for sari-sari stores |
-| `demos/coffee/` | **BrewBooks** — Cafe POS with inventory, sales ledger, and expense log |
-| `demos/brew-and-bean/` | **Brew & Bean** — Advanced cafe admin panel with relational order records, staff directory, and analytics |
-
-### `/templates` — Static Website Templates
-Handcrafted business website templates deployed via GitHub Pages or Netlify at zero cost.
-
-| Template | Business Type |
-|---|---|
-| `templates/brew-co/` | Cortado Coffee — Cafe |
-| `templates/shear-style/` | Long & Polished — Salon & Beauty |
-| `templates/corner-bites/` | Misa's Corner — Neighborhood Retail |
-| `templates/music-artist/` | Long Live Showcase — Music Artist |
-
-### `/css` — Shared Styles
-- `css/style.css` — Shared ERP dashboard styles (sidebar, mobile header, drawer, modals, POS layout)
-- `css/portfolio.css` — Main portfolio page styles
-
-### `/js` — Shared Scripts
-- `js/supabase.js` — Supabase auth helpers used by the live ERP demos
-- `js/portfolio.js` — Portfolio page animations and interactions
-
-### Root files
-- `index.html` — Main JCMD portfolio page
-- `schema.sql` — Supabase database schema for the live ERP demos
+> **Status:** under active rebuild — this project is migrating from a static HTML portfolio site to a full Next.js application. Expect things to move fast and change shape.
 
 ---
+
+## What is JCMD
+
+JCMD lets business owners sign up, verify their email, choose their business type, and get their own management system — with data fully isolated per business (multi-tenant, enforced at the database level).
+
+The goal is a free, self-serve alternative to paid ERP/POS setup for small businesses: sign up, pick your business type, and start managing inventory, sales, expenses, and staff — without paying for software or hiring anyone to set it up.
 
 ## Tech stack
 
-- Pure HTML, Vanilla CSS, and JavaScript — no frameworks, no build tools
-- [Tabler Icons](https://tabler.io/icons) webfont for all UI icons
-- [Supabase](https://supabase.com) for auth and database on the live ERP demos
-- Browser `localStorage` mock client for the Brew & Bean offline simulator
-- GitHub Pages / Netlify for free static hosting
+- **[Next.js](https://nextjs.org)** — App Router, TypeScript
+- **[Tailwind CSS](https://tailwindcss.com)** — styling
+- **[Supabase](https://supabase.com)** — Postgres database, Auth, and Row Level Security (this is what enforces per-tenant data isolation)
+- **[Resend](https://resend.com)** — transactional email (verification, notifications)
+- **[Vercel](https://vercel.com)** — deployment
 
----
-
-## Running locally
-
-No build step required. Open any HTML file directly in a browser, or serve the root with any static file server:
+## Getting started locally
 
 ```bash
-npx serve .
+git clone https://github.com/long4sure/JCMD.git
+cd JCMD
+npm install
 ```
 
-The Brew & Bean demo runs fully offline via localStorage. The other ERP demos (KarindERP, StoreERP, BrewBooks) require a Supabase project with the tables defined in `schema.sql`.
+Copy the example environment file and fill in your own keys:
 
----
+```bash
+cp .env.example .env.local
+```
 
-## Mobile responsiveness
+Open `.env.local` and fill in your Supabase and Resend credentials. See [`.env.example`](.env.example) for the full list of required variables — this README intentionally does not include any real secret values.
 
-All ERP dashboards include a responsive sliding sidebar drawer on screens ≤ 768px, triggered by a sticky mobile header with a hamburger toggle. Brew & Bean includes a fixed bottom navigation bar on mobile for tab switching.
+Then run the dev server:
 
----
+```bash
+npm run dev
+```
 
-## Contact
+The app will be available at [http://localhost:3000](http://localhost:3000).
 
-**Jerome Misa** · Calamba City, Laguna
-- Email: jeromemisa2020@gmail.com
-- Facebook: [facebook.com/jeromemisa2020](https://www.facebook.com/jeromemisa2020/)
-- Phone: 0961-497-5156
+## Contributing
+
+Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for the branching model, commit conventions, and PR process before opening a pull request.
+
+## License
+
+MIT © 2026 JCMD (long4sure) — see [LICENSE](LICENSE) for the full text.
