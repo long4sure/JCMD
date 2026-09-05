@@ -59,6 +59,36 @@ npx --yes supabase@latest gen types typescript --project-id <PROJECT_REF> --sche
 `<PROJECT_REF>` is the subdomain in your Supabase project URL (the part
 before `.supabase.co`) — see `NEXT_PUBLIC_SUPABASE_URL` in your `.env.local`.
 
+## Known limitations
+
+**Session-refresh middleware is intentionally omitted.** Next.js's
+middleware/proxy convention has been unreliable across the versions we've
+tried:
+
+- Next 16.3.4 (the current `latest`) fails to compile a root
+  `middleware.ts`/`proxy.ts` at all — the build succeeds, but
+  `.next/server/middleware-manifest.json` comes back completely empty
+  regardless of filename, export name, or import style. Confirmed reproducible
+  with a fully self-contained file (no path-alias imports).
+- Next 16.2.10 *does* compile middleware correctly, but hit its own Vercel
+  runtime issues in earlier deploys (ESM/CommonJS mismatches, then a path-alias
+  resolution failure) before those were fixed by making the file
+  self-contained — and by that point the middleware wasn't buying us anything
+  essential, so it was dropped rather than carried forward as more surface
+  area to debug.
+
+None of this weakens auth: every protected page calls `getUser()` directly and
+redirects to `/login` when signed out, and Row Level Security enforces tenant
+isolation at the database level regardless of what the app code does. The
+middleware only ever did *proactive* session-cookie refresh — a UX nicety, not
+a security boundary.
+
+`src/lib/supabase/middleware.ts` (the `updateSession()` helper) is kept in the
+repo, unused, so a working middleware/proxy file can be re-added later once
+Next.js's compilation issue is resolved upstream — see git history around
+commits `aa9ff2c` and `be1469f` for the last known-working self-contained
+implementation.
+
 ## Pull request process
 
 1. Keep PRs focused — one feature or fix per PR. Smaller PRs are easier to review and merge quickly.
