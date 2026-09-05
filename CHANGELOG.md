@@ -26,3 +26,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   database level regardless of app code path.
 - `@supabase/ssr` browser and server client wiring, plus session-refresh
   middleware, for the Next.js App Router.
+- Authentication: signup, login, and logout via Supabase Auth server actions.
+- Email verification flow: confirmation email sent via Resend, handled by an
+  `/auth/callback` route that exchanges the code for a session.
+- `/verify` check-your-email screen shown after signup.
+- Business onboarding: business-type config plus a two-step flow that creates
+  a business (and its owner membership) after email verification.
+- `getCurrentBusiness()` helper to look up the signed-in user's business,
+  scoped entirely by RLS — no service role key involved.
+- Route protection: signed-out users are redirected to `/login`, and
+  `/dashboard` redirects users with no business yet to onboarding.
