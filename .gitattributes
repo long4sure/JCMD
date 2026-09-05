@@ -1,0 +1,8 @@
+* text=auto eol=lf
+# Ensure shell scripts and configs keep LF
+*.sh text eol=lf
+# Treat these as binary (no eol conversion)
+*.png binary
+*.ico binary
+*.jpg binary
+*.webp binary
