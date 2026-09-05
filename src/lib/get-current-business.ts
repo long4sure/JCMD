@@ -38,8 +38,13 @@ export async function getCurrentBusiness(): Promise<CurrentBusiness | null> {
     return null;
   }
 
-  // Without generated Database types, the client can't infer that
-  // memberships.business_id -> businesses.id is a to-one relationship, so it
-  // types the embedded result as an array — at runtime it's a single object.
-  return (data.business as unknown as CurrentBusiness | null) ?? null;
+  // The generated types can't express that memberships.business_id ->
+  // businesses.id is a to-one relationship, so `business` is typed as an
+  // array even though it's always a single row (or null) at runtime.
+  // Normalize the shape rather than casting the type away.
+  const business = Array.isArray(data.business)
+    ? data.business[0]
+    : data.business;
+
+  return business ?? null;
 }
