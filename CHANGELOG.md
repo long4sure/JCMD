@@ -36,3 +36,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   scoped entirely by RLS — no service role key involved.
 - Route protection: signed-out users are redirected to `/login`, and
   `/dashboard` redirects users with no business yet to onboarding.
+- Generate typed Supabase client and remove unsafe cast.

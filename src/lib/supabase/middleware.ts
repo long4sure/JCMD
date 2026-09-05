@@ -1,5 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import type { Database } from "@/lib/database.types";
 
 /**
  * Refreshes the Supabase auth session on every request that passes through
@@ -9,11 +10,14 @@ import { NextResponse, type NextRequest } from "next/server";
  * enforced by RLS policies in the database (see
  * supabase/migrations/0001_init_schema.sql), and any route-level redirects
  * for signed-out users should be layered on top of this.
+ *
+ * Parameterized with the generated Database type for consistency with the
+ * other two clients (see src/lib/database.types.ts).
  */
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
 
-  const supabase = createServerClient(
+  const supabase = createServerClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
