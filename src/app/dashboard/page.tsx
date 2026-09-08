@@ -1,16 +1,12 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
-import { getCurrentBusiness } from "@/lib/get-current-business";
+import { getCurrentUser, getCurrentBusiness } from "@/lib/get-current-business";
 import { BUSINESS_TYPES } from "@/lib/business-types";
 import { signOut } from "@/app/(auth)/actions";
 
 // Simple dashboard shell for now — the full dashboard comes in Phase 4.
 export default async function DashboardPage() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getCurrentUser();
 
   if (!user) {
     redirect("/login");
@@ -34,12 +30,20 @@ export default async function DashboardPage() {
         <p className="text-sm text-gray-600">{businessTypeLabel}</p>
       </div>
 
-      <Link
-        href="/dashboard/products"
-        className="rounded border border-gray-300 px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100"
-      >
-        Manage products →
-      </Link>
+      <div className="flex gap-3">
+        <Link
+          href="/dashboard/products"
+          className="rounded border border-gray-300 px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100"
+        >
+          Manage products →
+        </Link>
+        <Link
+          href="/dashboard/sales"
+          className="rounded border border-gray-300 px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100"
+        >
+          Sales →
+        </Link>
+      </div>
 
       <p className="text-sm text-gray-600">
         Signed in as{" "}

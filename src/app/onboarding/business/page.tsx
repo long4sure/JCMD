@@ -1,13 +1,9 @@
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
-import { getCurrentBusiness } from "@/lib/get-current-business";
+import { getCurrentUser, getCurrentBusiness } from "@/lib/get-current-business";
 import BusinessForm from "./business-form";
 
 export default async function OnboardingBusinessPage() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getCurrentUser();
 
   if (!user) {
     redirect("/login");
