@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCurrentUser, getCurrentBusiness } from "@/lib/get-current-business";
 import { getProducts } from "@/lib/products";
@@ -21,15 +20,7 @@ export default async function NewSalePage() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
-      <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-xl font-semibold text-gray-900">New sale</h1>
-        <Link
-          href="/dashboard/sales"
-          className="text-sm text-gray-600 underline"
-        >
-          ← Back to sales
-        </Link>
-      </div>
+      <h1 className="mb-6 text-xl font-semibold text-gray-900">New sale</h1>
 
       <SaleForm products={activeProducts} />
     </div>
