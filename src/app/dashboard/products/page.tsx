@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCurrentUser, getCurrentBusiness } from "@/lib/get-current-business";
 import { getProducts } from "@/lib/products";
@@ -22,12 +21,7 @@ export default async function ProductsPage() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
-      <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-xl font-semibold text-gray-900">Products</h1>
-        <Link href="/dashboard" className="text-sm text-gray-600 underline">
-          ← Back to dashboard
-        </Link>
-      </div>
+      <h1 className="mb-6 text-xl font-semibold text-gray-900">Products</h1>
 
       <div className="mb-8 rounded-lg border border-gray-200 bg-white p-5">
         <h2 className="mb-3 text-sm font-semibold text-gray-900">

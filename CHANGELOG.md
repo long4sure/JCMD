@@ -70,6 +70,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New Sale cart UI (stock-aware quantity inputs, running total), a sales
   history page with expandable line items, and a Sales nav link on the
   dashboard.
+- Real dashboard: `get_dashboard_stats()` aggregates today/week/all-time
+  revenue and sales counts, low-stock products, top sellers, and a 7-day
+  revenue series in a single SECURITY DEFINER, member-checked database call,
+  rendered as stat cards, an amber 7-day bar chart, a low-stock list, and a
+  top-products list.
+- Shared dashboard app chrome: a responsive layout with a collapsible sidebar
+  and top bar, white-labeled with the signed-in business's own name (Sagot
+  stays a small "powered by" credit, not the primary brand), active-route
+  highlighting, and disabled "Soon" nav items for Inventory/Staff/Settings.
 
 ### Performance
 - Wrapped `getCurrentUser()`/`getCurrentBusiness()` in React `cache()` so

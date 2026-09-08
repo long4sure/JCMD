@@ -214,6 +214,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_dashboard_stats: { Args: { p_business_id: string }; Returns: Json }
       is_member_of: { Args: { bid: string }; Returns: boolean }
       record_sale: {
         Args: { p_business_id: string; p_items: Json }
