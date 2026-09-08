@@ -63,3 +63,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Limitations & Transparency page (`/limitations`) explaining the free-tier
   constraints Sagot runs on (database, email, hosting) in plain, honest
   terms, with a landing-page transparency note and a cross-link from Terms.
+- Sales/transactions: `sales` and `sale_items` tables with tenant-scoped RLS,
+  and an atomic `record_sale()` database function that row-locks products,
+  blocks overselling, snapshots unit price at sale time, and decrements
+  stock — all in one transaction.
+- New Sale cart UI (stock-aware quantity inputs, running total), a sales
+  history page with expandable line items, and a Sales nav link on the
+  dashboard.
+
+### Performance
+- Wrapped `getCurrentUser()`/`getCurrentBusiness()` in React `cache()` so
+  each fires at most once per request, parameterized data helpers
+  (`getProducts()`, `getSales()`) with an optional `businessId` to avoid
+  re-deriving it, and replaced the sales list's per-row N+1 query with a
+  single embedded bulk query — cutting the sales page from as many as ~156
+  Supabase round trips down to 3.

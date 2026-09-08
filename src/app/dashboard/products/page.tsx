@@ -1,17 +1,13 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
-import { getCurrentBusiness } from "@/lib/get-current-business";
+import { getCurrentUser, getCurrentBusiness } from "@/lib/get-current-business";
 import { getProducts } from "@/lib/products";
 import { formatCents } from "@/lib/money";
 import { deleteProduct, toggleActive } from "./actions";
 import ProductForm from "./product-form";
 
 export default async function ProductsPage() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getCurrentUser();
 
   if (!user) {
     redirect("/login");
@@ -22,7 +18,7 @@ export default async function ProductsPage() {
     redirect("/onboarding/business");
   }
 
-  const products = await getProducts();
+  const products = await getProducts(business.id);
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">

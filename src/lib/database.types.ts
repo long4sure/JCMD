@@ -1,4 +1,4 @@
-export type Json =
+﻿export type Json =
   | string
   | number
   | boolean
@@ -132,12 +132,93 @@ export type Database = {
         }
         Relationships: []
       }
+      sale_items: {
+        Row: {
+          created_at: string
+          id: string
+          line_total_cents: number
+          product_id: string
+          quantity: number
+          sale_id: string
+          unit_price_cents: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          line_total_cents: number
+          product_id: string
+          quantity: number
+          sale_id: string
+          unit_price_cents: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          line_total_cents?: number
+          product_id?: string
+          quantity?: number
+          sale_id?: string
+          unit_price_cents?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sale_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sale_items_sale_id_fkey"
+            columns: ["sale_id"]
+            isOneToOne: false
+            referencedRelation: "sales"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      sales: {
+        Row: {
+          business_id: string
+          created_at: string
+          created_by: string | null
+          id: string
+          total_cents: number
+        }
+        Insert: {
+          business_id: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          total_cents?: number
+        }
+        Update: {
+          business_id?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          total_cents?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sales_business_id_fkey"
+            columns: ["business_id"]
+            isOneToOne: false
+            referencedRelation: "businesses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
       is_member_of: { Args: { bid: string }; Returns: boolean }
+      record_sale: {
+        Args: { p_business_id: string; p_items: Json }
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never
