@@ -50,7 +50,11 @@ export default function TermsPage() {
             Sagot is provided &quot;as is&quot;, without warranty of any kind,
             express or implied. We do our best to keep it running and your
             data safe, but we make no guarantees about uptime, availability,
-            or fitness for any particular purpose.
+            or fitness for any particular purpose. See our{" "}
+            <Link href="/limitations" className="underline hover:text-slate-900">
+              Limitations &amp; Transparency
+            </Link>{" "}
+            page for specifics on what that means in practice.
           </p>
         </section>
 

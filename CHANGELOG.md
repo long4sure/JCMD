@@ -60,3 +60,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Rebranded the product to Sagot: JCMD is now retained only as the "made by"
   footer credit (and in the unchanged GitHub repo URLs), with all wordmarks,
   headings, copy, metadata, and legal-page prose updated to Sagot.
+- Limitations & Transparency page (`/limitations`) explaining the free-tier
+  constraints Sagot runs on (database, email, hosting) in plain, honest
+  terms, with a landing-page transparency note and a cross-link from Terms.

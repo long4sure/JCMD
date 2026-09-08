@@ -293,6 +293,22 @@ export default function Home() {
           </Reveal>
         </section>
 
+        {/* ── TRANSPARENCY NOTE ── */}
+        <section className="border-t border-slate-200 py-10">
+          <Reveal className="mx-auto max-w-xl px-4 text-center sm:px-6">
+            <p className="text-sm text-slate-500">
+              Sagot is free because it runs on the free tiers of the tools
+              above — that keeps costs at zero, with honest, sensible limits.{" "}
+              <Link
+                href="/limitations"
+                className="font-medium text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-slate-900"
+              >
+                See our limitations →
+              </Link>
+            </p>
+          </Reveal>
+        </section>
+
         {/* ── FINAL CTA ── */}
         <section className="border-t border-slate-200 bg-slate-900 py-16 sm:py-20">
           <Reveal className="mx-auto max-w-2xl px-4 text-center sm:px-6">
@@ -335,6 +351,9 @@ export default function Home() {
             </Link>
             <Link href="/terms" className="hover:text-slate-900">
               Terms
+            </Link>
+            <Link href="/limitations" className="hover:text-slate-900">
+              Limitations
             </Link>
           </div>
         </div>
